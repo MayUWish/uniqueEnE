@@ -32,6 +32,8 @@ app.use(helmet({
 }));
 
 // Set the _csrf token and create req.csrfToken method
+// Doing so, generating at backend and send to front-end as cookie, bc react is not going refresh page;
+// In order to authentication, need to generate cookie to send to front -end
 app.use(
     csurf({
         cookie: {
