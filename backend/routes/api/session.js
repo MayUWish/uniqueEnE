@@ -12,10 +12,12 @@ const router = express.Router();
 const validateLogin = [
     check('credential')
         .exists({ checkFalsy: true })
+        .withMessage('Credential cannot be blank.')
         .notEmpty()
         .withMessage('Please provide a valid email or username.'),
     check('password')
         .exists({ checkFalsy: true })
+        .withMessage('Password cannot be blank.')
         .withMessage('Please provide a password.'),
     handleValidationErrors,
 ];
