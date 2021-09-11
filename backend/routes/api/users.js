@@ -10,11 +10,6 @@ const router = express.Router();
 
 
 const validateSignup = [
-    check('email')
-        .exists({ checkFalsy: true })
-        .withMessage('Email cannot be blank.')
-        .isEmail()
-        .withMessage('Please provide a valid email.'),
     check('username')
         .exists({ checkFalsy: true })
         .withMessage('Username cannot be blank.')
@@ -24,6 +19,11 @@ const validateSignup = [
         .not()
         .isEmail()
         .withMessage('Username cannot be an email.'),
+    check('email')
+        .exists({ checkFalsy: true })
+        .withMessage('Email cannot be blank.')
+        .isEmail()
+        .withMessage('Please provide a valid email.'),  
     check('password')
         .exists({ checkFalsy: true })
         .withMessage('Password cannot be blank.')
