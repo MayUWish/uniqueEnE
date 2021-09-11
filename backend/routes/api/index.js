@@ -7,10 +7,7 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-// to delete later
-router.post('/test', (req, res) => {
-    res.json({ requestBody: req.body });
-});
+
 
 
 
