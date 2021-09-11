@@ -7,6 +7,9 @@ import * as sessionActions from "./store/session";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
+  // after first render only, 'extract' cookie token and set state with session user'
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
