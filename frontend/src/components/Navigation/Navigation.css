@@ -1,0 +1,49 @@
+.nav{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    /* height: 85px; */
+    width: 100%;
+    box-shadow: 2px 2px lightgray;
+    color:#183a1d;
+}
+
+.home{
+    margin-left: 1em;
+
+}
+.contact{
+    padding: 1em;
+}
+
+.loginSignup,.profileWrapper{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 1em;
+}
+
+.signup, .login,.profileButton, .profileDropDown{
+    margin:0 10px;
+    color:#183a1d;; 
+    font-size: 20px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    /* box-shadow: 2px 2px lightgray; */
+}
+
+.profileButton{
+    font-size: 200%;
+    margin-right: 1em;
+
+
+}
+
+
+.profileDropDown{
+    font-size: 120%;
+    font-weight: bolder;
+
+}
