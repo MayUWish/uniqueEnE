@@ -2,15 +2,19 @@
     display:flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    /* height: 85px; */
+    /* position: fixed; */
+    /* height:; */
     width: 100%;
-    box-shadow: 2px 2px lightgray;
-    color:#183a1d;
+    /* box-shadow: 10px 10px #f0a04b; */
+    /* border:2px solid #f0a04b; */
+    padding-bottom: 20px;
+    background-color:white ;
+   
 }
 
 .home{
     margin-left: 1em;
+    text-decoration: none;
 
 }
 .contact{

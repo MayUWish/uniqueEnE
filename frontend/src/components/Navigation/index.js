@@ -27,7 +27,7 @@ function Navigation({ isLoaded }) {
     return (
         <div className ='nav'>
             <NavLink className ='home' exact to="/">
-                <h2>Explore🍀Enjoy</h2>
+                <h2>{`Explore&Enjoy`}</h2>
             </NavLink>
             <div>
                 <a className='contact' href='https://www.linkedin.com/in/meitongqu/' target='blank'>

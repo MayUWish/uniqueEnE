@@ -7,6 +7,8 @@ import {
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
+import homePagePicture from './images/homePage.jpg';
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -17,8 +19,13 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div >
       <Navigation isLoaded={isLoaded} />
+    
+      <div>
+        <img className='homePageImg' src={homePagePicture} alt='homePagePicture' ></img>
+      </div>
+      
       {isLoaded && (
         <Switch>
           {/* <Route path="/signup">
@@ -26,7 +33,9 @@ function App() {
           </Route> */}
         </Switch>
       )}
-    </>
+
+      
+    </div>
   );
 }
 

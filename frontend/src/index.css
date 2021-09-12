@@ -3,3 +3,10 @@ a:visited{
   color:#183a1d;
 }
 
+
+.homePageImg{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
