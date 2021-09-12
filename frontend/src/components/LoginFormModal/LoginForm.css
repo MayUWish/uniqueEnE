@@ -1,0 +1,61 @@
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    width:auto;
+}
+
+.loginInput,.loginSubmitButton,.DemoButton{
+  
+  width:520px;
+  height:25px;
+  font-size: 1em;
+  /* outline: none; */
+  border: 1px solid lightgray;
+  border-radius: 0.9;
+  margin: 1.5em auto;
+  padding: 1.5em 1.5em;
+  background: none;
+
+
+}
+.loginSubmitButton,.DemoButton{
+    width:135px;
+    border: none;
+    color:#183a1d; 
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0.2em auto;
+    height:15px;
+    text-align: center; 
+
+}
+label,input{
+    display: block;
+    
+}
+
+.loginInputWrapper,.loginSubmitWrapper{
+    display: flex;
+    margin:auto 10px;
+    font-size: 1em;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+}
+
+.error{
+    color:#f0a04b;
+}
+
+.signupInLogin{
+    display: inline;
+    border: none;
+    background: none;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+    color:#183a1d;
+}
+
+.signupWrapper{
+    margin: 10px;
+}
