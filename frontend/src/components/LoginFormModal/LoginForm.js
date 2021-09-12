@@ -71,7 +71,7 @@ function LoginForm() {
                     </label>
                 </div>
                 <div className='loginSubmitWrapper'>
-                    <button className='loginSubmitButton' type="submit">Log In</button>
+                    <button className='loginSubmitButton' type="submit">LogIn</button>
                     <button className='DemoButton' type="button" onClick={demonUser}>DemoUser</button>
 
                 </div>

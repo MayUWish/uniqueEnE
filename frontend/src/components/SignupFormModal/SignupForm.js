@@ -4,6 +4,9 @@ import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
+import { Modal } from '../../context/Modal';
+import LoginForm from '../LoginFormModal/LoginForm.js'
+
 function SignupForm() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
@@ -12,6 +15,8 @@ function SignupForm() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
+
+    const [showModal, setShowModal] = useState(false);
 
     if (sessionUser) return <Redirect to="/" />;
 
@@ -28,49 +33,86 @@ function SignupForm() {
         return setErrors(['Confirm Password must be the same as the Password.']);
     };
 
+    const demonUser = (e) => {
+        e.preventDefault();
+        return dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' })).catch(
+            async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            }
+        );
+
+    }
+
     return (
-        <form onSubmit={handleSubmit}>
-            <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
-            <label>
-                Username
-                <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    // required
-                />
-            </label>
-            <label>
-                Email
-                <input
-                    type="text"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                // required
-                />
-            </label>
-            <label>
-                Password
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    // required
-                />
-            </label>
-            <label>
-                Confirm Password
-                <input
-                    type="password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    // required
-                />
-            </label>
-            <button type="submit">Sign Up</button>
-        </form>
+        <>
+            <form className='signupForm' onSubmit={handleSubmit}>
+                <ul className='error'>
+                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                </ul>
+                <div className='signupInputWrapper'>
+                    <label>
+                        Username
+                        <input
+                            className='signupInput'
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            // required
+                        />
+                    </label>
+                </div>
+                <div className='signupInputWrapper'>
+                    <label>
+                        Email
+                        <input
+                            className='signupInput'
+                            type="text"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        // required
+                        />
+                    </label>
+                </div>
+                <div className='signupInputWrapper'>
+                    <label>
+                        Password
+                        <input
+                            className='signupInput'
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            // required
+                        />
+                    </label>
+                </div>
+                <div className='lsignupInputWrapper'>
+                    <label>
+                        Confirm Password
+                        <input
+                            className='signupInput'
+                            type="password"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            // required
+                        />
+                    </label>
+                </div>
+                <div className='signupSubmitWrapper'>
+                    <button className='signupSubmitButton' type="submit">SignUp</button>
+                    <button className='DemoButton' type="button" onClick={demonUser}>DemoUser</button>
+                </div>
+            </form>
+            <div className='loginWrapper'>
+                    <span>Already have an account?</span>
+                <button className='loginInSignup' onClick={() => setShowModal(true)}>Log In</button>
+                    {showModal && (
+                        <Modal onClose={() => setShowModal(false)}>
+                            <LoginForm />
+                        </Modal>
+                    )}
+            </div>
+       </>
     );
 }
 
