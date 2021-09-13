@@ -60,7 +60,7 @@ function CreateListingForm() {
 
         }
 
-        console.log(newListing)
+        // console.log(newListing)
         return dispatch(listingActions.createListingThunk(newListing))
             .catch(async (res) => {
                 const data = await res.json();

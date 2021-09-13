@@ -31,6 +31,7 @@ const listingReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case CREATE_LISTING:
+            // listing id as key, and value is listing object;
             newState = {
                 ...state,
                 [action.payload.id]: action.payload
