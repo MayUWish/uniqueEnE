@@ -10,4 +10,13 @@ a:visited{
     height: 100%;
 }
 
-
+.button{
+    margin:0 10px;
+    color:darkslategray;
+    font-size: 18px;
+    font-weight: bold;
+    background: none;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 2px 2px lightgray;
+}
