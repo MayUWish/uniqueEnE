@@ -1,4 +1,3 @@
-
 // Creating tables
 Table Users {
   id int [pk, increment] 
@@ -19,12 +18,11 @@ Table Listings {
   city varchar
   state varchar
   country varchar
-  zipcode varchar
   latitude decimal
   longitude decimal
   
   title varchar
-  description varchar
+  description text
   price decimal
   
   guestNum int
@@ -52,7 +50,7 @@ Table Listings {
 }
 
 
- Table ListingsAmentities {
+ Table ListingAmenities {
   id int [pk, increment] 
   listingId int
   amenityId int
@@ -94,8 +92,8 @@ Table Listings {
 // > many-to-one; < one-to-many; - one-to-one
 Ref: Listings.userId > Users.id
 
-Ref: Listings.id < ListingsAmentities.listingId
-Ref: Amenities.id < ListingsAmentities.amenityId
+Ref: Listings.id < ListingAmenities.listingId
+Ref: Amenities.id < ListingAmenities.amenityId
 
 Ref: Listings.id < Images.listingId
 
@@ -104,3 +102,5 @@ Ref: Listings.id < Reviews.listingId
 
 Ref: Users.id < Bookings.userId
 Ref: Listings.id < Bookings.listingId
+
+
