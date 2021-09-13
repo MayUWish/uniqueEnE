@@ -16,7 +16,7 @@ const Listing = ({ listing}) => {
                 <p>{listing?.address}, {listing?.city}</p>
                 <p>{listing?.guestNum} guests, {listing?.bedroomNum} beds, {listing?.bathroomNum} baths</p>
                 {/* <button onClick={addImages}>Add Images</button> */}
-                <AddImagesFormModal />
+                <AddImagesFormModal listingId={listing.id}/>
             </div>
         
         </div>

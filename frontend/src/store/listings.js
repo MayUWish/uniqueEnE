@@ -59,9 +59,12 @@ const listingReducer = (state = initialState, action) => {
     switch (action.type) {
         case CREATE_LISTING:
             // listing id as key, and value is listing object;
+            const newListingsIds = [...state.listingsIds];
+            newListingsIds.push(action.payload.id);
             newState = {
                 ...state,
-                [action.payload.id]: action.payload
+                [action.payload.id]: action.payload,
+                listingsIds: newListingsIds,
             }
             return newState;
 

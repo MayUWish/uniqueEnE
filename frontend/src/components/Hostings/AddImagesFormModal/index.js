@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 
 
-function AddImagesFormModal() {
+function AddImagesFormModal({listingId}) {
     const [showModal, setShowModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
 
@@ -16,7 +16,7 @@ function AddImagesFormModal() {
 
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <AddImagesForm />
+                    <AddImagesForm listingId={listingId}/>
                 </Modal>
             )}
 

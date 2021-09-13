@@ -4,7 +4,7 @@ import * as listingActions from "../../../store/listings";
 import { useDispatch, useSelector } from "react-redux";
 
 
-function AddImagesForm() {
+function AddImagesForm({ listingId }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
 
@@ -22,24 +22,24 @@ function AddImagesForm() {
             url1,
         }
 
-        // console.log(newListing)
+        console.log({listingId})
 
         const reset = () => {
             setUrl1('');
         }
 
-        return dispatch(listingActions.createListingThunk(newListing))
-            .then(() => {
-                setErrors(['Successfully created! Please click outside the form to return to all your listings.']);
-                reset();
-                // history.push(`/hosting/${Object.keys(listings)[0]}`)
-            })
-            .catch(async (res) => {
-                // console.log('notOK',res)
-                const data = await res.json();
-                // console.log('notOK', data)
-                if (data && data.errors) setErrors(data.errors);
-            });
+        // return dispatch(listingActions.createListingThunk(newListing))
+        //     .then(() => {
+        //         setErrors(['Successfully created! Please click outside the form to return to all your listings.']);
+        //         reset();
+        //         // history.push(`/hosting/${Object.keys(listings)[0]}`)
+        //     })
+        //     .catch(async (res) => {
+        //         // console.log('notOK',res)
+        //         const data = await res.json();
+        //         // console.log('notOK', data)
+        //         if (data && data.errors) setErrors(data.errors);
+        //     });
 
         // try{
         //     const res = await dispatch(listingActions.createListingThunk(newListing))
