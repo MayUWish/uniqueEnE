@@ -35,7 +35,7 @@ function CreateListingForm() {
     const [errors, setErrors] = useState([]);
 
 
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         
@@ -64,10 +64,31 @@ function CreateListingForm() {
 
         }
 
-        console.log(newListing)
+        // console.log(newListing)
+
+        const reset =()=>{
+            setTitle('');
+            setDescription('');
+            setPrice(0);
+            setGuestNum(1);
+            setBathroomNum(0);
+            setBathroomNum(0);
+            setTwinBedNum(0);
+            setQueenBedNum(0);
+            setKingBedNum(0);
+            setSofaBedNum(0);
+            setEnhancedClean('false');
+            setSelfCheckin('false');
+            setAddress('');
+            setCity('');
+            setState('California');
+            setCountry('US');
+        }
+
         return dispatch(listingActions.createListingThunk(newListing))
             .then(()=>{
                 setErrors(['Successfully created! Please click outside the form to return to all your listings.']);
+                reset();
                 // history.push(`/hosting/${Object.keys(listings)[0]}`)
             })
             .catch(async (res) => {
