@@ -5,6 +5,7 @@ const apiRouter = require('./api');
 router.use('/api', apiRouter);
 
 
+
 //serve the index.html file at the / route and any routes that don't start with /api. Along with it, attach the XSRF-TOKEN cookie to the response. Serve the static files in the frontend/build folder using the express.static middleware.
 // Static routes
 // Serve React build files in production

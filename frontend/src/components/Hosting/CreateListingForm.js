@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
+// import * as sessionActions from "../../store/session";
+import * as listingActions from "../../store/listings";
+import { useDispatch, useSelector } from "react-redux";
 import './CreateListingForm.css'
 
-function CreateListingForm({ user}) {
+function CreateListingForm() {
     const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user);
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -18,8 +20,8 @@ function CreateListingForm({ user}) {
     const [kingBedNum, setKingBedNum] = useState(0);
     const [sofaBedNum, setSofaBedNum] = useState(0);
 
-    const [enhancedClean, setEnhancedClean] = useState('2');
-    const [selfCheckin, setSelfCheckin] = useState('2');
+    const [enhancedClean, setEnhancedClean] = useState('false');
+    const [selfCheckin, setSelfCheckin] = useState('false');
 
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
@@ -32,18 +34,44 @@ function CreateListingForm({ user}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
         setErrors([]);
-        return dispatch(sessionActions.login({  })).catch(
-            async (res) => {
+        const newListing ={
+            userId: sessionUser.id,
+            title,
+            description,
+            price,
+            guestNum,
+            bathroomNum,
+            bedroomNum,
+            twinBedNum,
+            queenBedNum,
+            kingBedNum,
+            sofaBedNum,
+            enhancedClean,
+            selfCheckin,
+            address,
+            city,
+            state,
+            country,
+            // !! Need to update latitude and longitude when using google map API
+            latitude: 90.00000000, 
+            longitude: 180.000000
+
+        }
+
+        console.log(newListing)
+        return dispatch(listingActions.createListingThunk(newListing))
+            .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
-            }
-        );
+            });
+        
     };
 
 
     return (
-        <div className='listingFormWrapper'>
+        <>
             <form className='listingForm' onSubmit={handleSubmit}>
                 <ul className='error'>
                     {errors.map((error, idx) => (
@@ -189,8 +217,8 @@ function CreateListingForm({ user}) {
                             onChange={(e) => setEnhancedClean(e.target.value)}
                         // required
                         >
-                                <option key='enhancedCleanTrue' >{'1'}</option>
-                                <option key='enhancedCleanFalse'>{'2'}</option>
+                                <option key='enhancedCleanTrue' >true</option>
+                                <option key='enhancedCleanFalse'>false</option>
                         </select>                    
                     </label>
                 </div>
@@ -204,8 +232,8 @@ function CreateListingForm({ user}) {
                             onChange={(e) => setSelfCheckin(e.target.value)}
                         // required
                         >
-                            <option key='selfCheckinTrue'>1</option>
-                            <option key='selfCheckinFalse'>2</option>
+                            <option key='selfCheckinTrue'>true</option>
+                            <option key='selfCheckinFalse'>false</option>
                         </select>
                     </label>
                 </div>
@@ -261,7 +289,7 @@ function CreateListingForm({ user}) {
 
             </form>
 
-        </div>
+        </>
     );
 }
 

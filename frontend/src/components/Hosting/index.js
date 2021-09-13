@@ -14,7 +14,7 @@ function CreateListingFormModal() {
             <button className='button' onClick={() => setShowModal(true)}>Create Listing</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <CreateListingForm user={sessionUser}/>
+                    <CreateListingForm/>
                 </Modal>
             )}
         </div>
