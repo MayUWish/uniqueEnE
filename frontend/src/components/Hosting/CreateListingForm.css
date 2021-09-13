@@ -1,24 +1,32 @@
-.loginForm{
+
+.listingForm{
     display: flex;
     flex-direction: column;
     width:auto;
 }
 
-.loginInput,.loginSubmitButton,.DemoButton{
+.listingInput,.listingSubmitButton,.numInput,.selectInput{
   
   width:520px;
-  height:25px;
+  height:8px;
   font-size: 1em;
   /* outline: none; */
   border: 1px solid lightgray;
-  border-radius: 0.9;
-  margin: 1.5em auto;
+  border-radius: 10px;
+  margin: auto auto;
   padding: 1.5em 1.5em;
   background: none;
 
 
 }
-.loginSubmitButton,.DemoButton{
+.numInput{
+    width:77px;
+    height:5px;
+
+}
+
+
+.listingSubmitButton{
     width:135px;
     border: none;
     color:#183a1d; 
@@ -35,9 +43,9 @@ label,input{
     
 }
 
-.loginInputWrapper,.loginSubmitWrapper{
+.listingInputWrapper,.listingSubmitWrapper{
     display: flex;
-    margin:auto 10px;
+    margin:2px 10px;
     font-size: 1em;
     font-weight: bold;
     justify-content: center;
@@ -48,15 +56,30 @@ label,input{
     color:#f0a04b;
 }
 
-.signupInLogin{
-    display: inline;
-    border: none;
-    background: none;
-    border-bottom: 1px solid black;
-    font-weight: bold;
-    color:#183a1d;
+
+
+.numWrapper,.cleanAndCheckinWrapper{
+    display: flex;
+    flex-direction: row;
+    margin:5px;
+    justify-content: center;
+    
 }
 
-.signupWrapper{
-    margin: 10px;
+
+
+.selectInput{
+    display: block;
+    width:130px;
+    height:50px;
+
 }
+
+textarea{
+      margin:2.59766px 10.1953px;
+      width:564px; 
+      height:98px;
+      border-radius: 10px;
+     border: 1px solid lightgray;
+}
+
