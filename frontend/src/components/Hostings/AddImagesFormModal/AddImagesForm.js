@@ -17,29 +17,29 @@ function AddImagesForm({ listingId }) {
         e.preventDefault();
 
         setErrors([]);
-        const newListing = {
-            userId: sessionUser.id,
-            url1,
+        const newImage = {
+            listingId,
+            url:url1,
         }
 
-        console.log({listingId})
+        console.log({ newImage})
 
         const reset = () => {
             setUrl1('');
         }
 
-        // return dispatch(listingActions.createListingThunk(newListing))
-        //     .then(() => {
-        //         setErrors(['Successfully created! Please click outside the form to return to all your listings.']);
-        //         reset();
-        //         // history.push(`/hosting/${Object.keys(listings)[0]}`)
-        //     })
-        //     .catch(async (res) => {
-        //         // console.log('notOK',res)
-        //         const data = await res.json();
-        //         // console.log('notOK', data)
-        //         if (data && data.errors) setErrors(data.errors);
-        //     });
+        return dispatch(listingActions.createImageThunk(newImage))
+            .then(() => {
+                setErrors(['Successfully created! Please click outside the form to return to all your listings.']);
+                reset();
+                // history.push(`/hosting/${Object.keys(listings)[0]}`)
+            })
+            .catch(async (res) => {
+                // console.log('notOK',res)
+                const data = await res.json();
+                // console.log('notOK', data)
+                if (data && data.errors) setErrors(data.errors);
+            });
 
         // try{
         //     const res = await dispatch(listingActions.createListingThunk(newListing))

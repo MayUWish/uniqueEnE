@@ -2,13 +2,23 @@ import { bindActionCreators } from 'redux';
 import { csrfFetch } from './csrf';
 
 const CREATE_LISTING = 'listing/createListing';
+const CREATE_IMAGE = 'listing/createImage';
 const VIEW_LISTING = 'listing/viewListing';
+
 
 // create new listing/spot
 const createListingAction = (listing) => {
     return {
         type: CREATE_LISTING ,
         payload: listing,
+    };
+};
+
+// add images to listing
+const createImageAction = (image) => {
+    return {
+        type: CREATE_IMAGE,
+        payload: image,
     };
 };
 
@@ -20,6 +30,8 @@ const viewListingAction = (listings) => {
     };
 };
 
+
+
 // create new listing/spot
 export const createListingThunk = (listing) => async (dispatch) => {
 
@@ -29,6 +41,18 @@ export const createListingThunk = (listing) => async (dispatch) => {
     });
     const data = await response.json();
     dispatch(createListingAction(data.listing));
+    return response;
+};
+
+// add images to listings
+export const createImageThunk = (image) => async (dispatch) => {
+
+    const response = await csrfFetch("/api/images", {
+        method: "POST",
+        body: JSON.stringify({ ...image}),
+    });
+    const data = await response.json();
+    dispatch(createImageAction(data.image));
     return response;
 };
 
@@ -68,6 +92,18 @@ const listingReducer = (state = initialState, action) => {
             }
             return newState;
 
+            
+        case CREATE_IMAGE:
+            // listing id as key, and value is listing object;
+            // each listing has a key of images, value is an array of images object
+            const newListingState = {...state[action.payload.listingId]}
+            newListingState.images ? newListingState.images.push(action.payload):newListingState.images=[]
+            newState = {
+                ...state,
+                [action.payload.listingId]: newListingState,
+            }
+            return newState;
+        
         case VIEW_LISTING:
             const allListings = {};
             action.payload.forEach(listing=>{
