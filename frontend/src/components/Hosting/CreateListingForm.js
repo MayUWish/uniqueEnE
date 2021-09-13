@@ -4,9 +4,13 @@ import * as listingActions from "../../store/listings";
 import { useDispatch, useSelector } from "react-redux";
 import './CreateListingForm.css'
 
+import { useHistory } from "react-router-dom";
+
 function CreateListingForm() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const listings = useSelector(state => state.listings);
+    const history = useHistory()
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -32,7 +36,7 @@ function CreateListingForm() {
 
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         
         setErrors([]);
@@ -60,18 +64,35 @@ function CreateListingForm() {
 
         }
 
-        // console.log(newListing)
+        console.log(newListing)
         return dispatch(listingActions.createListingThunk(newListing))
+            .then(()=>{
+                setErrors(['Successfully created! Please click outside the form to return to all your listings.']);
+                // history.push(`/hosting/${Object.keys(listings)[0]}`)
+            })
             .catch(async (res) => {
+                // console.log('notOK',res)
                 const data = await res.json();
+                // console.log('notOK', data)
                 if (data && data.errors) setErrors(data.errors);
             });
         
+        // try{
+        //     const res = await dispatch(listingActions.createListingThunk(newListing))
+
+        //     const data = await res.json();
+        //     history.push(`/hosting/${data.listing.id}`);
+
+        // }catch(err){
+        //     if (err && err.errors) setErrors(err.errors)
+        // }
+                  
     };
 
 
     return (
-        <>
+        <>  
+            {/* <button onClick={() => history.push(`/hosting/${Object.keys(listings)[Object.keys(listings).length - 1]}`)}>X</button> */}
             <form className='listingForm' onSubmit={handleSubmit}>
                 <ul className='error'>
                     {errors.map((error, idx) => (

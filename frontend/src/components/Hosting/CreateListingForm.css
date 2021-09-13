@@ -54,6 +54,7 @@ label,input{
 
 .error{
     color:#f0a04b;
+    /* overflow: scroll; */
 }
 
 
