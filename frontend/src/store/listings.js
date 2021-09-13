@@ -1,4 +1,3 @@
-import { bindActionCreators } from 'redux';
 import { csrfFetch } from './csrf';
 
 const CREATE_LISTING = 'listing/createListing';
@@ -74,7 +73,7 @@ const initialState = {};
 
 const sortList = (list) => {
     return list.sort((listingA, listingB) => {
-        return listingB.createdAt - listingA.createdAt;
+        return listingA.createdAt - listingB.createdAt;
     }).map((listing) => listing.id);
 };
 
@@ -84,7 +83,7 @@ const listingReducer = (state = initialState, action) => {
         case CREATE_LISTING:
             // listing id as key, and value is listing object;
             const newListingsIds = [...state.listingsIds];
-            newListingsIds.push(action.payload.id);
+            newListingsIds.unshift(action.payload.id);
             newState = {
                 ...state,
                 [action.payload.id]: action.payload,
@@ -97,7 +96,7 @@ const listingReducer = (state = initialState, action) => {
             // listing id as key, and value is listing object;
             // each listing has a key of images, value is an array of images object
             const newListingState = {...state[action.payload.listingId]}
-            newListingState.images ? newListingState.images=[...newListingState.images, action.payload] : newListingState.images = [action.payload]
+            newListingState.Images ? newListingState.Images=[...newListingState.Images, action.payload] : newListingState.Images = [action.payload]
             newState = {
                 ...state,
                 [action.payload.listingId]: newListingState,

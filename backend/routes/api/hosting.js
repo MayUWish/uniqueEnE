@@ -13,10 +13,14 @@ router.get(
         const { userId } = req.params;
         const listings = await Listing.findAll({
             where: {userId},
-            include: [Image, ListingAmenity],
+            include: [Image, 
+                // {
+                // model: ListingAmenity,
+                // include: [Amenity]}
+            ],
             order: [["createdAt", "DESC"]],
         });
-
+        // The following does not work bc of await, need to use findAll association as above;
         // listings.forEach(listing=>{
         //     const images =await Image.findAll({
         //         where:{listingId:listing.id}
