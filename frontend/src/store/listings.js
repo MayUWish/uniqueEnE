@@ -110,7 +110,8 @@ const listingReducer = (state = initialState, action) => {
                 allListings[listing.id]=listing;
             })
             newState = {
-                ...state,
+                // do not copy original state when viewing bc allListings will be the most updated all listings, otherwise when switching user, the previous logged-in user's hosting state will not be cleared ( user logout will clear session state, but not hosting state)
+                // ...state,
                 ...allListings, 
                 listingsIds: sortList(action.payload),
             }
