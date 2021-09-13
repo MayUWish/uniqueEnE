@@ -2,7 +2,7 @@ import { bindActionCreators } from 'redux';
 import { csrfFetch } from './csrf';
 
 const CREATE_LISTING = 'listing/createListing';
-const GET_LISTING = 'listing/getListing';
+const VIEW_LISTING = 'listing/viewListing';
 
 // create new listing/spot
 const createListingAction = (listing) => {
@@ -13,9 +13,9 @@ const createListingAction = (listing) => {
 };
 
 // view listing/spot that current loggin user posted
-const getListingAction = (listings) => {
+const viewListingAction = (listings) => {
     return {
-        type: GET_LISTING,
+        type: VIEW_LISTING,
         payload: listings,
     };
 };
@@ -33,11 +33,16 @@ export const createListingThunk = (listing) => async (dispatch) => {
 };
 
 // view listing/spot that current loggin user posted
-export const getListingThunk = () => async (dispatch) => {
+export const viewListingThunk = (userId) => async (dispatch) => {
 
-    const response = await csrfFetch("/api/listings");
+    const response = await csrfFetch(`/api/hosting/${userId}`
+    // ,{
+    //     method: "Post",
+    //     body: JSON.stringify({ userId }),
+    // }
+    );
     const data = await response.json();
-    dispatch(getListingAction(data.listings));
+    dispatch(viewListingAction(data.listings));
     return response;
 };
 
@@ -45,7 +50,7 @@ const initialState = {};
 
 const sortList = (list) => {
     return list.sort((listingA, listingB) => {
-        return listingA.createdAt - listingB.createdAt;
+        return listingB.createdAt - listingA.createdAt;
     }).map((listing) => listing.id);
 };
 
@@ -60,7 +65,7 @@ const listingReducer = (state = initialState, action) => {
             }
             return newState;
 
-        case GET_LISTING:
+        case VIEW_LISTING:
             const allListings = {};
             action.payload.forEach(listing=>{
                 allListings[listing.id]=listing;

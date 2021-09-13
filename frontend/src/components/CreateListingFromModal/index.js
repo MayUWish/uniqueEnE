@@ -4,6 +4,7 @@ import CreateListingForm from './CreateListingForm';
 import { useSelector } from 'react-redux';
 
 
+
 function CreateListingFormModal() {
     const [showModal, setShowModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
@@ -12,11 +13,13 @@ function CreateListingFormModal() {
     return (
         <div >
             <button className='button' onClick={() => setShowModal(true)}>Create Listing</button>
+            
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <CreateListingForm/>
                 </Modal>
             )}
+
         </div>
     );
 }

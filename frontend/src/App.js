@@ -8,7 +8,9 @@ import Navigation from "./components/Navigation";
 
 import homePagePicture from './images/homePage.jpg';
 
-import CreateListingFormModal from "./components/Hosting";
+import CreateListingFormModal from "./components/CreateListingFromModal";
+
+import HostingsCollection from "./components/Hostings";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,9 +32,10 @@ function App() {
               <img className='homePageImg' src={homePagePicture} alt='homePagePicture' ></img>
             </div>            
           </Route>
+
           <Route exact path="/hosting">
             <CreateListingFormModal />
-
+            <HostingsCollection />
           </Route>
         </Switch>
       )}

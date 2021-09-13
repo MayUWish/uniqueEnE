@@ -107,6 +107,7 @@ const validateCreateListing = [
     handleValidationErrors,
 ];
 
+// create listings
 router.post(
     '/',
     validateCreateListing,
@@ -117,5 +118,21 @@ router.post(
         });
     }),
 );
+
+
+// view listings, return an array of listings by userId
+// router.post(
+//     '/',
+//     asyncHandler(async (req, res) => {
+//         const {userId}=req.body;
+//         const listings = await Listing.findall({
+//             where: {
+//                 userId} 
+//             });
+//         return res.json({
+//             listings,
+//         });
+//     }),
+// );
 
 module.exports = router;

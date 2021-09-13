@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 function CreateListingForm() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const listings = useSelector(state => state.listings);
+    const mostRecentlyCreated = useSelector(state => state.hosting.listingsIds[state.hosting.listingsIds.length-1]);
     const history = useHistory()
 
     const [title, setTitle] = useState("");
