@@ -21,11 +21,25 @@ const validateCreateImage = [
 router.post(
     '/',
     validateCreateImage,
+    requireAuth,
     asyncHandler(async (req, res) => {
-        const image = await Image.create({ ...req.body });
-        return res.json({
-            image,
-        });
+        const { listingId} = req.body;
+        const listing = await Listing.findByPk(listingId, { include: User });
+        if (+req.user.id !== +listing.User.id){
+            const err = Error('Unauthorized.');
+            err.errors = [`You have no authorization to see the listings.`];
+            err.status = 401;
+            err.title = 'Unauthorized.';
+            next(err);
+
+        } else{
+            const image = await Image.create({ ...req.body });
+            return res.json({
+                image,
+            });
+
+        }
+       
     }),
 );
 

@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User, Listing, Image, ListingAmenity, Amenity  } = require('../../db/models');
-const { setTokenCookie, requireAuth } = require('../../utils/auth');
+
 
 
 const router = express.Router();
@@ -15,7 +15,7 @@ router.get(
     asyncHandler(async (req, res, next) => {
         const { userId } = req.params;
         // if userId is the currentloggin userId
-        if (req.user.id === userId){
+        if (req.user.id === +userId){
             const listings = await Listing.findAll({
                 where: { userId },
                 include: [Image, ListingAmenity
@@ -33,8 +33,8 @@ router.get(
 
         } else{
             const err = Error('Unauthorized.');
-            err.errors = [`You have no authorization to see the listings`];
-            err.status = 400;
+            err.errors = [`You have no authorization to see the listings.`];
+            err.status = 401;
             err.title = 'Unauthorized.';
             next(err);
         } 

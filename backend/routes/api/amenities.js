@@ -21,8 +21,11 @@ const validateCreateAmenity = [
 router.post(
     '/',
     validateCreateAmenity,
+    requireAuth,
     asyncHandler(async (req, res, next) => {
-        const {listingId,amenityId}=req.body
+        const {listingId,amenityId}=req.body;
+        const listing = await Listing.findByPk(listingId, { include: User });
+
         const exitingAmenityIds = await ListingAmenity.findAll({
             where:{listingId}
         }).map(joinItem=>joinItem.amenityId)
@@ -36,7 +39,16 @@ router.post(
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
-        } else{
+        } else if (+req.user.id !== +listing.User.id){
+            const err = Error('Unauthorized.');
+            err.errors = [`You have no authorization to see the listings.`];
+            err.status = 401;
+            err.title = 'Unauthorized.';
+            next(err);
+
+        }
+        
+        else{
 
             const amenity = await ListingAmenity.create({ ...req.body });
             return res.json({

@@ -131,7 +131,7 @@ router.put(
         const listing = await Listing.findByPk(listingId, { include: User });
         
         // if loggin user is the host of listing and if the listing exists
-        if (req.user.id === listing.User.id) {
+        if (req.user.id !== +listing.User.id) {
 
             const err = Error('Unauthorized.');
             err.errors = [`You have no authorization to edit the question`];
@@ -147,7 +147,7 @@ router.put(
             err.title = 'Bad request.';
             next(err);
         }
-        else if (req.user.id===listing.User.id && listing){
+        else if (+req.user.id===+listing.User.id && listing){
             await listing.update({ ...req.body })
             return res.json({
                 listing,
