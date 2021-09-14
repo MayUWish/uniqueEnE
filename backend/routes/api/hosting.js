@@ -13,7 +13,8 @@ router.get(
         const { userId } = req.params;
         const listings = await Listing.findAll({
             where: {userId},
-            include: [Image, 
+            include: [Image, ListingAmenity
+                // Error below: amenity is not associated with ListingAmenity
                 // {
                 // model: ListingAmenity,
                 // include: [Amenity]}

@@ -129,7 +129,7 @@ const listingReducer = (state = initialState, action) => {
             // listing id as key, and value is listing object;
             // each listing has a key of images, value is an array of images object
             newListingState = { ...state[action.payload.listingId] }
-            newListingState.Amenities ? newListingState.Amenities = [...newListingState.Amenities, action.payload] : newListingState.Amenities = [action.payload]
+            newListingState.ListingAmenities ? newListingState.ListingAmenities = [...newListingState.ListingAmenities, action.payload] : newListingState.ListingAmenities = [action.payload]
             newState = {
                 ...state,
                 [action.payload.listingId]: newListingState,

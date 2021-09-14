@@ -37,6 +37,10 @@ function App() {
             <CreateListingFormModal />
             <HostingsCollection />
           </Route>
+
+          <Route exact path={`/hosting/:listingId`}>
+            <h3>!!ToDo: individual listing page, allows user to delete and edit</h3>
+          </Route>
         </Switch>
       )}
 

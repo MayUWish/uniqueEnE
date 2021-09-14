@@ -1,12 +1,12 @@
 import toAddImg from '../../images/toAddImg.jpg'
 import AddImagesFormModal from "./AddImagesFormModal";
 import AddAmenitiesFormModal from "./AddAmenitiesFormModal";
+import {Route, NavLink} from 'react-router-dom';
+
 const Listing = ({ listing}) => {
 
-    // const addImages = ()=>{
-    //     // to get the add img form
-    // }
-
+    
+    
     return (
         <div className='eachListing'>
          
@@ -19,6 +19,8 @@ const Listing = ({ listing}) => {
                 {/* <button onClick={addImages}>Add Images</button> */}
                 <AddImagesFormModal listingId={listing.id}/>
                 <AddAmenitiesFormModal listingId={listing.id} />
+                <NavLink className='button' to={`/hosting/${listing.id}`}>Preview</NavLink>
+                
             </div>
         
         </div>
