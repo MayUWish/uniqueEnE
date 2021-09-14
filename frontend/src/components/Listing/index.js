@@ -4,6 +4,7 @@ import { NavLink, Route, useParams } from 'react-router-dom';
 
 import * as listingActions from "../../store/listings";
 import './listing.css'
+import Description from './Description'
 
 const Listing = () => {
     const {listingId} = useParams();
@@ -30,10 +31,14 @@ const Listing = () => {
     return (
 
         <div style={{ margin:'auto 3%' }}>
+
+            {/* for intro section */}
             <div className='listingTitle'> 
                 <h2>{currentListing?.title}</h2>
-                <h3>{currentListing?.city}, {currentListing?.state}, {currentListing?.country}</h3>
+                <h3>{currentListing ? currentListing.city + ', ' : ''}{currentListing?currentListing.state+', ':''} {currentListing?.country}</h3>
             </div>
+
+            {/* for image section */}
             <div className='listingImages'>
                 {currentListing?.Images.slice(0,5).map( ({url,id},index) =>(
                     <img id={`image${index + 1}`} key={id} src={url} alt='listingImage'></img>
@@ -43,6 +48,21 @@ const Listing = () => {
                 <NavLink style={{ display: 'block', textDecoration: 'none',border:'1px solid lightgray',fontWeight:'bold'}} to={`/hosting/${listingId}/images`}>Show all photos </NavLink>
             </div>
             
+            {/* for details section, grid 2 by 2 */}
+            <div className='listingDetails'>
+                <div className='listingDescription'>
+                    <Description />
+
+                </div>
+                <div className='listingBooking'>
+
+                </div>
+                <div className='listingReview'>
+
+                </div>
+
+
+            </div>
             
         
        

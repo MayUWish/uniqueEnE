@@ -30,7 +30,7 @@ const Images = () => {
     return (
 
         <div style={{ margin: 'auto 3%' }}>
-            <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+            <div className ='imagesToListing' >
                 <NavLink style={{ display: 'block', textDecoration: 'none', border: '1px solid lightgray', fontWeight: 'bolder' }} to={`/hosting/${listingId}`}>Back to listing </NavLink>
             </div>
 
