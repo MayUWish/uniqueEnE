@@ -43,9 +43,11 @@ function App() {
           </Route>
 
           <Route exact path={`/hosting/:listingId`}>
-            <NavLink className='button' to={`/hosting`} style={{ textDecoration: 'none' }}>To your listings</NavLink>
+            <div style={{ display: 'flex' }}>
+            <NavLink className='button' to={`/hosting`} style={{ textDecoration: 'none',height:'23px',width:'125px'}}>To your listings</NavLink>
             <EditListingFormModal />
             <DeleteListingFromModal />
+            </div>
             
           </Route>
         </Switch>

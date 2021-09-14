@@ -17,10 +17,12 @@ const Listing = ({ listing}) => {
                 <p>{listing?.address}, {listing?.city}</p>
                 <p>{listing?.guestNum} guests, {listing?.bedroomNum} beds, {listing?.bathroomNum} baths</p>
                 {/* <button onClick={addImages}>Add Images</button> */}
+                <div style={{ display: 'flex', flexFlow:'column'}}>
                 <AddImagesFormModal listingId={listing.id}/>
                 <AddAmenitiesFormModal listingId={listing.id} />
-                <NavLink className='button' to={`/hosting/${listing.id}`} style={{ textDecoration: 'none' }}>Preview</NavLink>
                 
+                    <NavLink className='button' to={`/hosting/${listing.id}`} style={{ textDecoration: 'none', height: '24px', width: '75px' }}>-Preview-</NavLink>
+                </div>
             </div>
         
         </div>
