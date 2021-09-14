@@ -148,7 +148,13 @@ router.put(
             next(err);
         }
         else if (+req.user.id===+listing.User.id && listing){
-            await listing.update({ ...req.body })
+            // delete id and ensure userId does not change!
+            const body = Object.assign({}, req.body);
+            // console.log('before',body)
+            delete body.id;
+            body.userId = listing.User.id;
+            // console.log('after', body, req.body)
+            await listing.update({ ...body })
             return res.json({
                 listing,
             })

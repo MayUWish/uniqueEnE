@@ -43,6 +43,7 @@ function EditListingForm({ listingId }) {
         
         setErrors([]);
         const editListing ={
+            id:listingId,
             userId: sessionUser.id,
             title,
             description,

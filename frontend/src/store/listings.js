@@ -5,6 +5,9 @@ const CREATE_IMAGE = 'listing/createImage';
 const CREATE_AMENITY = 'listing/createAmenity';
 const VIEW_LISTING = 'listing/viewListing';
 
+const EDIT_LISTING = 'listing/editListing';
+
+///////////////////////////Action:
 
 // create new listing/spot
 const createListingAction = (listing) => {
@@ -38,8 +41,15 @@ const viewListingAction = (listings) => {
     };
 };
 
+// edit new listing/spot
+const editListingAction = (listing) => {
+    return {
+        type: EDIT_LISTING,
+        payload: listing,
+    };
+};
 
-
+//////////////////////////////////////////Thunk:
 // create new listing/spot
 export const createListingThunk = (listing) => async (dispatch) => {
 
@@ -90,6 +100,21 @@ export const viewListingThunk = (userId) => async (dispatch) => {
     return response;
 };
 
+
+// edit listing/spot
+export const editListingThunk = (listing) => async (dispatch) => {
+
+    const response = await csrfFetch(`/api/listings/${listing.id}`, {
+        method: "PUT",
+        body: JSON.stringify({ ...listing }),
+    });
+    const data = await response.json();
+    dispatch(editListingAction(data.listing));
+    return response;
+};
+
+
+///////////////////////////// reducer:
 const initialState = {};
 
 const sortList = (list) => {
@@ -146,6 +171,17 @@ const listingReducer = (state = initialState, action) => {
                 // ...state,
                 ...allListings, 
                 listingsIds: sortList(action.payload),
+            }
+            return newState;
+
+        case EDIT_LISTING:
+            // listing id as key, and value is listing object
+            newState = {
+                ...state,
+
+                [action.payload.id]: {
+                    ...state[action.payload.id],
+                    ...action.payload },
             }
             return newState;
 
