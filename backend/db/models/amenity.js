@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
 
                 'Essentials',
 
-                'washer',
-                'dryer',
+                'Washer',
+                'Dryer',
                 'Smoke Alarm',
                 'Carbon monoxide alarm'             
           ]],

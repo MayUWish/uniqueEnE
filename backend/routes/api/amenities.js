@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Listing, Image } = require('../../db/models');
+const { User, Listing, ListingAmenity } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -17,12 +17,12 @@ const validateCreateAmenity = [
     handleValidationErrors,
 ];
 
-// create listings
+// create amenities
 router.post(
     '/',
     validateCreateAmenity,
     asyncHandler(async (req, res) => {
-        const image = await Image.create({ ...req.body });
+        const amenity = await ListingAmenity.create({ ...req.body });
         return res.json({
             amenity,
         });
