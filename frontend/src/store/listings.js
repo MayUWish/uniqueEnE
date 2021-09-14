@@ -6,6 +6,7 @@ const CREATE_AMENITY = 'listing/createAmenity';
 const VIEW_LISTING = 'listing/viewListing';
 
 const EDIT_LISTING = 'listing/editListing';
+const DELETE_LISTING = 'listing/deleteListing';
 
 ///////////////////////////Action:
 
@@ -41,11 +42,19 @@ const viewListingAction = (listings) => {
     };
 };
 
-// edit new listing/spot
+// edit  listing/spot
 const editListingAction = (listing) => {
     return {
         type: EDIT_LISTING,
         payload: listing,
+    };
+};
+
+// delete listing/spot
+const deleteListingAction = (listingId) => {
+    return {
+        type: DELETE_LISTING,
+        payload: listingId,
     };
 };
 
@@ -110,6 +119,18 @@ export const editListingThunk = (listing) => async (dispatch) => {
     });
     const data = await response.json();
     dispatch(editListingAction(data.listing));
+    return response;
+};
+
+// delete listing/spot 
+export const deleteListingThunk = (listingId) => async (dispatch) => {
+
+    const response = await csrfFetch(`/api/listings/${listingId}`, {
+        method: "DELETE",
+        // body: JSON.stringify({ ...listing }),
+    });
+    const data = await response.json();
+    dispatch(deleteListingAction(data.listingId));
     return response;
 };
 
@@ -183,6 +204,15 @@ const listingReducer = (state = initialState, action) => {
                     ...state[action.payload.id],
                     ...action.payload },
             }
+            return newState;
+
+        case DELETE_LISTING:
+            // listing id as key, and value is listing object
+            newState = {
+                ...state,
+            }
+            delete newState[action.payload.listingId]
+            newState.listingsIds= newState.listingsIds.filter(id => +id !== +action.payload.listingId)
             return newState;
 
         default:

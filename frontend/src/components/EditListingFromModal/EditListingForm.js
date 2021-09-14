@@ -90,7 +90,7 @@ function EditListingForm({ listingId }) {
 
         return dispatch(listingActions.editListingThunk(editListing))
             .then(()=>{
-                setErrors(['Successfully updated! Please click outside the form to return to all your listings.']);
+                setErrors(['Successfully updated! Please click outside the form to return to your listing.']);
                 // reset();
                 // history.push(`/hosting/${Object.keys(listings)[0]}`)
             })

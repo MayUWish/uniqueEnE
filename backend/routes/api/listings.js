@@ -192,9 +192,10 @@ router.delete(
             next(err);
         }
         else if (+req.user.id === +listing.User.id && listing) {
+            const listingId=listing.id;
             await listing.destroy();
             return res.json({
-                message: 'Successfully deleted.'
+                listingId
             })
 
         }

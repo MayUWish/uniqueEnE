@@ -11,6 +11,8 @@ import homePagePicture from './images/homePage.jpg';
 
 import CreateListingFormModal from "./components/CreateListingFromModal";
 import EditListingFormModal from "./components/EditListingFromModal";
+import DeleteListingFromModal from "./components/DeleteListingFromModal";
+
 
 import HostingsCollection from "./components/Hostings";
 
@@ -43,6 +45,7 @@ function App() {
           <Route exact path={`/hosting/:listingId`}>
             <NavLink className='button' to={`/hosting`} style={{ textDecoration: 'none' }}>To your listings</NavLink>
             <EditListingFormModal />
+            <DeleteListingFromModal />
             
           </Route>
         </Switch>
