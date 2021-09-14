@@ -16,6 +16,8 @@ import DeleteListingFromModal from "./components/DeleteListingFromModal";
 
 import HostingsCollection from "./components/Hostings";
 
+import Listing from "./components/Listing";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -44,11 +46,11 @@ function App() {
 
           <Route exact path={`/hosting/:listingId`}>
             <div style={{ display: 'flex' }}>
-            <NavLink className='button' to={`/hosting`} style={{ textDecoration: 'none',height:'23px',width:'125px'}}>To your listings</NavLink>
-            <EditListingFormModal />
-            <DeleteListingFromModal />
+              <NavLink className='button' to={`/hosting`} style={{ textDecoration: 'none', height: '23px', width: '125px' }}> {`To your listings`}</NavLink>
+              <EditListingFormModal />
+              <DeleteListingFromModal />
             </div>
-            
+            <Listing />
           </Route>
         </Switch>
       )}

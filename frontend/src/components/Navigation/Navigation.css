@@ -5,10 +5,11 @@
     /* position: fixed; */
     /* height:; */
     width: 100%;
-    /* box-shadow: 10px 10px #f0a04b; */
-    /* border:2px solid #f0a04b; */
+    /* box-shadow: 2px 2px lightgray; */
+    border-bottom:2px solid lightgray;
     padding-bottom: 20px;
     background-color:white ;
+    margin-bottom: 10px;
    
 }
 

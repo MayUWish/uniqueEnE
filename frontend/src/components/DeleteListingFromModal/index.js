@@ -25,7 +25,8 @@ function DeleteListingFormModal() {
     
     // require authentication/loggin AND authurizaiton: logged-in user id = listing's userId
     if (!sessionUser || +hosting[listingId]?.userId !== +sessionUser?.id ) {
-        return (<h3 style={{ color: '#f0a04b' }}>No authorization.</h3>)
+        return null;
+        // return (<h3 style={{ color: '#f0a04b' }}>No authorization.</h3>)
     };
 
     return (
