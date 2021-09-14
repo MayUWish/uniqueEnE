@@ -56,6 +56,7 @@ const Listing = () => {
 
                 </div>
                 <div className='listingReview'>
+                    I am the review section, comming up soon.....
 
                 </div>
 
