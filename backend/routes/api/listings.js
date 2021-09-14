@@ -131,7 +131,7 @@ router.put(
         const listing = await Listing.findByPk(listingId, { include: User });
         
         // if loggin user is the host of listing and if the listing exists
-        if (req.user.id !== +listing.User.id) {
+        if (+req.user.id !== +listing.User.id) {
 
             const err = Error('Unauthorized.');
             err.errors = [`You have no authorization to edit the question`];
@@ -154,6 +154,44 @@ router.put(
             })
 
         } 
+        ;
+    }),
+);
+
+
+// !!Need to check booking to see the availability of delete listings
+//delete listings
+router.delete(
+    '/:id(\\d+)',
+    requireAuth,
+    asyncHandler(async (req, res, next) => {
+        const listingId = req.params.id;
+        const listing = await Listing.findByPk(listingId, { include: User });
+
+        // if loggin user is the host of listing and if the listing exists
+        if (+req.user.id !== +listing.User.id) {
+
+            const err = Error('Unauthorized.');
+            err.errors = [`You have no authorization to edit the question`];
+            err.status = 401;
+            err.title = 'Unauthorized.';
+            next(err);
+
+
+        } else if (!listing) {
+            const err = Error('Bad request.');
+            err.errors = [`The listing does not exist.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+        }
+        else if (+req.user.id === +listing.User.id && listing) {
+            await listing.destroy();
+            return res.json({
+                message: 'Successfully deleted.'
+            })
+
+        }
         ;
     }),
 );

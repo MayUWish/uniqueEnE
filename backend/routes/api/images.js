@@ -17,7 +17,7 @@ const validateCreateImage = [
     handleValidationErrors,
 ];
 
-// create listings
+// create images to listing
 router.post(
     '/',
     validateCreateImage,
