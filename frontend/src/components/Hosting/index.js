@@ -12,9 +12,7 @@ const Listing = () => {
     const sessionUser = useSelector(state => state.session.user);
     // all listings for current logged-in user
     const listings = useSelector(state => state.hosting);
-    
-    
-    
+       
     //when refresh, the logged-in user has hosting state
     useEffect(() => {
         sessionUser && dispatch(listingActions.viewListingThunk(sessionUser.id));
@@ -45,7 +43,7 @@ const Listing = () => {
                 ))}
             </div>
             <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
-                <NavLink style={{ display: 'block', textDecoration: 'none',border:'1px solid lightgray',fontWeight:'bold'}} to={`/hosting/${listingId}/images`}>Show all photos </NavLink>
+                <NavLink style={{ display: 'block', textDecoration: 'none', border: '1px solid lightgray', fontWeight: 'bold' }} to={`/hosting/${listingId}/images`}>Show all photos </NavLink>
             </div>
             
             {/* for details section, grid 2 by 2 */}

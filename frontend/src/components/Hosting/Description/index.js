@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Route, useParams } from 'react-router-dom';
 
-import * as listingActions from "../../store/listings";
-import './images.css'
+import * as listingActions from "../../../store/listings";
+import './description.css'
 
 const Description = () => {
     const { listingId } = useParams();
@@ -30,16 +30,7 @@ const Description = () => {
     return (
 
         <div style={{ margin: 'auto 3%' }}>
-            <div className='imagesToListing' >
-                <NavLink style={{ display: 'block', textDecoration: 'none', border: '1px solid lightgray', fontWeight: 'bolder' }} to={`/hosting/${listingId}`}>Back to listing </NavLink>
-            </div>
-
-            <div className='AllImages'>
-                {currentListing?.Images.map(({ url, id }, index) => (
-                    <img key={id} src={url} alt='listingImage'></img>
-                ))}
-            </div>
-
+ 
 
 
 

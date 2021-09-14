@@ -16,8 +16,8 @@ import DeleteListingFromModal from "./components/DeleteListingFromModal";
 
 import HostingsCollection from "./components/Hostings";
 
-import Listing from "./components/Listing";
-import Images from "./components/Images"
+import Listing from "./components/Hosting";
+import Images from "./components/Hosting/Images"
 
 function App() {
   const dispatch = useDispatch();
