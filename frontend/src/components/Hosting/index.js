@@ -46,22 +46,13 @@ const Listing = () => {
                 <NavLink style={{ display: 'block', textDecoration: 'none', border: '1px solid lightgray', fontWeight: 'bold' }} to={`/hosting/${listingId}/images`}>Show all photos </NavLink>
             </div>
             
-            {/* for details section, grid 2 by 2 */}
-            <div className='listingDetails'>
-                <div className='listingDescription'>
-                    <Description />
-
-                </div>
-                <div className='listingBooking'>
-
-                </div>
-                <div className='listingReview'>
-                    I am the review section, comming up soon.....
-
-                </div>
-
+            {/* for details section, grid 2 by 2 when it is public */}
+          
+            <div className='listingDescription'>
+                <Description />
 
             </div>
+         
             
         
        
