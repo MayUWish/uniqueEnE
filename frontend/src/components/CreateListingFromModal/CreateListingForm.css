@@ -19,6 +19,7 @@
 
 
 }
+
 .numInput{
     width:77px;
     height:5px;
@@ -72,7 +73,7 @@ label,input{
 .selectInput{
     display: block;
     width:130px;
-    height:50px;
+    height:65px;
 
 }
 

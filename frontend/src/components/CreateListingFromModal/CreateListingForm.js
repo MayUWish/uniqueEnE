@@ -4,13 +4,13 @@ import * as listingActions from "../../store/listings";
 import { useDispatch, useSelector } from "react-redux";
 import './CreateListingForm.css'
 
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 function CreateListingForm() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const mostRecentlyCreated = useSelector(state => state.hosting.listingsIds[state.hosting.listingsIds.length-1]);
-    const history = useHistory()
+    // const mostRecentlyCreated = useSelector(state => state.hosting.listingsIds[state.hosting.listingsIds.length-1]);
+    // const history = useHistory()
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");

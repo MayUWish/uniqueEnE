@@ -6,6 +6,7 @@ const listingsRouter = require('./listings.js');
 const hostingRouter = require('./hosting.js');
 
 const imagesRouter = require('./images.js');
+const amenitiesRouter = require('./amenities.js');
 
 router.use('/session', sessionRouter);
 
@@ -18,6 +19,7 @@ router.use('/hosting', hostingRouter );
 
 
 router.use('/images', imagesRouter);
+router.use('/amenities', amenitiesRouter);
 
 
 

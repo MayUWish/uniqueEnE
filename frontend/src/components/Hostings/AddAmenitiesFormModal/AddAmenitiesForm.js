@@ -2,14 +2,32 @@ import React, { useState } from "react";
 // import * as sessionActions from "../../store/session";
 import * as listingActions from "../../../store/listings";
 import { useDispatch} from "react-redux";
+import './AddAmenitiesForm.css';
 
 
 function AddImagesForm({ listingId }) {
     const dispatch = useDispatch();
-
-
-    const [url1, setUrl1] = useState("");
+    const [amenityId, setAmenityId] = useState(0);
     const [errors, setErrors] = useState([]);
+    // amenitiesPredefined's index is amentityId, predefined amenity table in db
+    const amenitiesPredefined = [
+                        'Wifi',
+                        'TV',
+
+                        'Air conditioning',
+                        'Heating',
+
+                        'Cooking basics',
+
+                        'Free parking on premises',
+
+                        'Essentials',
+
+                        'washer',
+                        'dryer',
+                        'Smoke Alarm',
+                        'Carbon monoxide alarm'
+                    ]
     
 
 
@@ -17,20 +35,20 @@ function AddImagesForm({ listingId }) {
         e.preventDefault();
 
         setErrors([]);
-        const newImage = {
+        const newAmenity = {
             listingId,
-            url:url1,
+            amenityId,
         }
 
-        console.log({ newImage})
+        console.log({ newAmenity})
 
         const reset = () => {
-            setUrl1('');
+            setAmenityId('');
         }
 
-        return dispatch(listingActions.createImageThunk(newImage))
+        return dispatch(listingActions.createAmenityThunk(newAmenity))
             .then(() => {
-                setErrors(['Successfully created!','If at least 5 images are added to one listing, please click outside the form to return to all your listings.']);
+                setErrors(['Successfully created!','Feel free to add more amentities.']);
                 reset();
                 // history.push(`/hosting/${Object.keys(listings)[0]}`)
             })
@@ -54,14 +72,19 @@ function AddImagesForm({ listingId }) {
                     ))}
                 </ul>
                 <div className='listingInputWrapper'>
-                    <input
-                        className='listingInput'
-                        type="text"
-                        value={url1}
-                        onChange={(e) => setUrl1(e.target.value)}
-                        placeholder='Image Url'
-                    // required
-                    />
+
+                    <select 
+                        className='listingInput multipleSelect' 
+                        // multiple
+                        onChange={(e) => setAmenityId(+e.target.value.split('.')[0])}>
+                        <option key='0' disabled selected>You can add multiple times, but one at a time ----- </option>
+                        {amenitiesPredefined.map((amenity,index)=>(
+                            <option key={index+1} >{index+1}.{amenity}</option>)
+                            )
+                        }
+                    </select>
+                
+                 
                 </div>
                 
                 <div className='listingSubmitWrapper'>

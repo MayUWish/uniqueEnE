@@ -10,7 +10,7 @@ const Listing = ({ listing}) => {
     return (
         <div className='eachListing'>
          
-            <img className='img' src={listing.Images[0]? listing.Images[0].url : toAddImg} alt='listingImage' ></img>
+            <img className='img' src={listing.Images ? (listing.Images[0] ? listing.Images[0].url : toAddImg) : toAddImg} alt='listingImage' ></img>
             
             <div className='intro'>
                 <p>{listing?.title}</p>

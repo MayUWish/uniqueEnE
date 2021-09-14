@@ -2,6 +2,7 @@ import { csrfFetch } from './csrf';
 
 const CREATE_LISTING = 'listing/createListing';
 const CREATE_IMAGE = 'listing/createImage';
+const CREATE_AMENITY = 'listing/createAmenity';
 const VIEW_LISTING = 'listing/viewListing';
 
 
@@ -18,6 +19,14 @@ const createImageAction = (image) => {
     return {
         type: CREATE_IMAGE,
         payload: image,
+    };
+};
+
+// add amenities to listing
+const createAmenityAction = (amenity) => {
+    return {
+        type: CREATE_AMENITY,
+        payload: amenity,
     };
 };
 
@@ -55,6 +64,18 @@ export const createImageThunk = (image) => async (dispatch) => {
     return response;
 };
 
+// add amenity to listings
+export const createAmenityThunk = (amenity) => async (dispatch) => {
+
+    const response = await csrfFetch("/api/amenities", {
+        method: "POST",
+        body: JSON.stringify({ ...amenity}),
+    });
+    const data = await response.json();
+    dispatch(createImageAction(data.amenity));
+    return response;
+};
+
 // view listing/spot that current loggin user posted
 export const viewListingThunk = (userId) => async (dispatch) => {
 
@@ -79,6 +100,7 @@ const sortList = (list) => {
 
 const listingReducer = (state = initialState, action) => {
     let newState;
+    let newListingState;
     switch (action.type) {
         case CREATE_LISTING:
             // listing id as key, and value is listing object;
@@ -95,8 +117,19 @@ const listingReducer = (state = initialState, action) => {
         case CREATE_IMAGE:
             // listing id as key, and value is listing object;
             // each listing has a key of images, value is an array of images object
-            const newListingState = {...state[action.payload.listingId]}
+            newListingState = {...state[action.payload.listingId]}
             newListingState.Images ? newListingState.Images=[...newListingState.Images, action.payload] : newListingState.Images = [action.payload]
+            newState = {
+                ...state,
+                [action.payload.listingId]: newListingState,
+            }
+            return newState;
+
+        case CREATE_AMENITY:
+            // listing id as key, and value is listing object;
+            // each listing has a key of images, value is an array of images object
+            newListingState = { ...state[action.payload.listingId] }
+            newListingState.Amenities ? newListingState.Amenities = [...newListingState.Amenities, action.payload] : newListingState.Amenities = [action.payload]
             newState = {
                 ...state,
                 [action.payload.listingId]: newListingState,
