@@ -42,14 +42,14 @@ function AddAmenitiesForm({ listingId }) {
 
         console.log({ newAmenity})
 
-        const reset = () => {
-            setAmenityId(0);
-        }
+        // const reset = () => {
+        //     setAmenityId(0);
+        // }
 
         return dispatch(listingActions.createAmenityThunk(newAmenity))
             .then(() => {
                 setErrors(['Successfully created!', 'Feel free to add more amentities.','You can add multiple times, but one at a time']);
-                reset();
+                // reset();
                 // history.push(`/hosting/${Object.keys(listings)[0]}`)
             })
             .catch(async (res) => {
@@ -77,7 +77,7 @@ function AddAmenitiesForm({ listingId }) {
                         className='listingInput multipleSelect' 
                         //  amenitiesPredefined's index is amentityId, predefined amenity table in db
                         onChange={(e) => setAmenityId(+e.target.value.split('.')[0])}>
-                        <option key='0' disabled >You can add multiple times, but one at a time ----- </option>
+                        <option key='0'>You can add multiple times, but one at a time ----- </option>
                         {amenitiesPredefined.map((amenity,index)=>(
                             <option key={index + 1} >{index+1}.{amenity}</option>)
                             )

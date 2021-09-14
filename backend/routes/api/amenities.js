@@ -21,11 +21,30 @@ const validateCreateAmenity = [
 router.post(
     '/',
     validateCreateAmenity,
-    asyncHandler(async (req, res) => {
-        const amenity = await ListingAmenity.create({ ...req.body });
-        return res.json({
-            amenity,
-        });
+    asyncHandler(async (req, res, next) => {
+        const {listingId,amenityId}=req.body
+        const exitingAmenityIds = await ListingAmenity.findAll({
+            where:{listingId}
+        }).map(joinItem=>joinItem.amenityId)
+        console.log('exitingAmenityIds', exitingAmenityIds, typeof exitingAmenityIds)
+        console.log('amenityId', amenityId, typeof amenityId)
+
+        // check duplication adding
+        if (exitingAmenityIds.includes(amenityId)) {
+            const err = Error('Bad request.');
+            err.errors = [`Amenity #${amenityId} has beed added. No duplicated input is allowed.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+        } else{
+
+            const amenity = await ListingAmenity.create({ ...req.body });
+            return res.json({
+                amenity,
+            });
+
+        }
+        
     }),
 );
 
