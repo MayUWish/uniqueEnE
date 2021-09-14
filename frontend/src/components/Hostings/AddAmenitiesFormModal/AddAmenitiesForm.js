@@ -5,7 +5,7 @@ import { useDispatch} from "react-redux";
 import './AddAmenitiesForm.css';
 
 
-function AddImagesForm({ listingId }) {
+function AddAmenitiesForm({ listingId }) {
     const dispatch = useDispatch();
     const [amenityId, setAmenityId] = useState(0);
     const [errors, setErrors] = useState([]);
@@ -23,8 +23,8 @@ function AddImagesForm({ listingId }) {
 
                         'Essentials',
 
-                        'washer',
-                        'dryer',
+                        'Washer',
+                        'Dryer',
                         'Smoke Alarm',
                         'Carbon monoxide alarm'
                     ]
@@ -43,12 +43,12 @@ function AddImagesForm({ listingId }) {
         console.log({ newAmenity})
 
         const reset = () => {
-            setAmenityId('');
+            setAmenityId(0);
         }
 
         return dispatch(listingActions.createAmenityThunk(newAmenity))
             .then(() => {
-                setErrors(['Successfully created!','Feel free to add more amentities.']);
+                setErrors(['Successfully created!', 'Feel free to add more amentities.','You can add multiple times, but one at a time']);
                 reset();
                 // history.push(`/hosting/${Object.keys(listings)[0]}`)
             })
@@ -72,14 +72,14 @@ function AddImagesForm({ listingId }) {
                     ))}
                 </ul>
                 <div className='listingInputWrapper'>
-
+                
                     <select 
                         className='listingInput multipleSelect' 
-                        // multiple
+                        //  amenitiesPredefined's index is amentityId, predefined amenity table in db
                         onChange={(e) => setAmenityId(+e.target.value.split('.')[0])}>
-                        <option key='0' disabled selected>You can add multiple times, but one at a time ----- </option>
+                        <option key='0' disabled >You can add multiple times, but one at a time ----- </option>
                         {amenitiesPredefined.map((amenity,index)=>(
-                            <option key={index+1} >{index+1}.{amenity}</option>)
+                            <option key={index + 1} >{index+1}.{amenity}</option>)
                             )
                         }
                     </select>
@@ -97,4 +97,4 @@ function AddImagesForm({ listingId }) {
     );
 }
 
-export default AddImagesForm;
+export default AddAmenitiesForm;

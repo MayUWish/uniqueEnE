@@ -72,7 +72,7 @@ export const createAmenityThunk = (amenity) => async (dispatch) => {
         body: JSON.stringify({ ...amenity}),
     });
     const data = await response.json();
-    dispatch(createImageAction(data.amenity));
+    dispatch(createAmenityAction(data.amenity));
     return response;
 };
 
