@@ -111,11 +111,50 @@ const validateCreateListing = [
 router.post(
     '/',
     validateCreateListing,
+    requireAuth,
     asyncHandler(async (req, res) => {
         const listing = await Listing.create({ ...req.body});
         return res.json({
             listing,
         });
+    }),
+);
+
+
+// edit listings
+router.put(
+    '/:id(\\d+)',
+    validateCreateListing,
+    requireAuth,
+    asyncHandler(async (req, res, next) => {
+        const listingId = req.params.id;
+        const listing = await Listing.findByPk(listingId, { include: User });
+        
+        // if loggin user is the host of listing and if the listing exists
+        if (req.user.id === listing.User.id) {
+
+            const err = Error('Unauthorized.');
+            err.errors = [`You have no authorization to edit the question`];
+            err.status = 401;
+            err.title = 'Unauthorized.';
+            next(err);
+
+
+        } else if (!listing){
+            const err = Error('Bad request.');
+            err.errors = [`The listing does not exist.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+        }
+        else if (req.user.id===listing.User.id && listing){
+            await listing.update({ ...req.body })
+            return res.json({
+                listing,
+            })
+
+        } 
+        ;
     }),
 );
 
