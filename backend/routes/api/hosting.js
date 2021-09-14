@@ -3,24 +3,42 @@ const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User, Listing, Image, ListingAmenity, Amenity  } = require('../../db/models');
+const { setTokenCookie, requireAuth } = require('../../utils/auth');
 
 
 const router = express.Router();
 
+// get all listings that the current loggind user posted.
 router.get(
-    '/:userId',
-    asyncHandler(async (req, res) => {
+    '/:userId(\\d+)',
+    requireAuth,
+    asyncHandler(async (req, res, next) => {
         const { userId } = req.params;
-        const listings = await Listing.findAll({
-            where: {userId},
-            include: [Image, ListingAmenity
-                // Error below: amenity is not associated with ListingAmenity
-                // {
-                // model: ListingAmenity,
-                // include: [Amenity]}
-            ],
-            order: [["createdAt", "DESC"]],
-        });
+        // if userId is the currentloggin userId
+        if (req.user.id === userId){
+            const listings = await Listing.findAll({
+                where: { userId },
+                include: [Image, ListingAmenity
+                    // Error below: amenity is not associated with ListingAmenity
+                    // {
+                    // model: ListingAmenity,
+                    // include: [Amenity]}
+                ],
+                order: [["createdAt", "DESC"]],
+            });
+
+            return res.json({
+                listings,
+            });
+
+        } else{
+            const err = Error('Unauthorized.');
+            err.errors = [`You have no authorization to see the listings`];
+            err.status = 400;
+            err.title = 'Unauthorized.';
+            next(err);
+        } 
+       
         // The following does not work bc of await, need to use findAll association as above;
         // listings.forEach(listing=>{
         //     const images =await Image.findAll({
@@ -39,9 +57,7 @@ router.get(
         //     listing.amenities=amenities;
         // })
 
-        return res.json({
-            listings,
-        });
+        
     }),
 );
 
