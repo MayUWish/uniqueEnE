@@ -40,7 +40,7 @@ function AddAmenitiesForm({ listingId }) {
             amenityId,
         }
 
-        console.log({ newAmenity})
+        //console.log({ newAmenity})
 
         // const reset = () => {
         //     setAmenityId(0);

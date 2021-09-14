@@ -29,8 +29,8 @@ router.post(
         const exitingAmenityIds = await ListingAmenity.findAll({
             where:{listingId}
         }).map(joinItem=>joinItem.amenityId)
-        console.log('exitingAmenityIds', exitingAmenityIds, typeof exitingAmenityIds)
-        console.log('amenityId', amenityId, typeof amenityId)
+        // console.log('exitingAmenityIds', exitingAmenityIds, typeof exitingAmenityIds)
+        // console.log('amenityId', amenityId, typeof amenityId)
 
         // check duplication adding
         if (exitingAmenityIds.includes(amenityId)) {

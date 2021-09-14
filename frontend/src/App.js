@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { 
+  NavLink,
   Route, 
   Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
@@ -9,6 +10,7 @@ import Navigation from "./components/Navigation";
 import homePagePicture from './images/homePage.jpg';
 
 import CreateListingFormModal from "./components/CreateListingFromModal";
+import EditListingFormModal from "./components/EditListingFromModal";
 
 import HostingsCollection from "./components/Hostings";
 
@@ -39,7 +41,9 @@ function App() {
           </Route>
 
           <Route exact path={`/hosting/:listingId`}>
-            <h3>!!ToDo: individual listing page, allows user to delete and edit</h3>
+            <NavLink className='button' to={`/hosting`} style={{ textDecoration: 'none' }}>To your listings</NavLink>
+            <EditListingFormModal />
+            
           </Route>
         </Switch>
       )}

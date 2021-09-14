@@ -22,7 +22,7 @@ function AddImagesForm({ listingId }) {
             url:url1,
         }
 
-        console.log({ newImage})
+        //console.log({ newImage})
 
         const reset = () => {
             setUrl1('');

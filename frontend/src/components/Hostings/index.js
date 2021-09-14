@@ -18,7 +18,7 @@ const HostingsCollection = () => {
     }, [dispatch,sessionUser]);
 
     if (!sessionUser) { return null };     
-    console.log(listings)
+    // console.log(listings)
 
     return (
         

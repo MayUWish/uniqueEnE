@@ -9,7 +9,11 @@ function CreateListingFormModal() {
     const [showModal, setShowModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
     
-    if (!sessionUser) {return null};
+    if (!sessionUser) {
+        return (<h3 style={{color:'#f0a04b'}}>
+            Please login/signup to become a host.
+        </h3>)
+    };
     return (
         <div >
             <button className='button' onClick={() => setShowModal(true)}>Create Listing</button>
