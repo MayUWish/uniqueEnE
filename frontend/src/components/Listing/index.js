@@ -29,7 +29,7 @@ const Listing = () => {
 
     return (
 
-        <div>
+        <div style={{ margin:'auto 3%' }}>
             <div className='listingTitle'> 
                 <h2>{currentListing?.title}</h2>
                 <h3>{currentListing?.city}, {currentListing?.state}, {currentListing?.country}</h3>

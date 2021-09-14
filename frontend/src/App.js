@@ -17,6 +17,7 @@ import DeleteListingFromModal from "./components/DeleteListingFromModal";
 import HostingsCollection from "./components/Hostings";
 
 import Listing from "./components/Listing";
+import Images from "./components/Images"
 
 function App() {
   const dispatch = useDispatch();
@@ -52,6 +53,12 @@ function App() {
             </div>
             <Listing />
           </Route>
+
+          <Route exact path={`/hosting/:listingId/images`}>
+            <Images />
+
+          </Route>
+
         </Switch>
       )}
 
