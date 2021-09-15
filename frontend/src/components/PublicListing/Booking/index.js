@@ -56,8 +56,9 @@ function BookingForm() {
         }
         console.log(newBooking );
 
-        return dispatch(BookingRedux.createBookingThunk(newBooking)).then(() => {
+        return dispatch(BookingRedux.createBookingThunk(newBooking)).then(()=>{
             setErrors(['Successfully booked.']);
+            window.alert('Successfully booked.')
             reset();
             // history.push(`/hosting/${Object.keys(listings)[0]}`)
         }).catch(async (res) => {
@@ -66,8 +67,7 @@ function BookingForm() {
                 // console.log('notOK', data)
                 if (data && data.errors) setErrors(data.errors);
             });
-        
-    
+           
     };
 
     
@@ -75,13 +75,14 @@ function BookingForm() {
     return (
         <>
             <h3 style={{textAlign:'start'}} >${currentListing.price} / night</h3>
-            <form className='bookingForm' onSubmit={handleSubmit} onClick={loggedOutUser}>
-                <ul className='error'>
-                    {errors.map((error, idx) => (
+            <form className='bookingForm' onSubmit={handleSubmit} onClick={loggedOutUser}>  
+
+            <ul className='error'>
+                {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
-                    ))}
-                </ul>
-               
+                ))}
+            </ul>
+             
                  <label>
                         Check In
                         <input
