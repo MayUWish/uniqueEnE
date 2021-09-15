@@ -51,6 +51,7 @@ router.post(
         else{
 
             const amenity = await ListingAmenity.create({ ...req.body });
+            console.log('!!!!!!!!!!!!!!!!!!!!!',amenity)
             return res.json({
                 amenity,
             });

@@ -20,6 +20,7 @@ import Listing from "./components/Hosting";
 import Images from "./components/Hosting/Images";
 import AddImagesFormModal from "./components/Hostings/AddImagesFormModal";
 import AddAmenitiesFormModal from "./components/Hostings/AddAmenitiesFormModal";
+import DeleteAmenitiesFormModal from "./components/DeleteAmenitiesFormModal";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ function App() {
               <DeleteListingFromModal />
               <AddImagesFormModal  />
               <AddAmenitiesFormModal />
+              <DeleteAmenitiesFormModal />
             </div>
             <Listing />
           </Route>

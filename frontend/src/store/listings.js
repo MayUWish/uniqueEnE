@@ -7,6 +7,7 @@ const VIEW_LISTING = 'listing/viewListing';
 
 const EDIT_LISTING = 'listing/editListing';
 const DELETE_LISTING = 'listing/deleteListing';
+const DELETE_AMENITY = 'listing/deleteAmenity';
 
 ///////////////////////////Action:
 
@@ -55,6 +56,14 @@ const deleteListingAction = (listingId) => {
     return {
         type: DELETE_LISTING,
         payload: listingId,
+    };
+};
+
+// delete amenity
+const deleteAmenityAction = (amenity) => {
+    return {
+        type: DELETE_AMENITY,
+        payload: amenity,
     };
 };
 
@@ -126,6 +135,18 @@ export const editListingThunk = (listing) => async (dispatch) => {
 export const deleteListingThunk = (listingId) => async (dispatch) => {
 
     const response = await csrfFetch(`/api/listings/${listingId}`, {
+        method: "DELETE",
+        // body: JSON.stringify({ ...listing }),
+    });
+    const data = await response.json();
+    dispatch(deleteListingAction(data.listingId));
+    return response;
+};
+
+// delete amenity 
+export const deleteAmenityThunk = (amenity) => async (dispatch) => {
+
+    const response = await csrfFetch(`/api/amenity`, {
         method: "DELETE",
         // body: JSON.stringify({ ...listing }),
     });
