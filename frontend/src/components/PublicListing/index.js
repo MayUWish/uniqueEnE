@@ -27,7 +27,7 @@ const PublicListing = () => {
     // let currentListing;
     // publicListing ? currentListing = publicListing:currentListing={};
 
-    
+    if (!currentListing) return null;
 
     return (
         <>

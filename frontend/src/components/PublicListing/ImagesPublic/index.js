@@ -17,7 +17,7 @@ const Images = () => {
     }, [dispatch, listingId]);
 
 
-
+    if (!currentListing) return null;
     return (
       <>
 

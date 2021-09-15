@@ -19,7 +19,7 @@ router.get(
             const listings = await Listing.findAll({
                 where: { userId },
                 include: [ListingAmenity,Image
-                    // Error below: amenity is not associated with ListingAmenity
+                    // Error below: amenity is not associated with ListingAmenity because join table ListingAmenity does not build association yet. If you would like to use the association, you would need to build it > see booking model as an example
                     // {
                     // model: ListingAmenity,
                     // include: [Amenity]}

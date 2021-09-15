@@ -4,12 +4,14 @@ import './Booking.css'
 import {useParams} from 'react-router-dom';
 import * as BookingRedux from "../../../store/bookings";
 import * as PublicListingRedux from "../../../store/publicListing";
+import { useHistory } from "react-router-dom";
 
 
 
 function BookingForm() {
     const { listingId } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const sessionUser = useSelector(state => state.session.user);
     const currentListing = useSelector(state => state.publicListing);
@@ -75,11 +77,14 @@ function BookingForm() {
            
     };
 
+    if (!currentListing) return null;
+        // history.push('/listings')
+        
     
 
     return (
         <>
-            <h3 style={{textAlign:'start'}} >${currentListing.price} / night</h3>
+            <h3 style={{textAlign:'start'}} >${currentListing?.price} / night</h3>
             <form className='bookingForm' onSubmit={handleSubmit} onClick={loggedOutUser}>  
 
             <ul className='error'>

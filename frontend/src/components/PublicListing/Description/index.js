@@ -44,7 +44,7 @@ const Description = () => {
     const currentAmenityNames = amenitiesPredefined.filter((amenity, index) => currentAmenityIds?.includes(index + 1))
   
 
-
+    if (!currentListing) return null;
     return (
        <>
         <div style={{ borderBottom: '1px solid lightgray'}}>
