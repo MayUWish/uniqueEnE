@@ -27,13 +27,18 @@ function BookingForm() {
         dispatch(PublicListingRedux.viewPublicListingThunk(listingId));
     }, [dispatch, listingId]);
 
+    useEffect(() => {
+        if(sessionUser){
+            dispatch(BookingRedux.viewBookingThunk(sessionUser.id))
+        }
+        
+    }, [dispatch, sessionUser]);
+
     // logout user will get error message once it click on the booking form to select date, numberguest...
     const loggedOutUser =  () => {
         if(!sessionUser) {
-            setErrors(['pleas login/signup for booking.']);
-        } else{
-            setErrors([]);
-        }
+            window.alert('Please login/signup to book.')
+        } 
     }
     
     const reset = () => {

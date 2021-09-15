@@ -131,7 +131,7 @@ router.post(
         else{
 
             const booking = await Booking.create({ startDate, endDate, userId, listingId, numGuests });
-            console.log('!!!',booking)
+            // console.log('!!!',booking)
             return res.json({
                 booking,
             });
@@ -139,6 +139,42 @@ router.post(
         }
 
         
+    }),
+);
+
+
+// get all bookings that the current loggind user reserved. 
+router.get(
+    '/:userId(\\d+)',
+    requireAuth,
+    asyncHandler(async (req, res, next) => {
+        const { userId } = req.params;
+        // if userId is the currentloggin userId
+        if (req.user.id === +userId) {
+            const bookings = await Booking.findAll({
+                where: { userId },
+                attributes: ['id','listingId','userId','startDate','endDate','createdAt','updatedAt','numGuests'],
+                // include: {
+                //     model: Listing,
+                //     include: [ListingAmenity, Image]
+                // },
+                order: [["startDate"]],
+            });
+        
+            console.log('!!!!!!!!!!!!!!!!!!!!!!',bookings)
+            return res.json({
+                bookings,
+            });
+
+        } else {
+            const err = Error('Unauthorized.');
+            err.errors = [`You have no authorization to see the bookings.`];
+            err.status = 401;
+            err.title = 'Unauthorized.';
+            next(err);
+        }
+
+      
     }),
 );
 
