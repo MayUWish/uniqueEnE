@@ -24,6 +24,8 @@ import DeleteAmenitiesFormModal from "./components/DeleteAmenitiesFormModal";
 import DeleteImagesLink from "./components/DeleteImagesLink";
 import DeleteImagesPage from "./components/DeleteImagesPage";
 
+import PublicListing from "./components/PublicListing";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -45,11 +47,14 @@ function App() {
             </div>            
           </Route>
 
+          {/* switch to host mode */}
+          {/* host role: all listings that current loggin user is hosting */}
           <Route exact path="/hosting">
             <CreateListingFormModal />
             <HostingsCollection />
           </Route>
 
+          {/* host role: sepcific listing that current loggin user is hosting */}
           <Route exact path={`/hosting/:listingId`}>
             <div style={{ display: 'flex' }}>
               <NavLink className='button' to={`/hosting`} style={{ textDecoration: 'none',  width: '125px' }}> {`To your listings`}</NavLink>
@@ -66,14 +71,27 @@ function App() {
             </div>
             <Hosting />
           </Route>
-
+          
+          {/* host role: sepcific listing's images view that current loggin user is hosting */}
           <Route exact path={`/hosting/:listingId/images`}>
             <Images />
           </Route>
-
+          
+          {/* host role: sepcific listing's images view to delete, that current loggin user is hosting */}
           <Route exact path={`/hosting/:listingId/images/delete`}>
             <DeleteImagesPage />
           </Route>
+
+          {/* public: sepcific listing  */}
+          <Route exact path={`/listing/:listingId`}>
+            <div style={{ display: 'flex' }}>
+              <NavLink className='button' to={`/listings`} style={{ textDecoration: 'none', width: '125px' }}> {`To your listings`}</NavLink>     
+            </div>
+            <PublicListing />
+          </Route>
+
+
+
 
         </Switch>
       )}

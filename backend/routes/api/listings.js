@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User,Listing } = require('../../db/models');
+const { User, Listing, Image,ListingAmenity } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -204,19 +204,20 @@ router.delete(
 );
 
 
-// view listings, return an array of listings by userId
-// router.post(
-//     '/',
-//     asyncHandler(async (req, res) => {
-//         const {userId}=req.body;
-//         const listings = await Listing.findall({
-//             where: {
-//                 userId} 
-//             });
-//         return res.json({
-//             listings,
-//         });
-//     }),
-// );
+// view specific listing for logged-in and logged-out users,but only logged-in user can book and reviews(in other api route)
+
+router.get(
+    '/:id(\\d+)',
+    asyncHandler(async (req, res) => {
+        const {listingId}=req.body;
+        const listings = await Listing.findall({
+            where: {listingId},
+            include: [ListingAmenity, Image]
+            });
+        return res.json({
+            listing,
+        });
+    }),
+);
 
 module.exports = router;
