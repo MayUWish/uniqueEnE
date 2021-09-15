@@ -1,9 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from './session';
-import listingReducer from './listings'
-import publicListingReducer from './publicListing'
-import publicListingsAllReducer from './publicListingsAll'
+import listingReducer from './listings';
+import publicListingReducer from './publicListing';
+import publicListingsAllReducer from './publicListingsAll';
+import bookingsReducer from './bookings'
 
 
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   hosting:listingReducer,
   publicListing:publicListingReducer,
   publicListingsAll: publicListingsAllReducer,
+  bookings: bookingsReducer,
 });
 
 let enhancer;

@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Listing, Image, ListingAmenity } = require('../../db/models');
+const { User, Listing, Image, ListingAmenity, Booking } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -13,7 +13,7 @@ const validateBooking = [
     check('startDate')
         .exists({ checkFalsy: true })
         .withMessage('Start Date cannot be blank.'),
-    check('startDate')
+    check('endDate')
         .exists({ checkFalsy: true })
         .withMessage('End Date cannot be blank.'),    
     check('numGuests')
@@ -22,6 +22,18 @@ const validateBooking = [
     handleValidationErrors,
 ];
 
+// frontend input: e.g. startDate: "2021-09-15"
+const toDate = (yearMonthDay)=>{
+    const year = yearMonthDay.split('-')[0];
+    const month = yearMonthDay.split('-')[1];
+    const day = yearMonthDay.split('-')[2];
+
+    //new Date take month -1 as month
+    const date = new Date(year,month-1,day);
+    return date;
+
+}
+
 // create bookings, require user to log-in;
 router.post(
     '/',
@@ -29,16 +41,18 @@ router.post(
     requireAuth,
     asyncHandler(async (req, res,next) => {
         let { startDate, endDate, userId, listingId, numGuests } = req.body;
-        // eliminate hour minute second ms.
-        startDate.setHours(0, 0, 0, 0);
-        endDate.setHours(0, 0, 0, 0);
+        // req data as "2021-09-15", turn it into date, to save to db(no hour,minute,second,ms) and to compare date for validation;
+        startDate = toDate(startDate);
+        endDate = toDate(endDate);
         
         const user = await User.findByPk(userId);
         const listing = await Listing.findByPk(listingId);
 
         // to check if booking date has conflict with existing bookings
         const existingBookings = await Booking.findAll({where:{listingId}});
-        let isDateConflicted = existingBookings.some(booking => (booking.startDate.setHours(0, 0, 0, 0) <= startDate && booking.endDate.setHours(0, 0, 0, 0) >= startDate) || (booking.startDate.setHours(0, 0, 0, 0) <= endDate && booking.endDate.setHours(0, 0, 0, 0) >= endDate))
+        
+        // a = new Date(2021,10,9),b = new Date(2021,10,9); but a === b is false; thus using a-b ===0 to check if same day;
+        let isDateConflicted = existingBookings.some(booking => (booking.startDate - startDate <= 0 && booking.endDate - startDate > 0) || (booking.startDate - endDate < 0 && booking.endDate - endDate >= 0))
 
         //array of array [startDate,endDate]
         const existingBookingDates = existingBookings.map(booking=>[booking.startDate,booking.endDate]);
@@ -86,11 +100,28 @@ router.post(
             err.title = 'Bad request.';
             next(err);
 
-        } else if (endDate <= startDate||startDate<=new Date()||endDate<=new Date()){
+        } else if (endDate - startDate <= 0 ){
             // check endDate more than startDate, and both must be greated than today;
 
             const err = Error('Bad request.');
-            err.errors = [`End Date must be more than start date.`];
+            err.errors = [`Check in date should be be early than check out date.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+
+        } else if (startDate - (new Date()).setHours(0, 0, 0, 0) < 0 || endDate - (new Date()).setHours(0, 0, 0, 0) < 0){
+            const err = Error('Bad request.');
+            err.errors = [`Booking dates should be today or in the future.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+
+
+        }
+        
+        else if (!Number.isInteger(+numGuests)||numGuests < 1 || numGuests > listing.guestNum){
+            const err = Error('Bad request.');
+            err.errors = [`Number of guests must be an integer and from 1 to its max capacity.`];
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
@@ -100,6 +131,7 @@ router.post(
         else{
 
             const booking = await Booking.create({ startDate, endDate, userId, listingId, numGuests });
+            console.log('!!!',booking)
             return res.json({
                 booking,
             });

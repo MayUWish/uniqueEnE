@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './Booking.css'
 import {useParams} from 'react-router-dom';
+import * as BookingRedux from "../../../store/bookings";
 import * as PublicListingRedux from "../../../store/publicListing";
 
 
@@ -34,6 +35,13 @@ function BookingForm() {
             setErrors([]);
         }
     }
+    
+    const reset = () => {
+        setStartDate('');
+        setEndDate('');
+        setGuestNum(1);
+        setErrors([])
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -47,12 +55,19 @@ function BookingForm() {
      
         }
         console.log(newBooking );
-        // return dispatch(sessionActions.login({  })).catch(
-        //     async (res) => {
-        //         const data = await res.json();
-        //         if (data && data.errors) setErrors(data.errors);
-        //     }
-        // );
+
+        return dispatch(BookingRedux.createBookingThunk(newBooking)).then(() => {
+            setErrors(['Successfully booked.']);
+            reset();
+            // history.push(`/hosting/${Object.keys(listings)[0]}`)
+        }).catch(async (res) => {
+                // console.log('notOK',res)
+                const data = await res.json();
+                // console.log('notOK', data)
+                if (data && data.errors) setErrors(data.errors);
+            });
+        
+    
     };
 
     
@@ -93,12 +108,12 @@ function BookingForm() {
                         Guests
                         <input
                             className='bookingInputNumber'
-                            type="number"
+                            // type="number"
                             value={guestNum}
                             onChange={(e) => setGuestNum(e.target.value)}
                             placeholder=''                          
-                            max={currentListing.guestNum}
-                            min='1'
+                            // max={currentListing.guestNum}
+                            // min='1'
                         // required
                         />
                 </label>
