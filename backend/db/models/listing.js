@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       through: 'Booking',
       otherKey: 'userId',
       foreignKey: 'listingId',
-      as: 'listingBookedByUser'
+      // as: 'listingBookedByUser'
     }
     Listing.belongsToMany(models.User, bookingMapping);
 

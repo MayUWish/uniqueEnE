@@ -154,14 +154,14 @@ router.get(
             const bookings = await Booking.findAll({
                 where: { userId },
                 attributes: ['id','listingId','userId','startDate','endDate','createdAt','updatedAt','numGuests'],
-                // include: {
-                //     model: Listing,
-                //     include: [ListingAmenity, Image]
-                // },
+                include: {
+                    model: Listing,
+                    // include: [ListingAmenity, Image]
+                },
                 order: [["startDate"]],
             });
         
-            console.log('!!!!!!!!!!!!!!!!!!!!!!',bookings)
+            // console.log('!!!!!!!!!!!!!!!!!!!!!!',bookings)
             return res.json({
                 bookings,
             });
