@@ -1,45 +1,44 @@
-
-
-.loginInput,.loginSubmitButton{
-  
-
-  height:25%; 
-  /* font-size: 1em; */
+.bookingForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.bookingInput,.bookingInputNumber{
+  width:80%;
+  font-size: 1em;
   /* outline: none; */
   border: 1px solid lightgray;
   border-radius: 10px;
-  /* margin: 1.5em auto; */
-  /* padding: 1.5em 1.5em; */
+  margin: 1em 0; 
+  padding: 1.5em;
   background: none;
 
+}
+
+.bookingInputNumber{
 
 }
-.loginSubmitButton{
-    width:135px;
-    border: none;
-    color:#183a1d; 
-    font-size: 20px;
+
+.bookingFormButton{
+    border:none;
+    font-size: large;
     font-weight: bold;
-    margin: 0.2em auto;
-    height:15px;
     text-align: center; 
 
 }
 
 label,input{
-    display: block;
-    
-}
-
-.loginInputWrapper,.loginSubmitWrapper{
-
-    display: flex;
-    /* margin:auto 10px; */
-    font-size: 1em;
+    display: block; 
+    margin:2%;  
     font-weight: bold;
-    justify-content: start;
-    align-items: start;
+    font-size: large;
 }
+
+label{
+    font-size: larger;
+
+}
+
 
 .error{
     color:#f0a04b;

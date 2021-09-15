@@ -53,56 +53,54 @@ function BookingForm() {
     return (
         <>
             <h3 style={{textAlign:'start'}} >${currentListing.price} / night</h3>
-            <form className='' onSubmit={handleSubmit}>
+            <form className='bookingForm' onSubmit={handleSubmit}>
                 <ul className='error'>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
                     ))}
                 </ul>
-                <div className=''>
-                    <label>
+               
+                 <label>
                         Check In
                         <input
-                            className=''
+                            className='bookingInput'
                             type="date"
                             value={startDate}
                             onChange={(e) => setStartDate(e.target.value)}
                         // required
                         />
-                    </label>
-                </div>
-
-                <div className=''>
-                    <label>
+                </label>
+                           
+                <label>
                         Check Out
                         <input
-                            className=''
+                            className='bookingInput'
                             type="date"
                             value={endDate}
                             onChange={(e) => setEndDate(e.target.value)}
                         // required
                         />
-                    </label>
-                </div>
-                <div className='' >
-                    <label>
+                </label>
+                           
+                <label>
                         Guests
                         <input
-                            className=''
+                            className='bookingInputNumber'
                             type="number"
                             value={guestNum}
                             onChange={(e) => setGuestNum(e.target.value)}
-                            placeholder=''
-                            style={{width:'65%'}}
+                            placeholder=''                          
+                            max={currentListing.guestNum}
+                            min='1'
                         // required
                         />
-                    </label>
-                </div>
+                </label>
+           
 
-                <div className=''>
-                    <button className='' type="submit" disabled={!sessionUser}>CheckAvailability</button>
+           
+            <button className='bookingFormButton button' type="submit" disabled={!sessionUser}>Check Availability</button>
 
-                </div>
+              
 
             </form>
 
