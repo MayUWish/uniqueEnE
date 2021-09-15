@@ -47,3 +47,27 @@
 }
 
 /* images end */
+
+
+.listingDescriptionBookingWrapper{
+    display:flex;
+    justify-content: space-between;
+    
+
+}
+
+.bookingFrom{
+    display:flex;
+    flex-direction: column;
+    justify-content: start;
+    border: 1px solid lightgray;
+    box-shadow: 1px 1px lightgray;
+    width:25%;
+    height:20%
+
+}
+
+.listingDescription{
+    width:60%;
+
+}

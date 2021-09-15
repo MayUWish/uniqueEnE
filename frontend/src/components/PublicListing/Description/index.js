@@ -47,22 +47,22 @@ const Description = () => {
 
     return (
        <>
-            <div style={{ borderBottom: '1px solid lightgray', width: '50%'}}>
+        <div style={{ borderBottom: '1px solid lightgray'}}>
             <h2>Unique Stay hosted by {currentListing?.User.username}</h2>
                 <p>{currentListing?.guestNum} guests, {currentListing?.bedroomNum} bedroom, {Number(currentListing?.twinBedNum) + Number(currentListing?.queenBedNum) + Number(currentListing?.kingBedNum) + Number(currentListing?.sofaBedNum)} bed, {currentListing?.bathroomNum} bathroom, ${currentListing?.price}/night</p>
         </div>
-            <div style={{ borderBottom: '1px solid lightgray', width: '50%'}}>
+            <div style={{ borderBottom: '1px solid lightgray'}}>
                 <h3 key='Enhanced Clean'>{currentListing?.enhancedClean && 'Enhanced Clean'}</h3>
                 <h3 key='Self Checkin'>{currentListing?.selfCheckin && 'Self Checkin'}</h3>
 
         </div >
             
-            <div style={{ borderBottom: '1px solid lightgray', width: '50%' }}>
+            <div style={{ borderBottom: '1px solid lightgray'}}>
                 <p>{currentListing?.description}</p>
 
         </div >
 
-            <div style={{ borderBottom: '1px solid lightgray', width: '50%'}}>
+            <div style={{ borderBottom: '1px solid lightgray'}}>
             <h3>Where you'll Sleep</h3>
             <p key='twinBedNum'>{currentListing?.twinBedNum} twin bed</p>
             <p key='queenBedNum'>{currentListing?.queenBedNum} queen bed</p>
@@ -70,7 +70,7 @@ const Description = () => {
             <p key='sofaBedNum'>{ currentListing?.sofaBedNum } sofa bed</p >
         </div>
 
-            <div style={{ borderBottom: '1px solid lightgray', width: '50%'}}>
+            <div style={{ borderBottom: '1px solid lightgray'}}>
             <h3>What this place offers</h3>
             {currentAmenityNames.map((amenity,index)=>(
                 <p key={index}>{amenity}</p>

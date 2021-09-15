@@ -4,7 +4,8 @@ import { NavLink,useParams } from 'react-router-dom';
 
 import * as PublicListingRedux from "../../store/publicListing";
 import './listing.css'
-import Description from './Description'
+import Description from './Description';
+import Booking from './Booking'
 
 const PublicListing = () => {
     const {listingId} = useParams();
@@ -48,16 +49,22 @@ const PublicListing = () => {
                 <NavLink style={{ display: 'block', textDecoration: 'none', border: '1px solid lightgray', fontWeight: 'bold' }} to={`/listings/${listingId}/images`}>Show all photos </NavLink>
             </div>
             
-            {/* for details section, grid 2 by 2 when it is public */}
+            
+            {/* for details section */}           
+            {/* description component width is set as 60% at component file; booking is set width of 35% */}
+            <div className='listingDescriptionBookingWrapper'>
           
-            <div className='listingDescription'>
-                <Description/>
+                <div className='listingDescription'>
+                    <Description/>
+                </div>
+
+                <div className='bookingFrom' >
+                     <Booking />
+
+                </div>
 
             </div>
-         
-            
-        
-       
+                
         </div>)}
         </>
     )
