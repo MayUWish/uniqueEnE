@@ -3,9 +3,16 @@ import React, { useState } from "react";
 import * as listingActions from "../../../store/listings";
 import { useDispatch} from "react-redux";
 import './AddAmenitiesForm.css';
+import { useParams } from "react-router-dom";
 
 
 function AddAmenitiesForm({ listingId }) {
+    // inorder to use at specific listing page as well
+    let url = useParams();
+    if (!listingId) {
+        
+        listingId = url.listingId;
+    }
     const dispatch = useDispatch();
     const [amenityId, setAmenityId] = useState(0);
     const [errors, setErrors] = useState([]);

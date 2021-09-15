@@ -2,9 +2,17 @@ import React, { useState } from "react";
 // import * as sessionActions from "../../store/session";
 import * as listingActions from "../../../store/listings";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
 
 
 function AddImagesForm({ listingId }) {
+    // inorder to use at specific listing page as well
+    let url = useParams();
+    if (!listingId) {
+
+        listingId = url.listingId;
+    }
+
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
 

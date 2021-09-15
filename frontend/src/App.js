@@ -17,7 +17,9 @@ import DeleteListingFromModal from "./components/DeleteListingFromModal";
 import HostingsCollection from "./components/Hostings";
 
 import Listing from "./components/Hosting";
-import Images from "./components/Hosting/Images"
+import Images from "./components/Hosting/Images";
+import AddImagesFormModal from "./components/Hostings/AddImagesFormModal";
+import AddAmenitiesFormModal from "./components/Hostings/AddAmenitiesFormModal";
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +52,8 @@ function App() {
               <NavLink className='button' to={`/hosting`} style={{ textDecoration: 'none', height: '23px', width: '125px' }}> {`To your listings`}</NavLink>
               <EditListingFormModal />
               <DeleteListingFromModal />
+              <AddImagesFormModal  />
+              <AddAmenitiesFormModal />
             </div>
             <Listing />
           </Route>
