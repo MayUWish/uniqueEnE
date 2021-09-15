@@ -86,8 +86,8 @@ router.post(
             err.title = 'Bad request.';
             next(err);
 
-        } else if (endDate <= startDate){
-            // check endDate more than startDate
+        } else if (endDate <= startDate||startDate<=new Date()||endDate<=new Date()){
+            // check endDate more than startDate, and both must be greated than today;
 
             const err = Error('Bad request.');
             err.errors = [`End Date must be more than start date.`];

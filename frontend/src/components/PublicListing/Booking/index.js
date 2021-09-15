@@ -19,14 +19,21 @@ function BookingForm() {
     const [guestNum, setGuestNum] = useState(1);
     const [errors, setErrors] = useState([]);
 
-     
-   
+    
 
     //when refresh/reload to get state
     useEffect(() => {
         dispatch(PublicListingRedux.viewPublicListingThunk(listingId));
     }, [dispatch, listingId]);
 
+    // logout user will get error message once it click on the booking form to select date, numberguest...
+    const loggedOutUser =  () => {
+        if(!sessionUser) {
+            setErrors(['pleas login/signup for booking.']);
+        } else{
+            setErrors([]);
+        }
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -53,7 +60,7 @@ function BookingForm() {
     return (
         <>
             <h3 style={{textAlign:'start'}} >${currentListing.price} / night</h3>
-            <form className='bookingForm' onSubmit={handleSubmit}>
+            <form className='bookingForm' onSubmit={handleSubmit} onClick={loggedOutUser}>
                 <ul className='error'>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
@@ -97,8 +104,10 @@ function BookingForm() {
                 </label>
            
 
-           
-            <button className='bookingFormButton button' type="submit" disabled={!sessionUser}>Check Availability</button>
+              
+                 <button className='bookingFormButton button' type="submit" disabled={!sessionUser} >check Availability</button>
+
+         
 
               
 
