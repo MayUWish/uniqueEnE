@@ -1,0 +1,17 @@
+/* for images */
+.AllImages{
+    display:flex;
+    flex-direction: column;
+    gap:6px;
+      
+}
+
+.imagesToListing{
+    display: flex; 
+    justify-content: flex-start; 
+    position: fixed; 
+    background-color: white;
+    font-size: large;
+    
+
+}

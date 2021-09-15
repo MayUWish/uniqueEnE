@@ -16,11 +16,12 @@ import DeleteListingFromModal from "./components/DeleteListingFromModal";
 
 import HostingsCollection from "./components/Hostings";
 
-import Listing from "./components/Hosting";
+import Hosting from "./components/Hosting";
 import Images from "./components/Hosting/Images";
 import AddImagesFormModal from "./components/Hostings/AddImagesFormModal";
 import AddAmenitiesFormModal from "./components/Hostings/AddAmenitiesFormModal";
 import DeleteAmenitiesFormModal from "./components/DeleteAmenitiesFormModal";
+import DeleteImagesLink from "./components/DeleteImages";
 
 function App() {
   const dispatch = useDispatch();
@@ -50,19 +51,27 @@ function App() {
 
           <Route exact path={`/hosting/:listingId`}>
             <div style={{ display: 'flex' }}>
-              <NavLink className='button' to={`/hosting`} style={{ textDecoration: 'none', height: '23px', width: '125px' }}> {`To your listings`}</NavLink>
+              <NavLink className='button' to={`/hosting`} style={{ textDecoration: 'none',  width: '125px' }}> {`To your listings`}</NavLink>
               <EditListingFormModal />
               <DeleteListingFromModal />
               <AddImagesFormModal  />
+
+              <DeleteImagesLink />
+              
               <AddAmenitiesFormModal />
-              <DeleteAmenitiesFormModal />
+
+              {/* <DeleteAmenitiesFormModal /> */}
+
             </div>
-            <Listing />
+            <Hosting />
           </Route>
 
           <Route exact path={`/hosting/:listingId/images`}>
             <Images />
+          </Route>
 
+          <Route exact path={`/hosting/:listingId/images/delete`}>
+            {/* <DeleteImages /> */}
           </Route>
 
         </Switch>

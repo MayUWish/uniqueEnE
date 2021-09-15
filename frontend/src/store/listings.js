@@ -144,16 +144,16 @@ export const deleteListingThunk = (listingId) => async (dispatch) => {
 };
 
 // delete amenity 
-export const deleteAmenityThunk = (amenity) => async (dispatch) => {
+// export const deleteAmenityThunk = (amenity) => async (dispatch) => {
 
-    const response = await csrfFetch(`/api/amenity`, {
-        method: "DELETE",
-        // body: JSON.stringify({ ...listing }),
-    });
-    const data = await response.json();
-    dispatch(deleteListingAction(data.listingId));
-    return response;
-};
+//     const response = await csrfFetch(`/api/listings/${listingId}`, {
+//         method: "DELETE",
+//         // body: JSON.stringify({ ...listing }),
+//     });
+//     const data = await response.json();
+//     dispatch(deleteListingAction(data.listingId));
+//     return response;
+// };
 
 
 ///////////////////////////// reducer:

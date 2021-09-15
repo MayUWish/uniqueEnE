@@ -24,7 +24,7 @@ const Listing = () => {
 
     
     // edit listing sent out message 'No Authorization'. Thus here no need to send another message
-    if (!sessionUser) { return null};
+    if (!sessionUser || +sessionUser.id !== +currentListing?.userId) { return null};
 
     return (
 

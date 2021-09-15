@@ -21,7 +21,7 @@ const Listing = ({ listing}) => {
                 <AddImagesFormModal listingId={listing.id}/>
                 <AddAmenitiesFormModal listingId={listing.id} />
                 
-                    <NavLink className='button' to={`/hosting/${listing.id}`} style={{ textDecoration: 'none', height: '24px', width: '75px' }}>-Preview-</NavLink>
+                <NavLink className='button' to={`/hosting/${listing.id}`} style={{ textDecoration: 'none', height: '24px', width: '75px' }}>-Preview-</NavLink>
                 </div>
             </div>
         

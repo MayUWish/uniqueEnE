@@ -18,15 +18,17 @@ router.get(
         if (req.user.id === +userId){
             const listings = await Listing.findAll({
                 where: { userId },
-                include: [Image, ListingAmenity
+                include: [ListingAmenity,Image
                     // Error below: amenity is not associated with ListingAmenity
                     // {
                     // model: ListingAmenity,
                     // include: [Amenity]}
                 ],
                 order: [["createdAt", "DESC"]],
-            });
-
+            });           
+            // no ListingAmenities id, but image has id
+            console.log('!!!ListingAmenities', listings[0].ListingAmenities[0])
+            console.log('!!!Images', listings[0].Images[0])
             return res.json({
                 listings,
             });
