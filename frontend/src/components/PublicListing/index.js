@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink,useParams } from 'react-router-dom';
 
@@ -11,10 +11,12 @@ const PublicListing = () => {
     const dispatch = useDispatch();
     const currentListing = useSelector(state => state.publicListing);
 
+    const [isLoaded, setIsLoaded] = useState(false);
+
        
-    //when refresh/reload to get state
+    //when refresh/reload to get state, setIsLoaded very Important!!! otherwise,it will be undefined
     useEffect(() => {
-        dispatch(PublicListingRedux.viewPublicListingThunk(listingId));
+        dispatch(PublicListingRedux.viewPublicListingThunk(listingId)).then(() => setIsLoaded(true));;
        
     }, [dispatch, listingId]);
 
@@ -27,8 +29,8 @@ const PublicListing = () => {
     
 
     return (
-
-        <div style={{ margin:'auto 3%' }}>
+        <>
+        {isLoaded && ( <div style={{ margin:'auto 3%' }}>
 
             {/* for intro section */}
             <div className='listingTitle'> 
@@ -56,8 +58,8 @@ const PublicListing = () => {
             
         
        
-        </div>
-
+        </div>)}
+        </>
     )
 
 };

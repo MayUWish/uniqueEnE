@@ -216,7 +216,7 @@ router.get(
             where: {id:listingId},
             include: [ListingAmenity, Image, User]
             });
-        console.log('!!!!!!!!!111111111!!!!!!', listing)
+        // console.log('!!!!!!!!!111111111!!!!!!', listing)
         
         return res.json({
             listing,
