@@ -37,16 +37,17 @@ const DeleteImages = () => {
     }
     return (
 
-        <div style={{ margin: 'auto 3%' }}>
-            <div className ='imagesToListing' >
+        <div style={{ margin: 'auto 3%' }}  >
+            <div className='imagesToListing'  >
                 <NavLink style={{ display: 'block', textDecoration: 'none', border: '1px solid lightgray', fontWeight: 'bolder' }} to={`/hosting/${listingId}`}>Back to listing </NavLink>
             </div>
 
-            <div className='AllImages'>
+            <div className='AllImages' >
                 {currentListing?.Images.map(({ url, id }, index) => (
                     <>
-                    <img key={id} src={url} alt='listingImage'></img>
-                        <button className='button' style={{ display: 'inline', color:'#f0a04b'} } key={id} onClick={deleteImageButton} value={id}>Delete the image above</button>
+                    <img key={`img_${id}`} src={url} alt='listingImage'></img>
+
+                    <button className='button' style={{ display: 'inline', color:'#f0a04b'} } key={`button_${id}`} onClick={deleteImageButton} value={id}>Delete the image above</button>
                     </>
                 ))}
             </div>
