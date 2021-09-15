@@ -38,7 +38,16 @@ function App() {
   return (
     <div >
       <Navigation isLoaded={isLoaded} />
-         
+      
+      {/* public: sepcific listing  */}
+      <Route exact path={`/listings/:listingId`}>
+        <div style={{ display: 'flex' }}>
+          <NavLink className='button' to={`/listings`} style={{ textDecoration: 'none', width: '125px' }}> {`To all listings`}</NavLink>
+        </div>
+        <PublicListing />
+      </Route>
+
+      
       {isLoaded && (
         <Switch>
           <Route exact path="/">
@@ -82,13 +91,7 @@ function App() {
             <DeleteImagesPage />
           </Route>
 
-          {/* public: sepcific listing  */}
-          <Route exact path={`/listing/:listingId`}>
-            <div style={{ display: 'flex' }}>
-              <NavLink className='button' to={`/listings`} style={{ textDecoration: 'none', width: '125px' }}> {`To your listings`}</NavLink>     
-            </div>
-            <PublicListing />
-          </Route>
+          
 
 
 

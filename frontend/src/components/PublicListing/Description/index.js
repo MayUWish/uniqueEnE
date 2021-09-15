@@ -2,28 +2,22 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import * as listingActions from "../../../store/listings";
+import * as PublicListingRedux from "../../../store/publicListing";
 import './description.css'
 
 const Description = () => {
     const { listingId } = useParams();
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
-    // all listings for current logged-in user
-    const listings = useSelector(state => state.hosting);
+    const currentListing = useSelector(state => state.publicListing);
 
-    //when refresh, the logged-in user has hosting state
+    //when refresh/reload to get state
     useEffect(() => {
-        sessionUser && dispatch(listingActions.viewListingThunk(sessionUser.id));
-    }, [dispatch, sessionUser]);
+        dispatch(PublicListingRedux.viewPublicListingThunk(listingId));
+    }, [dispatch, listingId]);
 
-
-    let currentListing={};
-    listings ? currentListing = listings[listingId] : currentListing = {};
-
-
-    // edit listing sent out message 'No Authorization'. Thus here no need to send another message
-    if (!sessionUser) { return null };
+    // let currentListing;
+    // publicListing ? currentListing = publicListing : currentListing = {};
+  
 
     // amenitiesPredefined's index is amentityId, predefined amenity table in db
     const amenitiesPredefined = [
@@ -54,7 +48,7 @@ const Description = () => {
     return (
        <>
             <div style={{ borderBottom: '1px solid lightgray', width: '50%'}}>
-            <h2>Unique Stay hosted by {sessionUser.username}</h2>
+            <h2>Unique Stay hosted by {currentListing?.User.username}</h2>
                 <p>{currentListing?.guestNum} guests, {currentListing?.bedroomNum} bedroom, {Number(currentListing?.twinBedNum) + Number(currentListing?.queenBedNum) + Number(currentListing?.kingBedNum) + Number(currentListing?.sofaBedNum)} bed, {currentListing?.bathroomNum} bathroom, ${currentListing?.price}/night</p>
         </div>
             <div style={{ borderBottom: '1px solid lightgray', width: '50%'}}>

@@ -209,11 +209,15 @@ router.delete(
 router.get(
     '/:id(\\d+)',
     asyncHandler(async (req, res) => {
-        const {listingId}=req.body;
-        const listings = await Listing.findall({
-            where: {listingId},
-            include: [ListingAmenity, Image]
+        // console.log('~~~~~~~~~~~~~!!!!!!!!!111111111!!!!!!')
+        const listingId  = req.params.id;
+        // console.log('!!!!!!!!!111111111!!!!!!',listingId)
+        const listing = await Listing.findOne({
+            where: {id:listingId},
+            include: [ListingAmenity, Image, User]
             });
+        console.log('!!!!!!!!!111111111!!!!!!', listing)
+        
         return res.json({
             listing,
         });

@@ -2,12 +2,14 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from './session';
 import listingReducer from './listings'
+import publicListingReducer from './publicListing'
 
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   hosting:listingReducer,
+  publicListing:publicListingReducer,
 });
 
 let enhancer;
