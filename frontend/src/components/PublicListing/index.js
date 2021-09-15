@@ -16,7 +16,7 @@ const PublicListing = () => {
        
     //when refresh/reload to get state, setIsLoaded very Important!!! otherwise,it will be undefined
     useEffect(() => {
-        dispatch(PublicListingRedux.viewPublicListingThunk(listingId)).then(() => setIsLoaded(true));;
+        dispatch(PublicListingRedux.viewPublicListingThunk(listingId)).then(() => setIsLoaded(true));
        
     }, [dispatch, listingId]);
 

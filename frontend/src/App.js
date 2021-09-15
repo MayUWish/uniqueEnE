@@ -25,6 +25,7 @@ import DeleteImagesLink from "./components/DeleteImagesLink";
 import DeleteImagesPage from "./components/DeleteImagesPage";
 
 import PublicListing from "./components/PublicListing";
+import ImagesOfPublicListing from "./components/PublicListing/ImagesPublic";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,13 +40,7 @@ function App() {
     <div >
       <Navigation isLoaded={isLoaded} />
       
-      {/* public: sepcific listing  */}
-      <Route exact path={`/listings/:listingId`}>
-        <div style={{ display: 'flex' }}>
-          <NavLink className='button' to={`/listings`} style={{ textDecoration: 'none', width: '125px' }}> {`To all listings`}</NavLink>
-        </div>
-        <PublicListing />
-      </Route>
+      
 
       
       {isLoaded && (
@@ -93,7 +88,18 @@ function App() {
 
           
 
+          {/* public: sepcific listing  */}
+          <Route exact path={`/listings/:listingId`}>
+            <div style={{ display: 'flex' }}>
+              <NavLink className='button' to={`/listings`} style={{ textDecoration: 'none', width: '125px' }}> {`To all listings`}</NavLink>
+            </div>
+            <PublicListing />
+          </Route>
 
+          {/* public: sepcific listing's images view */}
+          <Route exact path={`/listings/:listingId/images`}>
+            <ImagesOfPublicListing />
+          </Route>
 
 
         </Switch>

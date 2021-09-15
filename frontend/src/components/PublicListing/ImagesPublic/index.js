@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams,NavLink } from 'react-router-dom';
 
@@ -9,24 +9,26 @@ const Images = () => {
     const { listingId } = useParams();
     const dispatch = useDispatch();
     const currentListing = useSelector(state => state.publicListing);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     //when refresh/reload to get state
     useEffect(() => {
-        dispatch(PublicListingRedux.viewPublicListingThunk(listingId));
+        dispatch(PublicListingRedux.viewPublicListingThunk(listingId)).then(() => setIsLoaded(true));;
     }, [dispatch, listingId]);
 
 
 
     return (
+      <>
 
-        <div style={{ margin: 'auto 3%' }}>
+        { isLoaded && (<div style={{ margin: 'auto 3%' }}>
             <div className ='imagesToListing' >
-                <NavLink style={{ display: 'block', textDecoration: 'none', border: '1px solid lightgray', fontWeight: 'bolder' }} to={`/listing/${listingId}`}>Back to listing </NavLink>
+                <NavLink style={{ display: 'block', textDecoration: 'none', border: '1px solid lightgray', fontWeight: 'bolder' }} to={`/listings/${listingId}`}>Back to listing </NavLink>
             </div>
 
             <div className='AllImages'>
                 {currentListing?.Images.map(({ url, id }, index) => (
-                    <img key={id} src={url} alt='listingImage'></img>
+                    <img key={`allPublicImages_{id} `}src={url} alt='listingImage'></img>
                 ))}
             </div>
             
@@ -34,7 +36,8 @@ const Images = () => {
 
 
 
-        </div>
+        </div>)}
+    </>
 
     )
 
