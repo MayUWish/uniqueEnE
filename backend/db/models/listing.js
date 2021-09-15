@@ -36,6 +36,8 @@ module.exports = (sequelize, DataTypes) => {
     }
     Listing.belongsToMany(models.User, bookingMapping);
 
+  
+
     // listing vs image
     Listing.hasMany(models.Image, { foreignKey: 'listingId', onDelete: 'CASCADE', hooks: true });
 
