@@ -28,7 +28,7 @@ const Images = () => {
 
             <div className='AllImages'>
                 {currentListing?.Images.map(({ url, id }, index) => (
-                    <img key={`allPublicImages_{id} `}src={url} alt='listingImage'></img>
+                    <img key={`allPublicImages_${id} `}src={url} alt='listingImage'></img>
                 ))}
             </div>
             
