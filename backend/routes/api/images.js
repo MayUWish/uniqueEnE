@@ -43,6 +43,47 @@ router.post(
     }),
 );
 
+//delete images
+router.delete(
+    '/:id(\\d+)',
+    requireAuth,
+    asyncHandler(async (req, res, next) => {
+        const imageId = req.params.id;
+        const image = await Image.findByPk(imageId, {
+            include: Listing
+              });
+        // console.log('!!!!!!!!!!!!image.Listing',image.Listing.id)
+
+        // if loggin user is the host of listing and if the image exists
+        if (+req.user.id !== +image.Listing.userId) {
+
+            const err = Error('Unauthorized.');
+            err.errors = [`You have no authorization to delete the image`];
+            err.status = 401;
+            err.title = 'Unauthorized.';
+            next(err);
+
+
+        } else if (!image) {
+            const err = Error('Bad request.');
+            err.errors = [`The image does not exist.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+        }
+        else if (+req.user.id === +image.Listing.userId && image) {
+            const listingId = image.Listing.id;
+            await image.destroy();
+            // console.log('!!!!!!',listingId)
+            return res.json({
+                imageId,
+                listingId
+            })
+
+        }
+        ;
+    }),
+);
 
 
 

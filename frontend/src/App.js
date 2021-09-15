@@ -21,7 +21,8 @@ import Images from "./components/Hosting/Images";
 import AddImagesFormModal from "./components/Hostings/AddImagesFormModal";
 import AddAmenitiesFormModal from "./components/Hostings/AddAmenitiesFormModal";
 import DeleteAmenitiesFormModal from "./components/DeleteAmenitiesFormModal";
-import DeleteImagesLink from "./components/DeleteImages";
+import DeleteImagesLink from "./components/DeleteImagesLink";
+import DeleteImagesPage from "./components/DeleteImagesPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -71,7 +72,7 @@ function App() {
           </Route>
 
           <Route exact path={`/hosting/:listingId/images/delete`}>
-            {/* <DeleteImages /> */}
+            <DeleteImagesPage />
           </Route>
 
         </Switch>

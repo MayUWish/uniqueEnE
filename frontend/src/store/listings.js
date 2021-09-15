@@ -7,7 +7,8 @@ const VIEW_LISTING = 'listing/viewListing';
 
 const EDIT_LISTING = 'listing/editListing';
 const DELETE_LISTING = 'listing/deleteListing';
-const DELETE_AMENITY = 'listing/deleteAmenity';
+const DELETE_IMAGE = 'listing/deleteImage';
+// const DELETE_AMENITY = 'listing/deleteAmenity';
 
 ///////////////////////////Action:
 
@@ -59,13 +60,23 @@ const deleteListingAction = (listingId) => {
     };
 };
 
-// delete amenity
-const deleteAmenityAction = (amenity) => {
+// delete image, data is {} with imageId and listingId as keys
+const deleteImageAction = (data) => {
     return {
-        type: DELETE_AMENITY,
-        payload: amenity,
+        type: DELETE_IMAGE,
+        payload: data,
     };
 };
+
+// delete amenity
+// const deleteAmenityAction = (amenity) => {
+//     return {
+//         type: DELETE_AMENITY,
+//         payload: amenity,
+//     };
+// };
+
+
 
 //////////////////////////////////////////Thunk:
 // create new listing/spot
@@ -140,6 +151,18 @@ export const deleteListingThunk = (listingId) => async (dispatch) => {
     });
     const data = await response.json();
     dispatch(deleteListingAction(data.listingId));
+    return response;
+};
+
+// delete images 
+export const deleteImageThunk = (imageId) => async (dispatch) => {
+
+    const response = await csrfFetch(`/api/images/${imageId}`, {
+        method: "DELETE",
+    });
+    const data = await response.json();
+   
+    dispatch(deleteImageAction(data));
     return response;
 };
 
@@ -234,6 +257,20 @@ const listingReducer = (state = initialState, action) => {
             }
             delete newState[action.payload.listingId]
             newState.listingsIds= newState.listingsIds.filter(id => +id !== +action.payload.listingId)
+            return newState;
+        
+        case DELETE_IMAGE:
+            // listing id as key, and value is listing object
+            newState = {
+                ...state,
+            }
+            const imageChangedListing = newState[action.payload.listingId]
+            const updatedImages = imageChangedListing.Images.filter(({ id })=> +id !== +action.payload.imageId);
+            newState[action.payload.listingId] ={
+                ...newState[action.payload.listingId],
+                Images: updatedImages
+
+            };
             return newState;
 
         default:

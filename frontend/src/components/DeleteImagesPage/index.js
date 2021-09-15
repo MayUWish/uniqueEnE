@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink,  useParams } from 'react-router-dom';
+import { NavLink,  useParams, useHistory } from 'react-router-dom';
 
 import * as listingActions from "../../store/listings";
 import './DeleteImages.css'
 
+
+
 const DeleteImages = () => {
     const { listingId } = useParams();
     const dispatch = useDispatch();
+    const history =useHistory();
     const sessionUser = useSelector(state => state.session.user);
     // all listings for current logged-in user
     const listings = useSelector(state => state.hosting);
@@ -25,8 +28,13 @@ const DeleteImages = () => {
 
 
     // edit listing sent out message 'No Authorization'. Thus here no need to send another message
-    if (!sessionUser) { return null };
+    if (!sessionUser || +sessionUser.id !== +currentListing?.userId) { return null };
 
+    const deleteImageButton = (e)=>{
+        dispatch(listingActions.deleteImageThunk(e.target.value));
+        history.push(`/hosting/${listingId}`)
+
+    }
     return (
 
         <div style={{ margin: 'auto 3%' }}>
@@ -36,7 +44,10 @@ const DeleteImages = () => {
 
             <div className='AllImages'>
                 {currentListing?.Images.map(({ url, id }, index) => (
+                    <>
                     <img key={id} src={url} alt='listingImage'></img>
+                        <button className='button' style={{ display: 'inline', color:'#f0a04b'} } key={id} onClick={deleteImageButton} value={id}>Delete the image above</button>
+                    </>
                 ))}
             </div>
             
