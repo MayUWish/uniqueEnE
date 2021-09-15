@@ -2,12 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { Modal } from '../../.././context/Modal';
 import AddImagesForm from './AddImagesForm';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router';
 
 import * as listingActions from "../../../store/listings";
 
 
 
 function AddImagesFormModal({listingId}) {
+    // inorder to use at specific listing page as well
+    let url = useParams();
+    if (!listingId) {
+
+        listingId = url.listingId;
+    }
+
     const [showModal, setShowModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
