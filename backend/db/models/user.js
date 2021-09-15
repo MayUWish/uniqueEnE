@@ -94,8 +94,18 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function (models) {
     // associations can be defined here
 
-    // user vs listing
+    // user vs listing:user is hosting listing/spot. 
     User.hasMany(models.Listing, { foreignKey: 'userId' });
+
+    // user vs listing through booking
+    const bookingMapping = {
+      through: 'Booking',
+      otherKey: 'listingId',
+      foreignKey: 'userId',
+      as: 'userBookListing'
+    }
+    User.belongsToMany(models.Listing, bookingMapping);
+
   };
   return User;
 };

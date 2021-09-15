@@ -26,6 +26,15 @@ module.exports = (sequelize, DataTypes) => {
     
     // listing vs user
     Listing.belongsTo(models.User, { foreignKey: 'userId' });
+   
+    // listing vs user through booking;No cascading delete.
+    const bookingMapping = {
+      through: 'Booking',
+      otherKey: 'userId',
+      foreignKey: 'listingId',
+      as: 'listingBookedByUser'
+    }
+    Listing.belongsToMany(models.User, bookingMapping);
 
     // listing vs image
     Listing.hasMany(models.Image, { foreignKey: 'listingId', onDelete: 'CASCADE', hooks: true });
