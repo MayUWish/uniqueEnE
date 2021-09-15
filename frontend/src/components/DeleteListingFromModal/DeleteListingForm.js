@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import * as sessionActions from "../../store/session";
 import * as listingActions from "../../store/listings";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import './DeleteListingForm.css'
 import { useHistory } from "react-router-dom";
 

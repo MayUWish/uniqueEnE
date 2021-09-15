@@ -1,7 +1,7 @@
 import toAddImg from '../../images/toAddImg.jpg'
 import AddImagesFormModal from "./AddImagesFormModal";
 import AddAmenitiesFormModal from "./AddAmenitiesFormModal";
-import {Route, NavLink} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 const Listing = ({ listing}) => {
 

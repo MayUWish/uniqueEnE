@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import * as sessionActions from "../../store/session";
 import * as listingActions from "../../../store/listings";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { useParams } from "react-router";
 
 
@@ -14,7 +14,7 @@ function AddImagesForm({ listingId }) {
     }
 
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
 
     const [url1, setUrl1] = useState("");
     const [errors, setErrors] = useState([]);

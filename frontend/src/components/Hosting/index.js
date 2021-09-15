@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import {  useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Route, useParams } from 'react-router-dom';
+import { NavLink,  useParams } from 'react-router-dom';
 
 import * as listingActions from "../../store/listings";
 import './listing.css'
