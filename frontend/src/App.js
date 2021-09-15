@@ -26,6 +26,8 @@ import DeleteImagesPage from "./components/DeleteImagesPage";
 
 import PublicListing from "./components/PublicListing";
 import ImagesOfPublicListing from "./components/PublicListing/ImagesPublic";
+import PublicListings from "./components/PublicListings";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -99,6 +101,11 @@ function App() {
           {/* public: sepcific listing's images view */}
           <Route exact path={`/listings/:listingId/images`}>
             <ImagesOfPublicListing />
+          </Route>
+
+          {/* public: all listings  */}
+          <Route exact path={`/listings`}>
+            <PublicListings />
           </Route>
 
 

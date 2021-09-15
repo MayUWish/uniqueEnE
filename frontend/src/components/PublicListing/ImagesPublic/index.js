@@ -13,7 +13,7 @@ const Images = () => {
 
     //when refresh/reload to get state
     useEffect(() => {
-        dispatch(PublicListingRedux.viewPublicListingThunk(listingId)).then(() => setIsLoaded(true));;
+        dispatch(PublicListingRedux.viewPublicListingThunk(listingId)).then(() => setIsLoaded(true));
     }, [dispatch, listingId]);
 
 

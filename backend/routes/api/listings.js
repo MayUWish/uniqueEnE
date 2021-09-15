@@ -224,4 +224,27 @@ router.get(
     }),
 );
 
+
+// get all listings for both logged-in and logged-out users
+router.get(
+    '/',
+    asyncHandler(async (req, res, next) => {
+    
+        
+            const listings = await Listing.findAll({
+                include: [ListingAmenity, Image
+                    // Error below: amenity is not associated with ListingAmenity
+                    // {
+                    // model: ListingAmenity,
+                    // include: [Amenity]}
+                ],
+                order: [["createdAt", "DESC"]],
+            });
+            // no ListingAmenities id, but image has id
+            return res.json({
+                listings,
+            });
+    }),
+);
+
 module.exports = router;

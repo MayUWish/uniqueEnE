@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import sessionReducer from './session';
 import listingReducer from './listings'
 import publicListingReducer from './publicListing'
+import publicListingsAllReducer from './publicListingsAll'
 
 
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   session: sessionReducer,
   hosting:listingReducer,
   publicListing:publicListingReducer,
+  publicListingsAll: publicListingsAllReducer,
 });
 
 let enhancer;
