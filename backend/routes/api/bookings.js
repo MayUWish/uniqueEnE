@@ -149,6 +149,7 @@ router.get(
     requireAuth,
     asyncHandler(async (req, res, next) => {
         const { userId } = req.params;
+        const today = (new Date()).setHours(0,0,0,0)
         // if userId is the currentloggin userId
         if (req.user.id === +userId) {
             const bookings = await Booking.findAll({
@@ -160,10 +161,17 @@ router.get(
                 },
                 order: [["startDate"]],
             });
+
+            const incomingBookings = bookings.filter(booking=>(booking.endDate-today>=0))
+
+
+            const pastBookings = bookings.filter(booking => booking.endDate - today < 0)
         
-            // console.log('!!!!!!!!!!!!!!!!!!!!!!',bookings)
+            console.log('incomingBookings!!!!!!!!!!!!!!!!!!!!!!', incomingBookings)
+            console.log('pastBookings!!!!!!!!!!!!!!!!!!!!!!', pastBookings)
             return res.json({
-                bookings,
+                incomingBookings,
+                pastBookings,
             });
 
         } else {

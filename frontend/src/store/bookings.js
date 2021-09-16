@@ -19,10 +19,10 @@ const createBookingAction = (booking) => {
 };
 
 // view all bookings that current loggin user reserved
-const viewBookingAction = (bookings) => {
+const viewBookingAction = (currentNPastBookings) => {
     return {
         type: VIEW_BOOKING,
-        payload: bookings,
+        payload: currentNPastBookings,
     };
 };
 
@@ -51,7 +51,7 @@ export const viewBookingThunk = (userId) => async (dispatch) => {
     const response = await csrfFetch(`/api/bookings/${userId}`
     );
     const data = await response.json();
-    dispatch(viewBookingAction(data.bookings));
+    dispatch(viewBookingAction({ incomingBookings: data.incomingBookings, pastBookings: data.pastBookings }));
     return response;
 };
 
@@ -70,30 +70,44 @@ const bookingsReducer = (state = initialState, action) => {
     let newState;
 
     switch (action.type) {
-        case CREATE_BOOKING:
-            let newBookingIds=[];
-            state.BookingsIds ? newBookingIds = [...state.BookingsIds] : newBookingIds=[]
-            newBookingIds.unshift(action.payload.id);
-            newState = {
-                ...state,
-                [action.payload.id]: action.payload,
-                BookingsIds: newBookingIds,
-            }
+        // create booking No need to update state, as when go to reservation page, will render all bookings
+        // case CREATE_BOOKING:
+        //     let newBookingIds=[];
+        //     state.BookingsIds ? newBookingIds = [...state.BookingsIds] : newBookingIds=[]
+        //     newBookingIds.unshift(action.payload.id);
+        //     newState = {
+        //         ...state,
+        //         [action.payload.id]: action.payload,
+        //         BookingsIds: newBookingIds,
+        //     }
 
-            return newState;
+        //     return newState;
         
         case VIEW_BOOKING:
-            const allBookings = {};
-            action.payload.forEach(booking => {
-                allBookings[booking.id] = booking;
+            const incomingBookings = {};
+            const pastBookings = {};
+            
+            if(action.payload){
+
+            action.payload.incomingBookings.length > 0 && action.payload.incomingBookings.forEach(booking => {
+                incomingBookings[booking.id] = booking;
+            })
+
+            
+            action.payload.pastBookings.length > 0 && action.payload.pastBookings.forEach(booking => {
+                pastBookings[booking.id] = booking;
             })
             newState = {
                 // do not copy original state when viewing bc allBookings will be the most updated all bookings, otherwise when switching user, the previous logged-in user's  state will not be cleared ( user logout will clear session state, but not other state)
                 // ...state, 
-                ...allBookings,
-                BookingsIds: sortList(action.payload),
+                incomingBookings: incomingBookings,
+                pastBookings: pastBookings,
+                incomingBookingsIds: sortList(action.payload.incomingBookings),
+                pastBookingsIds: sortList(action.payload.pastBookings),
             }
             return newState;
+            }
+            return initialState;
 
         default:
             return state;

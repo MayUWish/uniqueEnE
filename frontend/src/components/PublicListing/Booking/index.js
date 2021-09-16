@@ -102,7 +102,7 @@ function BookingForm() {
 
     return (
         <>
-            <h3 style={{textAlign:'start'}} >${currentListing?.price} /night</h3>
+            <h3 style={{ textAlign: 'start', marginLeft: '2%' }} >${currentListing?.price} /night</h3>
          
             <form className='bookingForm' onSubmit={handleSubmit} onClick={loggedOutUser}>  
 
