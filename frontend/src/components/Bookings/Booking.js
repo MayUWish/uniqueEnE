@@ -1,4 +1,4 @@
-import toAddImg from '../../images/toAddImg.jpg'
+// import toAddImg from '../../images/toAddImg.jpg'
 
 import {NavLink} from 'react-router-dom';
 
@@ -12,7 +12,7 @@ const Booking = ({ booking}) => {
             {/* <img className='img' src={listing.Images ? (listing.Images[0] ? listing.Images[0].url : toAddImg) : toAddImg} alt='listingImage' ></img> */}
             
             <div className='intro'>
-                <p>{booking.Listing?.title}</p>
+                <h5>{booking.Listing?.title}</h5>
                 <p>{booking.Listing?.address}, {booking.Listing?.city}</p>
                 <p>{Number(booking.Listing?.twinBedNum) + Number(booking.Listing?.queenBedNum) + Number(booking.Listing?.kingBedNum) + Number(booking.Listing?.sofaBedNum)} beds , {booking.Listing?.bathroomNum} baths</p>
 
@@ -20,7 +20,7 @@ const Booking = ({ booking}) => {
        
                 <div style={{ display: 'flex', flexFlow:'column'}}>
 
-                    <NavLink className='button' to={`/listings/${booking.listingId}`} style={{ textDecoration: 'none', height: '24px', width: '75px' }}>-Details-</NavLink>
+                    <NavLink className='button' to={`/listings/${booking.listingId}`} style={{ textDecoration: 'none', height: '24px', width: '75px' }}>YourStay</NavLink>
                 </div>
           </div>
         

@@ -40,6 +40,7 @@ function BookingForm() {
     const loggedOutUser =  () => {
         if(!sessionUser) {
             window.alert('Please login/signup to book.')
+            
         } 
     }
 
@@ -82,10 +83,10 @@ function BookingForm() {
         console.log(newBooking );
 
         return dispatch(BookingRedux.createBookingThunk(newBooking)).then(()=>{
-            setErrors(['Successfully booked.']);
-            window.alert('Successfully booked.')
+            // setErrors(['Successfully booked.']);
+            // window.alert('Successfully booked.')
             reset();
-            // history.push(`/hosting/${Object.keys(listings)[0]}`)
+            history.push('/bookings')
         }).catch(async (res) => {
                 // console.log('notOK',res)
                 const data = await res.json();
