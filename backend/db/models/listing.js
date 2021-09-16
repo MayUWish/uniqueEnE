@@ -36,12 +36,17 @@ module.exports = (sequelize, DataTypes) => {
     }
     Listing.belongsToMany(models.User, bookingMapping);
 
-  
+   
+
+    //listing hasmany bookings with cascade deleting
+
+    Listing.hasMany(models.Booking, { foreignKey: 'listingId', onDelete: 'CASCADE', hooks: true });
 
     // listing vs image
     Listing.hasMany(models.Image, { foreignKey: 'listingId', onDelete: 'CASCADE', hooks: true });
 
-    //listing hasmany amenities with cascade deleting, to keep db clean,  but no cascade deleting on join table;
+    //listing hasmany amenities with cascade deleting
+    
     Listing.hasMany(models.ListingAmenity, { foreignKey: 'listingId', onDelete: 'CASCADE', hooks: true });
 
     // listing vs amenity through listingamenity
