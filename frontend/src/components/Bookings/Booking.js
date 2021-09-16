@@ -18,11 +18,14 @@ const Booking = ({ booking}) => {
 
         }).catch(async (res) => {
                 // console.log('notOK',res)
+                
                 const data = await res.json();
                 // console.log('notOK', data)
-                if (data && data.errors) setErrors(data.errors);
-            });
-    }
+            if (data && data.errors) {
+                window.alert(data.errors[0])                    
+                    // setErrors(data.errors)};
+            };
+    })}
     
     
     return (

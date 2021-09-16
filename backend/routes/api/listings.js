@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Listing, Image,ListingAmenity } = require('../../db/models');
+const { User, Listing, Image,ListingAmenity,Booking } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -174,6 +174,16 @@ router.delete(
         const listingId = req.params.id;
         const listing = await Listing.findByPk(listingId, { include: User });
 
+        const existingBookings = await Booking.findAll({
+            where: {
+                listingId,
+
+            }
+        });
+       
+        // to check if there is booking' endDate today or in the 
+        hasBookingsAsOfToday=existingBookings.some(booking=>booking.endDate - (new Date()).setHours(0,0,0,0) >= 0)
+
         // if loggin user is the host of listing and if the listing exists
         if (+req.user.id !== +listing.User.id) {
 
@@ -191,6 +201,14 @@ router.delete(
             err.title = 'Bad request.';
             next(err);
         }
+        else if (hasBookingsAsOfToday) {
+            const err = Error('Bad request.');
+            err.errors = [`You can't delete the listing has current and/or incoming reservations. Please cancel all the incoming reservations and wait today'`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+        }
+
         else if (+req.user.id === +listing.User.id && listing) {
             const listingId=listing.id;
             await listing.destroy();

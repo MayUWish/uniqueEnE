@@ -223,13 +223,21 @@ router.delete(
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
-        } else if (booking.startDate - today <= 0) {
+        } 
+        else if (booking.endDate - today <= 0) {
             const err = Error('Bad request.');
-            err.errors = [`You can't cancel a reservationt that has already started.`];
+            err.errors = [`This reservation ends today or has already ended. You cannot delete it.`];
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
         }
+        else if (booking.startDate - today <= 0) {
+            const err = Error('Bad request.');
+            err.errors = [`You can't cancel a reservation that has already started.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+        } 
 
         else if (+req.user.id === +booking.userId && booking) {
             // console.log('!!!!!!!!!!booking', booking)
