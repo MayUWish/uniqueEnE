@@ -28,7 +28,7 @@ const Booking = ({ booking}) => {
                 <div style={{ display: 'flex', flexFlow:'column'}}>
 
                     <NavLink className='button' to={`/listings/${booking.listingId}`} style={{ textDecoration: 'none', height: '12%', width:'50%', marginBottom:'2%' }}>Check Your Stay</NavLink>
-                    <button className='button' value={booking.id} onClick={deleteBooking} style={{ textDecoration: 'none', height: '7%', width: '50%' }}>Delete</button>
+                    <button className='button' value={booking.id} onClick={deleteBooking} style={{ textDecoration: 'none', height: '7%', width: '50%' }}>Cancel Reservation</button>
                 </div>
           </div>
         

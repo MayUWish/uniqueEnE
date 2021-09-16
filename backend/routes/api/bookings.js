@@ -198,6 +198,7 @@ router.delete(
             attributes: ['id', 'listingId', 'userId', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'numGuests'],
         });
         // console.log('!!!!????', booking)
+        const today = (new Date()).setHours(0, 0, 0, 0)
 
        
 
@@ -211,9 +212,9 @@ router.delete(
             next(err);
 
 
-        } else if (!booking) {
+        } else if (!booking || booking.endDate - today<=0) {
             const err = Error('Bad request.');
-            err.errors = [`The booking does not exist.`];
+            err.errors = [`The booking does not exist or is in the past.`];
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
