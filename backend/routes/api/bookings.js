@@ -164,8 +164,8 @@ router.get(
                 order: [["startDate"]],
             });
 
-            console.log('!!without images', bookings.length,bookings);
-            console.log('??!!with images', bookings.length, bookings)
+            // console.log('!!without images', bookings.length,bookings);
+            // console.log('??!!with images', bookings.length, bookings)
 
             const incomingBookings = bookings.filter(booking=>(booking.endDate-today>=0))
 
