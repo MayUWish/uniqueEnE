@@ -59,7 +59,7 @@
 .bookingFrom{
     display:flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     border: 1px solid lightgray;
     box-shadow: 1px 1px lightgray;
     width:25%;;

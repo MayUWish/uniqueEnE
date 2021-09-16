@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import * as listingActions from "../../store/listings";
 import * as BookingRedux from "../../store/bookings";
-import Booking from './Booking'
+import Booking from './Booking';
+import PastBooking from './PastBooking'
 import './Booking.css'
 
 const BookingsCollection = () => {
@@ -50,7 +51,7 @@ const BookingsCollection = () => {
                 <div className='pastBookingsWrapper' style={{ width: '50%', marginLeft:'1%'}}>
                 <h3>Past:</h3>
                 {(pastBookings.length > 0) && pastBookings.map(booking => (
-                    <Booking key={booking.id} booking={booking} />
+                    <PastBooking key={booking.id} booking={booking} />
                 ))}
             </div>
         </div>)}

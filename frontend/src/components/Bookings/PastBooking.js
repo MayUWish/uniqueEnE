@@ -3,10 +3,7 @@
 import {NavLink} from 'react-router-dom';
 
 const Booking = ({ booking}) => {
-    const deleteBooking=()=>{
-        console.log('hi')
 
-    }
     
     
     return (
@@ -25,7 +22,6 @@ const Booking = ({ booking}) => {
                 <div style={{ display: 'flex', flexFlow:'column'}}>
 
                     <NavLink className='button' to={`/listings/${booking.listingId}`} style={{ textDecoration: 'none', height: '12%', width:'50%', marginBottom:'2%' }}>Check Your Stay</NavLink>
-                    <button className='button' onClick={deleteBooking} style={{ textDecoration: 'none', height: '7%', width: '50%' }}>Delete</button>
                 </div>
           </div>
         
