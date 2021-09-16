@@ -334,16 +334,6 @@ router.put(
             next(err);
 
         }
-        else if (isDateConflicted) {
-            // to check if booking date has conflict with existing bookings
-            const message = existingBookingDates.map(date => `${date[0].toLocaleDateString()} - ${date[1].toLocaleDateString()}`)
-            const err = Error('Bad request.');
-            err.errors = [`Conflicts with the following date range of existing bookings.`, ...message];
-            err.status = 400;
-            err.title = 'Bad request.';
-            next(err);
-
-        } 
 
         else if (toEditBooking.startDate - (new Date()).setHours(0, 0, 0, 0) <= 0) {
             // cannot edit a reservation that has already started
@@ -355,6 +345,19 @@ router.put(
             next(err);
 
         }
+        
+        else if (isDateConflicted) {
+            // to check if booking date has conflict with existing bookings
+            const message = existingBookingDates.map(date => `${date[0].toLocaleDateString()} - ${date[1].toLocaleDateString()}`)
+            const err = Error('Bad request.');
+            err.errors = [`Conflicts with the following date range of existing bookings.`, ...message];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+
+        } 
+
+       
         
         else if (endDate - startDate <= 0) {
             // check endDate more than startDate, and both must be greated than today;
