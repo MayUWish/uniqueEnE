@@ -212,13 +212,20 @@ router.delete(
             next(err);
 
 
-        } else if (!booking || booking.endDate - today<=0) {
+        } else if (!booking ) {
             const err = Error('Bad request.');
-            err.errors = [`The booking does not exist or is in the past.`];
+            err.errors = [`The booking does not exist.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+        } else if (booking.endDate - today <= 0) {
+            const err = Error('Bad request.');
+            err.errors = [`The booking has been past.`];
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
         }
+
         else if (+req.user.id === +booking.userId && booking) {
             // console.log('!!!!!!!!!!booking', booking)
             const bookingId = booking.id;

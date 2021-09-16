@@ -1,14 +1,26 @@
 // import toAddImg from '../../images/toAddImg.jpg'
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import * as bookingActions from "../../store/bookings";
+import { useState } from 'react';
 
 import {NavLink} from 'react-router-dom';
 
 const Booking = ({ booking}) => {
     const dispatch = useDispatch();
+    const [errors, setErrors] = useState([]);
 
     const deleteBooking=(e)=>{
-        dispatch(bookingActions.deleteBookingThunk(+e.target.value))
+        setErrors([]);
+        dispatch(bookingActions.deleteBookingThunk(+e.target.value)).then(() => {
+            window.alert('Successfully deleted.')
+
+
+        }).catch(async (res) => {
+                // console.log('notOK',res)
+                const data = await res.json();
+                // console.log('notOK', data)
+                if (data && data.errors) setErrors(data.errors);
+            });
     }
     
     
@@ -17,7 +29,13 @@ const Booking = ({ booking}) => {
          
             {/* <img className='img' src={listing.Images ? (listing.Images[0] ? listing.Images[0].url : toAddImg) : toAddImg} alt='listingImage' ></img> */}
             
+
             <div className='intro'>
+                <ul className='error'>
+                    {errors.map((error, idx) => (
+                        <li key={idx}>{error}</li>
+                    ))}
+                </ul>
                 <h3>{booking.Listing?.title}</h3>
                 <p>{booking.Listing?.address}, {booking.Listing?.city}</p>
                 <p>{Number(booking.Listing?.twinBedNum) + Number(booking.Listing?.queenBedNum) + Number(booking.Listing?.kingBedNum) + Number(booking.Listing?.sofaBedNum)} beds , {booking.Listing?.bathroomNum} baths</p>
