@@ -1,4 +1,4 @@
-// import toAddImg from '../../images/toAddImg.jpg'
+import toAddImg from '../../images/toAddImg.jpg'
 import { useDispatch} from 'react-redux';
 import * as bookingActions from "../../store/bookings";
 import { useState } from 'react';
@@ -26,10 +26,7 @@ const Booking = ({ booking}) => {
     
     
     return (
-        <div className='eachListing'>
-         
-            {/* <img className='img' src={listing.Images ? (listing.Images[0] ? listing.Images[0].url : toAddImg) : toAddImg} alt='listingImage' ></img> */}
-            
+        <div className='eachListing'>            
 
             <div className='intro'>
                 <ul className='error'>
@@ -46,11 +43,14 @@ const Booking = ({ booking}) => {
        
                 <div style={{ display: 'flex', flexFlow:'column'}}>
 
-                    <NavLink className='button' to={`/listings/${booking.listingId}`} style={{ textDecoration: 'none', height: '12%', width:'50%', marginBottom:'2%' }}>Check Your Stay</NavLink>
+                    <NavLink className='button' to={`/listings/${booking.listingId}`} style={{ textDecoration: 'none', width:'50%' }}>Check Your Stay</NavLink>
                     <button className='button' value={booking.id} onClick={deleteBooking} style={{ textDecoration: 'none', height: '7%', width: '50%' }}>Cancel</button>
                     <EditBookingFormModal booking={booking}/>
                 </div>
           </div>
+
+            <img className='img' src={booking.Listing.Images ? (booking.Listing.Images[0] ? booking.Listing.Images[0].url : toAddImg) : toAddImg} alt='listingImage' ></img>
+
         
         </div>
     )

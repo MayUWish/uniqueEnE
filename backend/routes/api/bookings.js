@@ -121,7 +121,7 @@ router.post(
         
         else if (!Number.isInteger(+numGuests)||numGuests < 1 || numGuests > listing.guestNum){
             const err = Error('Bad request.');
-            err.errors = [`Number of guests must be an integer and from 1 to its max capacity, ${listing.guestNum}.`];
+            err.errors = [`Number of guests must be an integer, from 1 to its max capacity, ${listing.guestNum}.`];
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
@@ -369,7 +369,7 @@ router.put(
 
         else if (!Number.isInteger(+numGuests) || numGuests < 1 || numGuests > listing.guestNum) {
             const err = Error('Bad request.');
-            err.errors = [`Number of guests must be an integer and from 1 to its max capacity, ${listing.guestNum}.`];
+            err.errors = [`Number of guests must be an integer, from 1 to its max capacity, ${listing.guestNum}.`];
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
