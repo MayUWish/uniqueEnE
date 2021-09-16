@@ -192,7 +192,14 @@ router.delete(
     requireAuth,
     asyncHandler(async (req, res, next) => {
         const bookingId = req.params.id;
-        const booking = await Booking.findByPk(bookingId, { include: Listing });
+        // console.log('????',bookingId)
+        const booking = await Booking.findOne({
+            where:{id:bookingId},
+            attributes: ['id', 'listingId', 'userId', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'numGuests'],
+        });
+        // console.log('!!!!????', booking)
+
+       
 
         // if loggin user is the user of booking and if the booking exists
         if (+req.user.id !== +booking.userId) {
@@ -212,8 +219,15 @@ router.delete(
             next(err);
         }
         else if (+req.user.id === +booking.userId && booking) {
+            // console.log('!!!!!!!!!!booking', booking)
             const bookingId = booking.id;
-            await booking.destroy();
+            // console.log('!!!!!!!!!!bookingID', booking.id)
+
+            // join table destroy by userId and listingId, force it to delete by id as below.
+            await Booking.destroy({where:{
+                id:bookingId
+            }})
+            // await booking.destroy();
             return res.json({
                 bookingId
             }) 

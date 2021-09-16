@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 
 const CREATE_BOOKING = 'booking/createBooking';
 const VIEW_BOOKING = 'booking/viewBooking';
+const DELETE_BOOKING = 'booking/deleteBooking';
 
 
 
@@ -23,6 +24,14 @@ const viewBookingAction = (currentNPastBookings) => {
     return {
         type: VIEW_BOOKING,
         payload: currentNPastBookings,
+    };
+};
+
+// delete booking as traveller 
+const deleteBookingAction = (bookingId) => {
+    return {
+        type: DELETE_BOOKING,
+        payload: bookingId,
     };
 };
 
@@ -55,7 +64,16 @@ export const viewBookingThunk = (userId) => async (dispatch) => {
     return response;
 };
 
+// delete booking as travellers 
+export const deleteBookingThunk = (bookingId) => async (dispatch) => {
 
+    const response = await csrfFetch(`/api/bookings/${bookingId}`, {
+        method: "DELETE",
+    });
+    const data = await response.json();
+    dispatch(deleteBookingAction(data.bookingId));
+    return response;
+};
 ///////////////////////////// reducer:
 const initialState = {};
 
@@ -113,6 +131,15 @@ const bookingsReducer = (state = initialState, action) => {
             return newState;
             }
             return initialState;
+        
+        case DELETE_BOOKING:
+        
+            newState = {
+                ...state,
+            }
+            delete newState.incomingBookings[action.payload]
+            newState.incomingBookingsIds = newState.incomingBookingsIds.filter(id => +id !== +action.payload)
+            return newState;
 
         default:
             return state;
