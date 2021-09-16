@@ -61,7 +61,48 @@ router.post(
     }),
 );
 
+//delete amenity
+router.delete(
+    '/',
+    requireAuth,
+    asyncHandler(async (req, res, next) => {
+        const {amenityId,listingId} = req.body;
+        const amenity = await Amenity.findOne( {
+            where: { amenityId, listingId},
+            include: [Listing]
+        });
+       
+        // if loggin user is the host of listing and if the amenity exists
+        if (+req.user.id !== +amenity.Listing.userId) {
 
+            const err = Error('Unauthorized.');
+            err.errors = [`You have no authorization to delete the amenity`];
+            err.status = 401;
+            err.title = 'Unauthorized.';
+            next(err);
+
+
+        } else if (!amenity) {
+            const err = Error('Bad request.');
+            err.errors = [`The amenity does not exist.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+        }
+        else if (+req.user.id === +amenity.Listing.userId && amenity) {
+            const listingId = amenity.Listing.id;
+            await amenity.destroy();
+            // console.log('!!!!!!',listingId)
+            // 
+            return res.json({
+                amenityId,
+                listingId
+            })
+
+        }
+        ;
+    }),
+);
 
 
 module.exports = router;
