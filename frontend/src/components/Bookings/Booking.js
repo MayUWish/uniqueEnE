@@ -13,7 +13,7 @@ const Booking = ({ booking}) => {
     const deleteBooking=(e)=>{
         setErrors([]);
         dispatch(bookingActions.deleteBookingThunk(+e.target.value)).then(() => {
-            window.alert('Successfully deleted.')
+            window.alert('Successfully deleted. ')
 
 
         }).catch(async (res) => {

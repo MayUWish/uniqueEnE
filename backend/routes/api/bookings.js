@@ -223,9 +223,9 @@ router.delete(
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
-        } else if (booking.endDate - today <= 0) {
+        } else if (booking.startDate - today <= 0) {
             const err = Error('Bad request.');
-            err.errors = [`The booking ends today or has been ended.`];
+            err.errors = [`You can't cancel a reservationt that has already started.`];
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
