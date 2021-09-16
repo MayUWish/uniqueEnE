@@ -279,7 +279,7 @@ const listingReducer = (state = initialState, action) => {
                 ...state,
             }
             const amenityChangedListing = newState[action.payload.listingId]
-            const updatedAmenities = amenityChangedListing.ListingAmenities.filter(({ id }) => +id !== +action.payload.amenityId);
+            const updatedAmenities = amenityChangedListing.ListingAmenities.filter(({ amenityId }) => +amenityId !== +action.payload.amenityId);
             newState[action.payload.listingId] = {
                 ...newState[action.payload.listingId],
                 ListingAmenities: updatedAmenities
