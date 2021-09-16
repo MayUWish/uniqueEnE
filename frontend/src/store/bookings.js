@@ -70,18 +70,23 @@ const bookingsReducer = (state = initialState, action) => {
     let newState;
 
     switch (action.type) {
-        // create booking No need to update state, as when go to reservation page, will render all bookings
-        // case CREATE_BOOKING:
-        //     let newBookingIds=[];
-        //     state.BookingsIds ? newBookingIds = [...state.BookingsIds] : newBookingIds=[]
-        //     newBookingIds.unshift(action.payload.id);
-        //     newState = {
-        //         ...state,
-        //         [action.payload.id]: action.payload,
-        //         BookingsIds: newBookingIds,
-        //     }
+        // create booking (No need to update state for current functionality,but keep it here for potential future use), as when go to reservation page, will render all bookings
+        case CREATE_BOOKING:
+            let newIncomingBookingIds=[];
+            state.incomingBookingsIds ? newIncomingBookingIds = [...state.incomingBookingsIds] : newIncomingBookingIds=[]
+            newIncomingBookingIds.unshift(action.payload.id);
 
-        //     return newState;
+            let newincomingBookings = {};
+            state.incomingBookings ? newincomingBookings = { ...state.incomingBookings } : newincomingBookings = {}
+            newincomingBookings[action.payload.id] = action.payload;
+
+            newState = {
+                ...state,
+                incomingBookings: newincomingBookings,
+                incomingBookingsIds: newIncomingBookingIds,
+            }
+
+            return newState;
         
         case VIEW_BOOKING:
             const incomingBookings = {};
