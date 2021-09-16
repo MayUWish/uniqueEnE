@@ -27,6 +27,7 @@ import DeleteImagesPage from "./components/DeleteImagesPage";
 import PublicListing from "./components/PublicListing";
 import ImagesOfPublicListing from "./components/PublicListing/ImagesPublic";
 import PublicListings from "./components/PublicListings";
+import BookingsCollection from "./components/Bookings";
 
 
 function App() {
@@ -109,6 +110,11 @@ function App() {
           {/* public: all listings  */}
           <Route exact path={`/listings`}>
             <PublicListings />
+          </Route>
+
+          {/* logged-in: bookings as travellers */}
+          <Route exact path={`/bookings`}>
+            <BookingsCollection />
           </Route>
 
 

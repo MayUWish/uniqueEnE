@@ -15,7 +15,7 @@ const Listing = ({ listing}) => {
             <div className='intro'>
                 <p>{listing?.title}</p>
                 <p>{listing?.address}, {listing?.city}</p>
-                <p>{listing?.guestNum} guests, {listing?.bedroomNum} beds, {listing?.bathroomNum} baths</p>
+                <p>{listing?.guestNum} guests, {Number(listing?.twinBedNum) + Number(listing?.queenBedNum) + Number(listing?.kingBedNum) + Number(listing?.sofaBedNum)} beds, {listing?.bathroomNum} baths</p>
                 {/* <button onClick={addImages}>Add Images</button> */}
                 <div style={{ display: 'flex', flexFlow:'column'}}>
                 <AddImagesFormModal listingId={listing.id}/>

@@ -252,11 +252,12 @@ function CreateListingForm() {
                 <div className='cleanAndCheckinWrapper'>
                 <div className='listingInputWrapper'>
                     <label>
-                        Enhanced Clean
+                        EnhancedClean
                         <select
                             className='selectInput'
                             value={enhancedClean}
                             onChange={(e) => setEnhancedClean(e.target.value)}
+                            style={{height:'50%'}}
                         // required
                         >
                                 <option key='enhancedCleanTrue' >true</option>
@@ -272,6 +273,7 @@ function CreateListingForm() {
                             className='selectInput'
                             value={selfCheckin}
                             onChange={(e) => setSelfCheckin(e.target.value)}
+                            style={{ height: '50%' }}
                         // required
                         >
                             <option key='selfCheckinTrue'>true</option>
