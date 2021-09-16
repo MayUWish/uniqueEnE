@@ -29,6 +29,9 @@ function Navigation({ isLoaded }) {
             <NavLink className ='home' exact to="/">
                 <h2>{`Explore&Enjoy`}</h2>
             </NavLink>
+
+           
+
             <div>
                 <a className='contact' href='https://www.linkedin.com/in/meitongqu/' target='blank'>
                     <i className="fab fa-linkedin fa-2x" />
@@ -37,10 +40,16 @@ function Navigation({ isLoaded }) {
                 <a className='contact' href='https://github.com/MayUWish' target='blank'>
                     <i className="fab fa-github fa-2x" />
                 </a>
+
             </div>
-                       
-         
-            {isLoaded && sessionLinks}           
+
+            <div style={{display:'flex'}}>         
+            <NavLink className='exploreAllListings' exact to="/listings">
+                <h3>{`<- Explore Unique Stays ->`}</h3>
+            </NavLink>
+
+            {isLoaded && sessionLinks}   
+            </div>
         </div>
     );
 }

@@ -39,6 +39,11 @@ function ProfileButton({ user }) {
         history.push('/hosting')
     };
 
+    const reservation = (e) => {
+        e.preventDefault();
+        history.push('/bookings')
+    };
+
     return (
         <div className="profileWrapper">
             <div >
@@ -52,6 +57,7 @@ function ProfileButton({ user }) {
                     {/* <li>{user.email}</li> */}
                     {/* <li> */}
                     <button className='profileDropDown' onClick={hosting}>Manage Listings</button>
+                    <button className='profileDropDown' onClick={reservation}>Your Reservations</button>
                     {/* </li> */}
                     {/* <li> */}
                     <button className='profileDropDown'onClick={logout}>Log Out</button>
