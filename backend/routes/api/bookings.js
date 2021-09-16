@@ -157,10 +157,13 @@ router.get(
                 attributes: ['id','listingId','userId','startDate','endDate','createdAt','updatedAt','numGuests'],
                 include: {
                     model: Listing,
-                    // include: [Image]
+                    include: [Image]
                 },
                 order: [["startDate"]],
             });
+
+            console.log('!!without images', bookings.length,bookings);
+            console.log('??!!with images', bookings.length, bookings)
 
             const incomingBookings = bookings.filter(booking=>(booking.endDate-today>=0))
 

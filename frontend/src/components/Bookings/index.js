@@ -42,7 +42,7 @@ const BookingsCollection = () => {
       <>
         { isLoaded && (<div style={{display:'flex'}}>
                 <div className='incomingBookingsWrapper' style={{ width: '50%', borderRight: '2px solid #d3d3d3',marginLeft: '1%' }}>
-                <h3>Incoming and Current:</h3>
+                    <h3>{'Current & Incoming:'}</h3>
                 {(incomingBookings.length > 0) && incomingBookings.map(booking => (
                     <Booking key={booking.id} booking={booking} />
                 ))}

@@ -27,8 +27,8 @@ router.get(
                 order: [["createdAt", "DESC"]],
             });           
             // no ListingAmenities id, but image has id
-            console.log('!!!ListingAmenities', listings[0].ListingAmenities[0])
-            console.log('!!!Images', listings[0].Images[0])
+            // console.log('!!!ListingAmenities', listings[0].ListingAmenities[0])
+            // console.log('!!!Images', listings[0].Images[0])
             return res.json({
                 listings,
             });
