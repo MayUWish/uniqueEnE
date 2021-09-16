@@ -42,6 +42,24 @@ function BookingForm() {
             window.alert('Please login/signup to book.')
         } 
     }
+
+
+    // frontend input: e.g. startDate: "2021-09-15"
+    const toDate = (yearMonthDay) => {
+        const year = yearMonthDay.split('-')[0];
+        const month = yearMonthDay.split('-')[1];
+        const day = yearMonthDay.split('-')[2];
+
+        //new Date take month -1 as month
+        const date = new Date(year, month - 1, day);
+        return date;
+
+    }
+    
+    //for date without hour,minutes,seconds, ms
+    const numberOfDays = (startDate, endDate)=>{
+        return +(endDate-startDate)/(24*60*60*1000);
+    }
     
     const reset = () => {
         setStartDate('');
@@ -84,7 +102,8 @@ function BookingForm() {
 
     return (
         <>
-            <h3 style={{textAlign:'start'}} >${currentListing?.price} / night</h3>
+            <h3 style={{textAlign:'start'}} >${currentListing?.price} /night</h3>
+         
             <form className='bookingForm' onSubmit={handleSubmit} onClick={loggedOutUser}>  
 
             <ul className='error'>
@@ -129,9 +148,16 @@ function BookingForm() {
                         />
                 </label>
            
-
+                {(startDate && endDate && toDate(endDate)>toDate(startDate)) && (
+                    <div style={{ textAlign: 'start',fontSize:'large',fontWeight:'bold',marginLeft:'5%' }}>
+                        Price Breakdown:
+                        <p style={{ marginLeft: '9%' }}>${currentListing?.price} x {numberOfDays(toDate(startDate), toDate(endDate))} nights</p>
+                  
+                        <p style={{ marginLeft: '9%'}}>Total: ${(+currentListing?.price * (+numberOfDays(toDate(startDate), toDate(endDate)))).toLocaleString()}</p>
+                    </div>
+                )}
               
-                 <button className='bookingFormButton button' type="submit" disabled={!sessionUser} >check Availability</button>
+                 <button className='bookingFormButton button' type="submit" disabled={!sessionUser} >Book</button>
 
          
 
