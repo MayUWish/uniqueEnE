@@ -155,10 +155,12 @@ router.get(
             const bookings = await Booking.findAll({
                 where: { userId },
                 attributes: ['id','listingId','userId','startDate','endDate','createdAt','updatedAt','numGuests'],
-                include: {
+                include: [{
                     model: Listing,
-                    include: [Image]
-                },
+                    include: [{
+                        model: Image
+                    }]
+                }],
                 order: [["startDate"]],
             });
 
@@ -247,5 +249,126 @@ router.delete(
         ;
     }),
 );
+
+
+// edit bookings, require user to log-in;
+router.put(
+    '/:id(\\d+)',
+    validateBooking,
+    requireAuth,
+    asyncHandler(async (req, res, next) => {
+        //find current booking in db
+        const bookingId = req.params.id;
+        
+        const toEditBooking = await Booking.findOne({
+            where: { id: bookingId },
+            attributes: ['id', 'listingId', 'userId', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'numGuests'],
+        });
+         
+
+        let { startDate, endDate, userId, listingId, numGuests } = req.body;
+
+
+        // req data as "2021-09-15", turn it into date, to save to db(no hour,minute,second,ms) and to compare date for validation;
+        startDate = toDate(startDate);
+        endDate = toDate(endDate);
+
+        const user = await User.findByPk(userId);
+        const listing = await Listing.findByPk(listingId);
+
+        // to check if booking date has conflict with existing bookings, except current booking
+        const existingBookings = await Booking.findAll({ where: { 
+            
+            listingId,
+            id:{
+                [Op.not]: [bookingId],
+            }
+    
+            }
+            });
+
+        // a = new Date(2021,10,9),b = new Date(2021,10,9); but a === b is false; thus using a-b ===0 to check if same day;
+        let isDateConflicted = existingBookings.some(booking => (booking.startDate - startDate <= 0 && booking.endDate - startDate > 0) || (booking.startDate - endDate < 0 && booking.endDate - endDate >= 0))
+
+        //array of array [startDate,endDate]
+        const existingBookingDates = existingBookings.map(booking => [booking.startDate, booking.endDate]);
+
+        if (+req.user.id !== +userId) {
+            //logged-in userId is different from booking userId, which means book for others
+            const err = Error('Bad request.');
+            err.errors = [`You cannot edit other user's reservation.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+
+        }
+        else if (!toEditBooking) {
+            // no such listing
+            const err = Error('Bad request.');
+            err.errors = [`The booking does not exist.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+
+        }
+        else if (!user) {
+            // no such user
+            const err = Error('Bad request.');
+            err.errors = [`The user/account does not exist.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+
+        }
+        else if (isDateConflicted) {
+            // to check if booking date has conflict with existing bookings
+            const message = existingBookingDates.map(date => `${date[0].toLocaleDateString()} - ${date[1].toLocaleDateString()}`)
+            const err = Error('Bad request.');
+            err.errors = [`Conflicts with the following date range of existing bookings.`, ...message];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+
+        } else if (endDate - startDate <= 0) {
+            // check endDate more than startDate, and both must be greated than today;
+
+            const err = Error('Bad request.');
+            err.errors = [`Check in date should be be early than check out date.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+
+        } else if (startDate - (new Date()).setHours(0, 0, 0, 0) < 0 || endDate - (new Date()).setHours(0, 0, 0, 0) < 0) {
+            const err = Error('Bad request.');
+            err.errors = [`Booking dates should be today or in the future.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+
+
+        }
+
+        else if (!Number.isInteger(+numGuests) || numGuests < 1 || numGuests > listing.guestNum) {
+            const err = Error('Bad request.');
+            err.errors = [`Number of guests must be an integer and from 1 to its max capacity.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+
+        }
+
+        else {
+            
+            await booking.update({ ...body })
+            return res.json({
+                booking,
+            });
+
+        }
+
+
+    }),
+);
+
 
 module.exports = router;
