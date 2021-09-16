@@ -186,4 +186,41 @@ router.get(
     }),
 );
 
+//delete bookings
+router.delete(
+    '/:id(\\d+)',
+    requireAuth,
+    asyncHandler(async (req, res, next) => {
+        const bookingId = req.params.id;
+        const booking = await Booking.findByPk(bookingId, { include: Listing });
+
+        // if loggin user is the user of booking and if the booking exists
+        if (+req.user.id !== +booking.userId) {
+
+            const err = Error('Unauthorized.');
+            err.errors = [`You have no authorization to cancel the reservation`];
+            err.status = 401;
+            err.title = 'Unauthorized.';
+            next(err);
+
+
+        } else if (!booking) {
+            const err = Error('Bad request.');
+            err.errors = [`The booking does not exist.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+        }
+        else if (+req.user.id === +booking.userId && booking) {
+            const bookingId = booking.id;
+            await booking.destroy();
+            return res.json({
+                bookingId
+            }) 
+
+        }
+        ;
+    }),
+);
+
 module.exports = router;
