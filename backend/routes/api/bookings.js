@@ -121,7 +121,7 @@ router.post(
         
         else if (!Number.isInteger(+numGuests)||numGuests < 1 || numGuests > listing.guestNum){
             const err = Error('Bad request.');
-            err.errors = [`Number of guests must be an integer and from 1 to its max capacity.`];
+            err.errors = [`Number of guests must be an integer and from 1 to its max capacity, ${listing.guestNum}.`];
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
@@ -335,7 +335,20 @@ router.put(
             err.title = 'Bad request.';
             next(err);
 
-        } else if (endDate - startDate <= 0) {
+        } 
+
+        else if (toEditBooking.startDate - (new Date()).setHours(0, 0, 0, 0) <= 0) {
+            // cannot edit a reservation that has already started
+
+            const err = Error('Bad request.');
+            err.errors = [`You can't edit a reservation that has started.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+
+        }
+        
+        else if (endDate - startDate <= 0) {
             // check endDate more than startDate, and both must be greated than today;
 
             const err = Error('Bad request.');
@@ -356,7 +369,7 @@ router.put(
 
         else if (!Number.isInteger(+numGuests) || numGuests < 1 || numGuests > listing.guestNum) {
             const err = Error('Bad request.');
-            err.errors = [`Number of guests must be an integer and from 1 to its max capacity.`];
+            err.errors = [`Number of guests must be an integer and from 1 to its max capacity, ${listing.guestNum}.`];
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
