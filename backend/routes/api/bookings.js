@@ -167,8 +167,8 @@ router.get(
 
             const pastBookings = bookings.filter(booking => booking.endDate - today < 0)
         
-            console.log('incomingBookings!!!!!!!!!!!!!!!!!!!!!!', incomingBookings)
-            console.log('pastBookings!!!!!!!!!!!!!!!!!!!!!!', pastBookings)
+            // console.log('incomingBookings!!!!!!!!!!!!!!!!!!!!!!', incomingBookings)
+            // console.log('pastBookings!!!!!!!!!!!!!!!!!!!!!!', pastBookings)
             return res.json({
                 incomingBookings,
                 pastBookings,

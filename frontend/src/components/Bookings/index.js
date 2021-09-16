@@ -33,7 +33,7 @@ const BookingsCollection = () => {
 
     }, [dispatch, sessionUser]);
 
-    console.log('(((((',incomingBookings)
+    // console.log('(((((',incomingBookings)
     if (!sessionUser) { return null };
    
 
@@ -41,14 +41,14 @@ const BookingsCollection = () => {
       <>
         { isLoaded && (<div style={{display:'flex'}}>
                 <div className='incomingBookingsWrapper' style={{ width: '50%', borderRight: '2px solid #d3d3d3',marginLeft: '1%' }}>
-                <h3>Incoming Stays:</h3>
+                <h3>Incoming and Current:</h3>
                 {(incomingBookings.length > 0) && incomingBookings.map(booking => (
                     <Booking key={booking.id} booking={booking} />
                 ))}
             </div>
 
                 <div className='pastBookingsWrapper' style={{ width: '50%', marginLeft:'1%'}}>
-                <h3>Past Stays:</h3>
+                <h3>Past:</h3>
                 {(pastBookings.length > 0) && pastBookings.map(booking => (
                     <Booking key={booking.id} booking={booking} />
                 ))}
