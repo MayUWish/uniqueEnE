@@ -73,7 +73,8 @@ function EditBookingForm({ booking}) {
         setErrors([]);
 
         const editBooking = {
-            userId: sessionUser.id,
+            id:booking.id,
+            userId: booking.userId,
             listingId: booking.listingId,
             numGuests: guestNum,
             startDate,
@@ -82,17 +83,17 @@ function EditBookingForm({ booking}) {
         }
         console.log(editBooking);
 
-        // return dispatch(BookingRedux.createBookingThunk(newBooking)).then(() => {
-        //     // setErrors(['Successfully booked.']);
-        //     // window.alert('Successfully booked.')
-        //     reset();
-        //     history.push('/bookings')
-        // }).catch(async (res) => {
-        //     // console.log('notOK',res)
-        //     const data = await res.json();
-        //     // console.log('notOK', data)
-        //     if (data && data.errors) setErrors(data.errors);
-        // });
+        return dispatch(BookingRedux.editBookingThunk(editBooking)).then(() => {
+            setErrors(['Successfully edited.']);
+            // window.alert('Successfully booked.')
+            // reset();
+            history.push('/bookings')
+        }).catch(async (res) => {
+            // console.log('notOK',res)
+            const data = await res.json();
+            // console.log('notOK', data)
+            if (data && data.errors) setErrors(data.errors);
+        });
 
     };
 

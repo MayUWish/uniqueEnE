@@ -5,7 +5,7 @@ const CREATE_BOOKING = 'booking/createBooking';
 const VIEW_BOOKING = 'booking/viewBooking';
 const DELETE_BOOKING = 'booking/deleteBooking';
 
-
+const EDIT_BOOKING = 'booking/editBooking';
 
 ///////////////////////////Action:
 
@@ -36,7 +36,13 @@ const deleteBookingAction = (bookingId) => {
 };
 
 
-
+// edit  booking
+const editBookingAction = (booking) => {
+    return {
+        type: EDIT_BOOKING,
+        payload: booking,
+    };
+};
 
 //////////////////////////////////////////Thunk:
 
@@ -74,6 +80,19 @@ export const deleteBookingThunk = (bookingId) => async (dispatch) => {
     dispatch(deleteBookingAction(data.bookingId));
     return response;
 };
+
+// edit booking
+export const editBookingThunk = (booking) => async (dispatch) => {
+
+    const response = await csrfFetch(`/api/bookings/${booking.id}`, {
+        method: "PUT",
+        body: JSON.stringify({ ...booking }),
+    });
+    const data = await response.json();
+    dispatch(editBookingAction(data.booking));
+    return response;
+};
+
 ///////////////////////////// reducer:
 const initialState = {};
 
@@ -139,6 +158,14 @@ const bookingsReducer = (state = initialState, action) => {
             }
             delete newState.incomingBookings[action.payload]
             newState.incomingBookingsIds = newState.incomingBookingsIds.filter(id => +id !== +action.payload)
+            return newState;
+
+        case EDIT_BOOKING:
+    
+            newState = {...state};
+
+            newState.incomingBookings[action.payload.id] = action.payload;
+
             return newState;
 
         default:

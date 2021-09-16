@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-
+const { Op } = require("sequelize");
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User, Listing, Image, ListingAmenity, Booking } = require('../../db/models');
 const { check } = require('express-validator');
@@ -263,6 +263,12 @@ router.put(
         const toEditBooking = await Booking.findOne({
             where: { id: bookingId },
             attributes: ['id', 'listingId', 'userId', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'numGuests'],
+            include: {
+                model: Listing,
+                include: [{
+                    model: Image
+                }]
+            }
         });
          
 
@@ -359,9 +365,9 @@ router.put(
 
         else {
             
-            await booking.update({ ...body })
+            await toEditBooking.update({ startDate, endDate, userId, listingId, numGuests })
             return res.json({
-                booking,
+                booking: toEditBooking,
             });
 
         }
