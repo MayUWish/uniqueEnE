@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal } from '../../.././context/Modal';
 import AddImagesForm from './AddImagesForm';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 
 import * as listingActions from "../../../store/listings";
 

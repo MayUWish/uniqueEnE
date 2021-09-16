@@ -71,12 +71,11 @@ function App() {
               <EditListingFormModal />
               <DeleteListingFromModal />
               <AddImagesFormModal  />
-
               <DeleteImagesLink />
               
               <AddAmenitiesFormModal />
-
-              {/* <DeleteAmenitiesFormModal /> */}
+              <DeleteAmenitiesFormModal />
+             
 
             </div>
             <Hosting />

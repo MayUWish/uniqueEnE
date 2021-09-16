@@ -67,13 +67,20 @@ router.delete(
     requireAuth,
     asyncHandler(async (req, res, next) => {
         const {amenityId,listingId} = req.body;
-        const amenity = await Amenity.findOne( {
+        const amenity = await ListingAmenity.findOne( {
             where: { amenityId, listingId},
             include: [Listing]
         });
        
         // if loggin user is the host of listing and if the amenity exists
-        if (+req.user.id !== +amenity.Listing.userId) {
+        if (!amenity) {
+            const err = Error('Bad request.');
+            err.errors = [`The amenity does not exist.`];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
+        }
+        else if (+req.user.id !== +amenity.Listing.userId) {
 
             const err = Error('Unauthorized.');
             err.errors = [`You have no authorization to delete the amenity`];
@@ -82,13 +89,7 @@ router.delete(
             next(err);
 
 
-        } else if (!amenity) {
-            const err = Error('Bad request.');
-            err.errors = [`The amenity does not exist.`];
-            err.status = 400;
-            err.title = 'Bad request.';
-            next(err);
-        }
+        } 
         else if (+req.user.id === +amenity.Listing.userId && amenity) {
             const listingId = amenity.Listing.id;
             await amenity.destroy();

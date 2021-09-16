@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import * as sessionActions from "../../store/session";
 import * as listingActions from "../../../store/listings";
 import { useDispatch} from "react-redux";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 
 
 function AddImagesForm({ listingId }) {

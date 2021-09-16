@@ -8,7 +8,7 @@ const VIEW_LISTING = 'listing/viewListing';
 const EDIT_LISTING = 'listing/editListing';
 const DELETE_LISTING = 'listing/deleteListing';
 const DELETE_IMAGE = 'listing/deleteImage';
-// const DELETE_AMENITY = 'listing/deleteAmenity';
+const DELETE_AMENITY = 'listing/deleteAmenity';
 
 ///////////////////////////Action:
 
@@ -68,13 +68,13 @@ const deleteImageAction = (data) => {
     };
 };
 
-// delete amenity
-// const deleteAmenityAction = (amenity) => {
-//     return {
-//         type: DELETE_AMENITY,
-//         payload: amenity,
-//     };
-// };
+//delete amenity,data is {} with amenityId and listingId as keys
+const deleteAmenityAction = (data) => {
+    return {
+        type: DELETE_AMENITY,
+        payload: data,
+    };
+};
 
 
 
@@ -166,17 +166,17 @@ export const deleteImageThunk = (imageId) => async (dispatch) => {
     return response;
 };
 
-// delete amenity 
-// export const deleteAmenityThunk = (amenity) => async (dispatch) => {
+// delete amenity ,amenity is {} with amenityId and listingId as keys  l
+export const deleteAmenityThunk = (amenity) => async (dispatch) => {
 
-//     const response = await csrfFetch(`/api/listings/${listingId}`, {
-//         method: "DELETE",
-//         // body: JSON.stringify({ ...listing }),
-//     });
-//     const data = await response.json();
-//     dispatch(deleteListingAction(data.listingId));
-//     return response;
-// };
+    const response = await csrfFetch(`/api/amenities`, {
+        method: "DELETE",
+        body: JSON.stringify({ ...amenity }),
+    });
+    const data = await response.json();
+    dispatch(deleteAmenityAction(data));
+    return response;
+};
 
 
 ///////////////////////////// reducer:
@@ -269,6 +269,20 @@ const listingReducer = (state = initialState, action) => {
             newState[action.payload.listingId] ={
                 ...newState[action.payload.listingId],
                 Images: updatedImages
+
+            };
+            return newState;
+
+        case DELETE_AMENITY:
+            // listing id as key, and value is listing object
+            newState = {
+                ...state,
+            }
+            const amenityChangedListing = newState[action.payload.listingId]
+            const updatedAmenities = amenityChangedListing.ListingAmenities.filter(({ id }) => +id !== +action.payload.amenityId);
+            newState[action.payload.listingId] = {
+                ...newState[action.payload.listingId],
+                ListingAmenities: updatedAmenities
 
             };
             return newState;

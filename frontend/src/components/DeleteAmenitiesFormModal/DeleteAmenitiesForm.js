@@ -23,6 +23,7 @@ function DeleteAmenitiesForm({ listingId }) {
     // const toDeleteAmenityId = amenitiesState?.filter((amenity) => +amenity.amenityId === +amenityId).id
     
     // console.log(amenitiesState)
+
     
     // amenitiesPredefined's index is amentityId, predefined amenity table in db
     const amenitiesPredefined = [
@@ -65,18 +66,18 @@ function DeleteAmenitiesForm({ listingId }) {
 
   
 
-        // return dispatch(listingActions.deleteAmenityThunk(toDeleteAmenityId ))
-        //     .then(() => {
-        //         setErrors(['Successfully deleted!']);
-        //         // reset();
+        return dispatch(listingActions.deleteAmenityThunk(toDeleteAmenity ))
+            .then(() => {
+                setErrors(['Successfully deleted!']);
+                // reset();
                 
-        //     })
-        //     .catch(async (res) => {
-        //         // console.log('notOK',res)
-        //         const data = await res.json();
-        //         // console.log('notOK', data)
-        //         if (data && data.errors) setErrors(data.errors);
-        //     });
+            })
+            .catch(async (res) => {
+                // console.log('notOK',res)
+                const data = await res.json();
+                // console.log('notOK', data)
+                if (data && data.errors) setErrors(data.errors);
+            });
 
     };
 
