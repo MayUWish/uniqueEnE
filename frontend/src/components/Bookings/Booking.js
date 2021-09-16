@@ -4,6 +4,7 @@ import * as bookingActions from "../../store/bookings";
 import { useState } from 'react';
 
 import {NavLink} from 'react-router-dom';
+import EditBookingFormModal from '../EditBookingFromModal'
 
 const Booking = ({ booking}) => {
     const dispatch = useDispatch();
@@ -46,7 +47,8 @@ const Booking = ({ booking}) => {
                 <div style={{ display: 'flex', flexFlow:'column'}}>
 
                     <NavLink className='button' to={`/listings/${booking.listingId}`} style={{ textDecoration: 'none', height: '12%', width:'50%', marginBottom:'2%' }}>Check Your Stay</NavLink>
-                    <button className='button' value={booking.id} onClick={deleteBooking} style={{ textDecoration: 'none', height: '7%', width: '50%' }}>Cancel Reservation</button>
+                    <button className='button' value={booking.id} onClick={deleteBooking} style={{ textDecoration: 'none', height: '7%', width: '50%' }}>Cancel</button>
+                    <EditBookingFormModal booking={booking}/>
                 </div>
           </div>
         

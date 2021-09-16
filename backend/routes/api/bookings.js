@@ -157,9 +157,9 @@ router.get(
                 attributes: ['id','listingId','userId','startDate','endDate','createdAt','updatedAt','numGuests'],
                 include: [{
                     model: Listing,
-                    include: [{
-                        model: Image
-                    }]
+                    // include: [{
+//                         model: Image
+                    // }]
                 }],
                 order: [["startDate"]],
             });
