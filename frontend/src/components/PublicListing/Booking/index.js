@@ -80,7 +80,7 @@ function BookingForm() {
             endDate
      
         }
-        console.log(newBooking );
+        //console.log(newBooking );
 
         return dispatch(BookingRedux.createBookingThunk(newBooking)).then(()=>{
             // setErrors(['Successfully booked.']);

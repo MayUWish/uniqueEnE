@@ -81,7 +81,7 @@ function EditBookingForm({ booking}) {
             endDate
 
         }
-        console.log(editBooking);
+        //console.log(editBooking);
 
         return dispatch(BookingRedux.editBookingThunk(editBooking)).then(() => {
             setErrors(['Successfully edited.']);
