@@ -17,8 +17,8 @@ const Listing = ({ listing}) => {
             
             <div className='intro'>
                 <h3>{listing?.title}</h3>
-                <p style={{marginLeft:'2%'}}>{listing?.address}, {listing?.city}</p>
-                <p style={{ marginLeft: '2%' }}>{listing?.guestNum} guests, {listing?.bedroomNum} beds, {listing?.bathroomNum} baths</p>
+                <p style={{ marginLeft: '2%' }}> {listing?.city}, {listing?.state}, {listing?.country},</p>
+                <p style={{ marginLeft:'2%'}}>{listing?.guestNum} guests, {listing?.bedroomNum} beds, {listing?.bathroomNum} baths</p>
                 <h3 style={{ marginRight: '5%', textAlign:'end' }}>{listing?.price}/night</h3>
                 
             </div>

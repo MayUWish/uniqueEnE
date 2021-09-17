@@ -15,8 +15,8 @@ const Listing = ({ listing}) => {
             <div className='intro'>
                 <NavLink className='button' 
                 to={`/hosting/${listing.id}`} 
-                style={{ textDecoration: 'none', paddingBottom:'1.5%' }}>
-                    --Preview Your Listing--
+                style={{ textDecoration: 'none', paddingBottom:'1.5%',padding:'1%' }}>
+                    {`- Preview & Edit -`}
                 </NavLink>
 
                 <h3>{listing?.title}</h3>

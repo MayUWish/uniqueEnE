@@ -29,7 +29,7 @@ const Reservations = ({ listings }) => {
                 (listing.Bookings &&listing.Bookings.length > 0) && <div key={`pastReservationListing_${listing.id}`} style={{border:'1px solid #d3d3d3',
                 margin:'2%', borderRadius:'10px'}}>
                     <h3>{listing.title}</h3>
-                    <h4 style={{marginLeft:'5%'}}>{listing.address},{listing.city}</h4>
+                    <h4 style={{marginLeft:'5%'}}>{listing.address}, {listing.city}</h4>
                     <h4 style={{ marginLeft: '5%' }}>Reservations:</h4>
                     {listing.Bookings.map(booking=>(
                         (toDate(booking.endDate.slice(0, 10)) - today < 0)&&<div key={`pastReservation_${booking.id}`}>
