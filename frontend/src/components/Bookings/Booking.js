@@ -1,42 +1,44 @@
 import toAddImg from '../../images/deFaultImg.jpeg'
-import { useDispatch} from 'react-redux';
-import * as bookingActions from "../../store/bookings";
-import { useState } from 'react';
+// import { useDispatch} from 'react-redux';
+// import * as bookingActions from "../../store/bookings";
+// import { useState } from 'react';
 
 import {NavLink} from 'react-router-dom';
-import EditBookingFormModal from '../EditBookingFromModal'
+import EditBookingFormModal from '../EditBookingFromModal';
+import DeleteBookingFormModal from '../DeleteBookingFormModal'
+
 
 const Booking = ({ booking}) => {
-    const dispatch = useDispatch();
-    const [errors, setErrors] = useState([]);
+    // const dispatch = useDispatch();
+    // const [errors, setErrors] = useState([]);
 
-    const deleteBooking=(e)=>{
-        setErrors([]);
-        dispatch(bookingActions.deleteBookingThunk(+e.target.value)).then(() => {
-            window.alert('Successfully deleted. ')
+    // const DeleteBooking=(e)=>{
+    //     setErrors([]);
+    //     dispatch(bookingActions.deleteBookingThunk(+e.target.value)).then(() => {
+    //         window.alert('Successfully deleted. ')
 
 
-        }).catch(async (res) => {
-                // console.log('notOK',res)
+    //     }).catch(async (res) => {
+    //             // console.log('notOK',res)
                 
-                const data = await res.json();
-                // console.log('notOK', data)
-            if (data && data.errors) {
-                window.alert(data.errors[0])                    
-                    // setErrors(data.errors)};
-            };
-    })}
+    //             const data = await res.json();
+    //             // console.log('notOK', data)
+    //         if (data && data.errors) {
+    //             window.alert(data.errors[0])                    
+    //                 // setErrors(data.errors)};
+    //         };
+    // })}
     
     
     return (
         <div className='eachListing'>            
             <img className='img' src={booking.Listing.Images ? (booking.Listing.Images[0] ? booking.Listing.Images[0].url : toAddImg) : toAddImg} alt='listingImage' ></img>
             <div className='intro'>
-                <ul className='error'>
+                {/* <ul className='error'>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
                     ))}
-                </ul>
+                </ul> */}
                
                 <h3>{booking.Listing?.title}</h3>  
                 <p style={{marginLeft:'1%',fontSize:'small'}}>{booking.Listing?.address}, {booking.Listing?.city}</p>
@@ -50,9 +52,13 @@ const Booking = ({ booking}) => {
                     
 
                     <div style={{ display: 'flex', marginTop: '3%', marginBottom: '3%'}}>
-                        <button className='button' value={booking.id} onClick={deleteBooking} style={{ textDecoration: 'none', width: '35%' }}>Cancel</button>
 
-                        <EditBookingFormModal booking={booking}/>
+                       <EditBookingFormModal booking={booking}/>
+
+                        {/* <button className='button' value={booking.id} onClick={deleteBooking} style={{ textDecoration: 'none', width: '35%' }}>Cancel</button> */}
+
+                        <DeleteBookingFormModal bookingId={booking.id} />
+
                     </div>
 
                     
