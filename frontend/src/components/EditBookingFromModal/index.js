@@ -11,7 +11,7 @@ function EditBookingFormModal({ booking }) {
     const [showModal, setShowModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
     // const bookings = useSelector(state => state.bookings.incomingBookings);
-    const bookingId = booking.id;
+    // const bookingId = booking.id;
 
 
     //first loading; 

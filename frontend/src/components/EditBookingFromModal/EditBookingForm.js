@@ -61,12 +61,12 @@ function EditBookingForm({ booking}) {
         return +(endDate - startDate) / (24 * 60 * 60 * 1000);
     }
 
-    const reset = () => {
-        setStartDate('');
-        setEndDate('');
-        setGuestNum(1);
-        setErrors([])
-    };
+    // const reset = () => {
+    //     setStartDate('');
+    //     setEndDate('');
+    //     setGuestNum(1);
+    //     setErrors([])
+    // };
 
     const handleSubmit = (e) => {
         e.preventDefault();
