@@ -62,7 +62,7 @@
     justify-content: flex-start;
     border: 1px solid lightgray;
     box-shadow: 1px 1px lightgray;
-    width:25%;;
+    min-width:20%;
     height:20%;
     border-radius: 20px;
     margin:1%;

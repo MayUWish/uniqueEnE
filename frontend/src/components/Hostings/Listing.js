@@ -13,7 +13,11 @@ const Listing = ({ listing}) => {
             <img className='img' src={listing.Images ? (listing.Images[0] ? listing.Images[0].url : toAddImg) : toAddImg} alt='listingImage' ></img>
             
             <div className='intro'>
-                <NavLink className='button' to={`/hosting/${listing.id}`} style={{ textDecoration: 'none', paddingBottom:'3%' }}>--Preview Your Listing--</NavLink>
+                <NavLink className='button' 
+                to={`/hosting/${listing.id}`} 
+                style={{ textDecoration: 'none', paddingBottom:'1.5%' }}>
+                    --Preview Your Listing--
+                </NavLink>
 
                 <h3>{listing?.title}</h3>
                 <h4 style={{marginLeft:'2%'}}>{listing?.address}, {listing?.city}</h4>

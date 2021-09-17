@@ -31,7 +31,7 @@ function DeleteListingFormModal() {
 
     return (
         <div >
-            <button className='button' onClick={() => setShowModal(true)}>Delete Listing</button>
+            <button className='button' onClick={() => setShowModal(true)} >Delete Listing</button>
             
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

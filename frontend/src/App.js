@@ -66,8 +66,8 @@ function App() {
 
           {/* host role: sepcific listing that current loggin user is hosting */}
           <Route exact path={`/hosting/:listingId`}>
-            <div style={{ display: 'flex' }}>
-              <NavLink className='button' to={`/hosting`} style={{ textDecoration: 'none',  width: '7%' }}> {`< To your listings`}</NavLink>
+            <div style={{ display: 'flex',flexWrap:'wrap' }}>
+              <NavLink className='button' to={`/hosting`} style={{ textDecoration: 'none',   height:'50%' }}> {`< To your listings`}</NavLink>
               <EditListingFormModal />
               <DeleteListingFromModal />
               <AddImagesFormModal  />
@@ -96,7 +96,7 @@ function App() {
           {/* public: sepcific listing  */}
           <Route exact path={`/listings/:listingId`}>
             <div style={{ display: 'flex' }}>
-              <NavLink className='button' to={`/listings`} style={{ textDecoration: 'none', width: '10%' }}> {`< To all unique stays`}</NavLink>
+              <NavLink className='button' to={`/listings`} style={{ textDecoration: 'none', width: '15%' }}> {`< To all unique stays`}</NavLink>
             </div>
             <PublicListing />
           </Route>

@@ -29,7 +29,13 @@ const DeleteImagesLink= () => {
 
     return (
              
-                <NavLink className='button' style={{ display: 'block', textDecoration: 'none', border: '1px solid lightgray', fontWeight: 'bolder' }} to={`/hosting/${listingId}/images/delete`}>Delete Images </NavLink>   
+                <NavLink className='button' 
+                style={{ display: 'block', textDecoration: 'none', 
+                border: '1px solid lightgray', 
+                height:'50%' }} 
+                to={`/hosting/${listingId}/images/delete`}>
+                    Delete Images 
+                    </NavLink>   
 
     )
 

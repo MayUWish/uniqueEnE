@@ -158,7 +158,7 @@ function BookingForm() {
                     </div>
                 )}
               
-                 <button className='bookingFormButton button' type="submit" disabled={!sessionUser} >Book</button>
+                 <button className='bookingFormButton button' type="submit" disabled={!sessionUser} >BOOK</button>
 
          
 

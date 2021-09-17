@@ -49,7 +49,7 @@ const PublicListing = () => {
                     <NavLink   
                     style={{ display: 'block', color: '#183a1d', 
                     textDecoration: 'none', border: '1px solid lightgray', 
-                    fontWeight: 'bolder', marginTop: '0.5%', fontSize: 'larger' }}
+                    fontWeight: 'bolder', borderRadius:'5px',padding:'0.1%' }}
                     to={`/listings/${listingId}/images`}                    
                     >Show all photos </NavLink>
             </div>

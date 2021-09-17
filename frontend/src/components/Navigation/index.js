@@ -45,7 +45,7 @@ function Navigation({ isLoaded }) {
 
             <div style={{display:'flex'}}>         
             <NavLink className='exploreAllListings' exact to="/listings">
-                <h3 style={{ color: '#183a1d' }}>{`<- Explore Unique Stays ->`}</h3>
+                <h3 style={{ color: '#183a1d' }}>{`<- Click to Explore  ->`}</h3>
             </NavLink>
 
             {isLoaded && sessionLinks}   
