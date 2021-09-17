@@ -1,28 +1,31 @@
 .loginForm{
     display: flex;
     flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
     width:auto;
+    /* max-width: 100%; */
 }
 
 .loginInput,.loginSubmitButton,.DemoButton{
   
-  width:520px;
-  height:25px;
-  font-size: 1em;
+  max-width: 80%;
+  max-height:25%;
+  /* font-size: 1em; */
   /* outline: none; */
   border: 1px solid lightgray;
-  border-radius: 0.9;
-  margin: 1.5em auto;
-  padding: 1.5em 1.5em;
+  border-radius: 10px;
+  margin: 1em auto;
+  padding: 1em 1em;
   background: none;
 
 
 }
 .loginSubmitButton,.DemoButton{
-    width:135px;
+    width:40%;
     border: none;
     color:#183a1d; 
-    font-size: 20px;
+    font-size: large;
     font-weight: bold;
     margin: 0.2em auto;
     height:15px;
@@ -38,7 +41,7 @@ label,input{
 .loginInputWrapper,.loginSubmitWrapper{
     display: flex;
     margin:auto 10px;
-    font-size: 1em;
+    /* font-size: 1em; */
     font-weight: bold;
     justify-content: center;
     align-items: center;
@@ -52,7 +55,7 @@ label,input{
     display: inline;
     border: none;
     background: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid gray;
     font-weight: bold;
     color:#183a1d;
 }

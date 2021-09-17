@@ -51,7 +51,7 @@ function App() {
           <Route exact path="/">
             <div>
               <NavLink style={{ textDecoration: 'none' }} exact to="/listings">
-                <h3>{`"Oh the places you'll go" - Your Unique Stays`}</h3>
+                <h3 style={{ color:'#183a1d' }}>{`"Oh the places you'll go" - Your Unique Stays`}</h3>
               </NavLink> 
               <img className='homePageImg' src={homePagePicture} alt='homePagePicture' ></img>
             </div>            

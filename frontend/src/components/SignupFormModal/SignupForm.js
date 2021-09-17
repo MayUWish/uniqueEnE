@@ -105,7 +105,7 @@ function SignupForm() {
             </form>
             <div className='loginWrapper'>
                     <span>Already have an account?</span>
-                <button className='loginInSignup' onClick={() => setShowModal(true)}>Log In</button>
+                <button className='loginInSignup' onClick={() => setShowModal(true)}>Log in</button>
                     {showModal && (
                         <Modal onClose={() => setShowModal(false)}>
                             <LoginForm />
