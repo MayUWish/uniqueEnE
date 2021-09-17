@@ -52,8 +52,8 @@ const Description = () => {
                 <p>{currentListing?.guestNum} guests, {currentListing?.bedroomNum} bedrooms, {Number(currentListing?.twinBedNum) + Number(currentListing?.queenBedNum) + Number(currentListing?.kingBedNum) + Number(currentListing?.sofaBedNum)} beds, {currentListing?.bathroomNum} bathrooms, ${currentListing?.price}/night</p>
         </div>
             <div style={{ borderBottom: '1px solid lightgray'}}>
-                <h3 key='Enhanced Clean'>{currentListing?.enhancedClean && 'Enhanced Clean'}</h3>
-                <h3 key='Self Checkin'>{currentListing?.selfCheckin && 'Self Checkin'}</h3>
+                {currentListing?.enhancedClean && <h3 key='Enhanced Clean'><i class="fas fa-home" />{currentListing?.enhancedClean && '  Enhanced Clean'}</h3>}
+                {currentListing?.selfCheckin &&<h3 key='Self Checkin'><i class="fas fa-suitcase" />{currentListing?.selfCheckin && '  Self Checkin'}</h3>}
 
         </div >
             
@@ -63,17 +63,17 @@ const Description = () => {
         </div >
 
             <div style={{ borderBottom: '1px solid lightgray'}}>
-            <h3>Where you'll Sleep</h3>
-            <p key='twinBedNum'>{currentListing?.twinBedNum} twin beds</p>
-            <p key='queenBedNum'>{currentListing?.queenBedNum} queen beds</p>
-            <p key='kingBedNum'>{currentListing?.kingBedNum} king beds</p>
-            <p key='sofaBedNum'>{ currentListing?.sofaBedNum } sofa beds</p >
+            <h3><i class="fas fa-bed" /> {` Where you'll Sleep`}</h3>
+                {currentListing?.twinBedNum > 0 && <p key='twinBedNum' style={{marginLeft:'1%'}}>-{currentListing?.twinBedNum} twin beds </p>}
+                {currentListing?.queenBedNum >0 &&<p key='queenBedNum' style={{ marginLeft: '1%' }}>-{currentListing?.queenBedNum} queen beds</p>}
+                {currentListing?.kingBedNum>0 && <p key='kingBedNum' style={{ marginLeft: '1%' }}>-{currentListing?.kingBedNum} king beds</p>}
+                {currentListing?.sofaBedNum > 0 && <p key='sofaBedNum' style={{ marginLeft: '1%' }}>-{ currentListing?.sofaBedNum } sofa beds</p >}
         </div>
 
             <div style={{ borderBottom: '1px solid lightgray'}}>
-            <h3>What this place offers</h3>
+            <h3><i class="fas fa-bath" /> {` What this place offers`}</h3>
             {currentAmenityNames.map((amenity,index)=>(
-                <p key={index}>{amenity}</p>
+                <p style={{ marginLeft: '1%' }} key={index}>-{amenity}</p>
             ))}
            
         </div>
