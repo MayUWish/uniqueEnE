@@ -103,10 +103,13 @@ function EditBookingForm({ booking}) {
 
 
     return (
-        <>
+        <div style={{ overflow: 'auto', maxHeight: '55%', 
+        minWidth: '300px',
+        borderRadius: '10px' }}>
+
             <h3 style={{ textAlign: 'start', marginLeft: '2%' }} >${booking?.Listing.price} /night</h3>
 
-            <form className='bookingForm' onSubmit={handleSubmit} onClick={loggedOutUser}>
+            <form  onSubmit={handleSubmit} onClick={loggedOutUser}>
 
                 <ul className='error'>
                     {errors.map((error, idx) => (
@@ -114,7 +117,7 @@ function EditBookingForm({ booking}) {
                     ))}
                 </ul>
 
-                <label>
+                <label style={{ borderTop: '1px solid #d3d3d3' }}>
                     Check In
                     <input
                         className='bookingInput'
@@ -136,7 +139,7 @@ function EditBookingForm({ booking}) {
                     />
                 </label>
 
-                <label>
+                <label style={{borderBottom:'1px solid #d3d3d3'}}>
                     Guests
                     <input
                         className='bookingInputNumber'
@@ -151,7 +154,7 @@ function EditBookingForm({ booking}) {
                 </label>
 
                 {(startDate && endDate && toDate(endDate) > toDate(startDate)) && (
-                    <div style={{ textAlign: 'start', fontSize: 'large', fontWeight: 'bold', marginLeft: '5%' }}>
+                   <div style={{ textAlign: 'start', fontWeight: 'bold', marginLeft: '5%' }}>
                         Price Breakdown:
                         <p style={{ marginLeft: '9%' }}>${booking?.Listing.price} x {numberOfDays(toDate(startDate), toDate(endDate))} nights</p>
 
@@ -159,7 +162,9 @@ function EditBookingForm({ booking}) {
                     </div>
                 )}
 
-                <button className='bookingFormButton button' type="submit" disabled={!sessionUser} >Edit</button>
+                <button className='bookingFormButton button' type="submit" disabled={!sessionUser} 
+                 
+                >Edit</button>
 
 
 
@@ -168,7 +173,7 @@ function EditBookingForm({ booking}) {
             </form>
 
 
-        </>
+        </div>
     );
 }
 export default EditBookingForm;

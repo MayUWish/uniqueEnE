@@ -26,7 +26,7 @@ function EditBookingFormModal({ booking }) {
 
     return (
         <div >
-            <button className='button' onClick={() => setShowModal(true)} style={{ textDecoration: 'none', height: '7%', width: '50%' }}>Edit</button>
+            <button className='button' onClick={() => setShowModal(true)} style={{ textDecoration: 'none' }}>Edit</button>
             
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

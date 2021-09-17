@@ -30,29 +30,35 @@ const Booking = ({ booking}) => {
     
     return (
         <div className='eachListing'>            
-
+            <img className='img' src={booking.Listing.Images ? (booking.Listing.Images[0] ? booking.Listing.Images[0].url : toAddImg) : toAddImg} alt='listingImage' ></img>
             <div className='intro'>
                 <ul className='error'>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
                     ))}
                 </ul>
-                <h3>{booking.Listing?.title}</h3>
-                <p>{booking.Listing?.address}, {booking.Listing?.city}</p>
-                <p>{Number(booking.Listing?.twinBedNum) + Number(booking.Listing?.queenBedNum) + Number(booking.Listing?.kingBedNum) + Number(booking.Listing?.sofaBedNum)} beds , {booking.Listing?.bathroomNum} baths</p>
+               
+                <h3>{booking.Listing?.title}</h3>  
+                <p style={{marginLeft:'1%',fontSize:'small'}}>{booking.Listing?.address}, {booking.Listing?.city}</p>
+                <p style={{ marginLeft: '1%', fontSize: 'small' }}>{Number(booking.Listing?.twinBedNum) + Number(booking.Listing?.queenBedNum) + Number(booking.Listing?.kingBedNum) + Number(booking.Listing?.sofaBedNum)} beds , {booking.Listing?.bathroomNum} baths</p>
 
-                <h4>{booking.numGuests} guests' reservation:  </h4>
-                <h4 >from {booking.startDate.slice(0, 10)} to {booking.endDate.slice(0, 10)}</h4>
+                <h5>{booking.numGuests} guests' reservation:  </h5>
+                <h5 style={{ marginLeft: '1%' }}>from {booking.startDate.slice(0, 10)} to {booking.endDate.slice(0, 10)}</h5>
        
                 <div style={{ display: 'flex', flexFlow:'column'}}>
+                    <NavLink className='button' to={`/listings/${booking.listingId}`} style={{ textDecoration: 'none', width: '65%',textAlign:'center' }}>To Your Stay</NavLink>
+                    
 
-                    <NavLink className='button' to={`/listings/${booking.listingId}`} style={{ textDecoration: 'none', width:'50%' }}>Check Your Stay</NavLink>
-                    <button className='button' value={booking.id} onClick={deleteBooking} style={{ textDecoration: 'none', height: '7%', width: '50%' }}>Cancel</button>
-                    <EditBookingFormModal booking={booking}/>
+                    <div style={{ display: 'flex', marginTop: '3%', marginBottom: '3%'}}>
+                        <button className='button' value={booking.id} onClick={deleteBooking} style={{ textDecoration: 'none', width: '35%' }}>Cancel</button>
+
+                        <EditBookingFormModal booking={booking}/>
+                    </div>
+
+                    
                 </div>
           </div>
 
-            <img className='img' src={booking.Listing.Images ? (booking.Listing.Images[0] ? booking.Listing.Images[0].url : toAddImg) : toAddImg} alt='listingImage' ></img>
 
         
         </div>

@@ -1,21 +1,18 @@
 .eachListing{
-    flex-basis:auto;
-    flex-shrink: 2;
     border: 1px solid lightgray;
     margin:2%;
     border-radius: 10px;
-    max-height: 300px;
+    overflow: auto;
    
 }
 
 .img{
     width:50%;
     object-fit: cover;
-    margin-right: 1%;
     border-radius: 10px;
 }
 
 .intro{
-    margin-left: 1%;
+    margin-left: 2%;
    
 }
