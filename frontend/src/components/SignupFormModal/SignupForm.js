@@ -45,7 +45,7 @@ function SignupForm() {
     }
 
     return (
-        <>
+        <div>
             <form className='signupForm' onSubmit={handleSubmit}>
                 <ul className='error'>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -86,7 +86,7 @@ function SignupForm() {
                         />
                     </label>
                 </div>
-                <div className='lsignupInputWrapper'>
+                <div className='signupInputWrapper'>
                     <label>
                         Confirm Password
                         <input
@@ -99,8 +99,8 @@ function SignupForm() {
                     </label>
                 </div>
                 <div className='signupSubmitWrapper'>
-                    <button className='signupSubmitButton' type="submit">SignUp</button>
-                    <button className='DemoButton' type="button" onClick={demonUser}>DemoUser</button>
+                    <button className='signupSubmitButton' type="submit">Signup</button>
+                    <button className='DemoButton' type="button" onClick={demonUser}>Demo</button>
                 </div>
             </form>
             <div className='loginWrapper'>
@@ -112,7 +112,7 @@ function SignupForm() {
                         </Modal>
                     )}
             </div>
-       </>
+       </div>
     );
 }
 
