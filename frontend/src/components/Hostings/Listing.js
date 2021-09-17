@@ -19,7 +19,7 @@ const Listing = ({ listing}) => {
                     {`- Preview & Edit -`}
                 </NavLink>
 
-                <h3>{listing?.title}</h3>
+                <h3>{(listing?.title.length > 30) ? listing?.title.slice(0,30)+`...`:listing?.title}</h3>
                 <h4 style={{marginLeft:'2%'}}>{listing?.address}, {listing?.city}</h4>
                 <h4 style={{ marginLeft: '2%' }}>{listing?.guestNum} guests, {Number(listing?.twinBedNum) + Number(listing?.queenBedNum) + Number(listing?.kingBedNum) + Number(listing?.sofaBedNum)} beds, {listing?.bathroomNum} baths</h4>
                 

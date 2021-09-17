@@ -57,7 +57,7 @@ const Description = () => {
 
         </div >
             
-            <div style={{ borderBottom: '1px solid lightgray'}}>
+            <div style={{ borderBottom: '1px solid lightgray', textAlign: 'justify'}}>
                 <p>{currentListing?.description}</p>
 
         </div >
