@@ -7,6 +7,7 @@ import { Modal } from '../../context/Modal';
 import SignupForm from '../SignupFormModal/SignupForm.js'
 
 
+
 function LoginForm() {
     const dispatch = useDispatch();
     const [credential, setCredential] = useState("");
@@ -14,24 +15,33 @@ function LoginForm() {
     const [errors, setErrors] = useState([]);
 
     const [showModal, setShowModal] = useState(false);
+ 
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
         return dispatch(sessionActions.login({ credential, password })).catch(
             async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
+                
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors);
+
+                
+                
             }
         );
     };
     
     const demonUser=(e)=>{
         e.preventDefault();
-        return dispatch(sessionActions.login({ credential:'Demo-lition', password:'password' })).catch(
+        return dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' })).catch(
             async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
+              
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors);
+
+                
+                
             }
         );
 
