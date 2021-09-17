@@ -89,7 +89,7 @@ function CreateListingForm() {
             .then(()=>{
                 setErrors(['Successfully created! Please click outside the form to return to all your listings.']);
                 reset();
-                // history.push(`/hosting/${Object.keys(listings)[0]}`)
+                // history.push(`/hosting`)
             })
             .catch(async (res) => {
                 // console.log('notOK',res)

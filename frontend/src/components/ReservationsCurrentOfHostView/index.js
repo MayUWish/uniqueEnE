@@ -26,7 +26,7 @@ const Reservations = ({ listings }) => {
         
         <div  style={{ width: '50%',  marginLeft: '1%', display:'flex',flexDirection:'column' }}>
             {listings?.map(listing => (
-                listing.Bookings.length > 0 && <div key={`currentReservationListing_${listing.id}`} style={{border:'1px solid #d3d3d3',
+                (listing.Bookings&&listing.Bookings.length > 0) && <div key={`currentReservationListing_${listing.id}`} style={{border:'1px solid #d3d3d3',
                 margin:'2%', borderRadius:'10px'}}>
                     <h3>{listing.title}</h3>
                     <h4 style={{marginLeft:'5%'}}>{listing.address},{listing.city}</h4>
