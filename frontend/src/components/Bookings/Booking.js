@@ -1,4 +1,4 @@
-import toAddImg from '../../images/toAddImg.jpg'
+import toAddImg from '../../images/deFaultImg.jpeg'
 import { useDispatch} from 'react-redux';
 import * as bookingActions from "../../store/bookings";
 import { useState } from 'react';

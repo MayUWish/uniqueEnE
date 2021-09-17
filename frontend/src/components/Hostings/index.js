@@ -21,11 +21,17 @@ const HostingsCollection = () => {
     // console.log(listings)
 
     return (
-        
-        <div className='listingsWrapper'>
-            {listings?.map(listing=>(
-                <Listing key={listing.id} listing={listing}/>
-            ))}
+        <div style={{ display: 'flex' }}>
+            <div className='listingsWrapper' style={{ width: '50%', borderRight: '2px solid #d3d3d3', marginLeft: '1%' }}>
+                {listings?.map(listing=>(
+                    <Listing key={listing.id} listing={listing}/>
+                ))}
+            </div>
+            <div style={{ width: '50%', marginLeft: '1%' }}>
+                <h3>Bookings:</h3>
+
+
+            </div>
         </div>
         
     )

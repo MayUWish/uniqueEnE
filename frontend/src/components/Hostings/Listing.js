@@ -1,4 +1,4 @@
-import toAddImg from '../../images/toAddImg.jpg'
+import toAddImg from '../../images/deFaultImg.jpeg'
 import AddImagesFormModal from "./AddImagesFormModal";
 import AddAmenitiesFormModal from "./AddAmenitiesFormModal";
 import {NavLink} from 'react-router-dom';
@@ -13,17 +13,23 @@ const Listing = ({ listing}) => {
             <img className='img' src={listing.Images ? (listing.Images[0] ? listing.Images[0].url : toAddImg) : toAddImg} alt='listingImage' ></img>
             
             <div className='intro'>
-                <p>{listing?.title}</p>
-                <p>{listing?.address}, {listing?.city}</p>
-                <p>{listing?.guestNum} guests, {Number(listing?.twinBedNum) + Number(listing?.queenBedNum) + Number(listing?.kingBedNum) + Number(listing?.sofaBedNum)} beds, {listing?.bathroomNum} baths</p>
-                {/* <button onClick={addImages}>Add Images</button> */}
-                <div style={{ display: 'flex', flexFlow:'column'}}>
-                <AddImagesFormModal listingId={listing.id}/>
-                <AddAmenitiesFormModal listingId={listing.id} />
+                <NavLink className='button' to={`/hosting/${listing.id}`} style={{ textDecoration: 'none', paddingBottom:'3%' }}>--Preview Your Listing--</NavLink>
+
+                <h3>{listing?.title}</h3>
+                <h4 style={{marginLeft:'2%'}}>{listing?.address}, {listing?.city}</h4>
+                <h4 style={{ marginLeft: '2%' }}>{listing?.guestNum} guests, {Number(listing?.twinBedNum) + Number(listing?.queenBedNum) + Number(listing?.kingBedNum) + Number(listing?.sofaBedNum)} beds, {listing?.bathroomNum} baths</h4>
                 
-                <NavLink className='button' to={`/hosting/${listing.id}`} style={{ textDecoration: 'none', height: '24px', width: '75px' }}>-Preview-</NavLink>
+                
+                
+
+                <div style={{ display: 'flex'}}>
+                    <AddImagesFormModal listingId={listing.id}/>
+                    <AddAmenitiesFormModal listingId={listing.id} />                  
                 </div>
+                
             </div>
+
+            
         
         </div>
     )

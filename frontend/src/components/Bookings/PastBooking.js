@@ -1,4 +1,4 @@
-import toAddImg from '../../images/toAddImg.jpg'
+import toAddImg from '../../images/deFaultImg.jpeg'
 
 import {NavLink} from 'react-router-dom';
 

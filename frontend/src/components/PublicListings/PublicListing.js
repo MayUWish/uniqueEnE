@@ -1,4 +1,4 @@
-import toAddImg from '../../images/toAddImg.jpg';
+import toAddImg from '../../images/deFaultImg.jpeg';
 import { useHistory } from 'react-router-dom';
 
 
