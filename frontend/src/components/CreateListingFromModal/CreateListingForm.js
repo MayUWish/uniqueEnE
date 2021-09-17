@@ -327,9 +327,17 @@ function CreateListingForm() {
                     />
                 </div>
 
+                <ul className='error'>
+                    {errors.map((error, idx) => (
+                        <li key={idx}>{error}</li>
+                    ))}
+                </ul>
+
                 <div className='listingSubmitWrapper'>
                     <button className='listingSubmitButton' type="submit">Create</button>
                 </div>
+
+                
 
             </form>
 

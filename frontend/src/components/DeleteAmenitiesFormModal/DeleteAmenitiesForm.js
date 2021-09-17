@@ -95,6 +95,7 @@ function DeleteAmenitiesForm({ listingId }) {
                 
                     <select 
                         className='listingInput multipleSelect' 
+                        style={{ height: '80%' }}
                         //  amenitiesPredefined's index is amentityId, predefined amenity table in db
                         onChange={(e) => setAmenityId(+e.target.value.split('.')[0])}>
                         <option key='0'>You can delete multiple times, but one at a time ----- </option>

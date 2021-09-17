@@ -83,7 +83,8 @@ function AddAmenitiesForm({ listingId }) {
                     <select 
                         className='listingInput multipleSelect' 
                         //  amenitiesPredefined's index is amentityId, predefined amenity table in db
-                        onChange={(e) => setAmenityId(+e.target.value.split('.')[0])}>
+                        onChange={(e) => setAmenityId(+e.target.value.split('.')[0])}
+                        style={{height:'80%'}}>
                         <option key='0'>You can add multiple times, but one at a time ----- </option>
                         {amenitiesPredefined.map((amenity,index)=>(
                             <option key={index + 1} >{index+1}.{amenity}</option>)
