@@ -46,7 +46,12 @@ const PublicListing = () => {
                 ))}
             </div>
             <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
-                <NavLink style={{ display: 'block', textDecoration: 'none', border: '1px solid lightgray', fontWeight: 'bold' }} to={`/listings/${listingId}/images`}>Show all photos </NavLink>
+                    <NavLink   
+                    style={{ display: 'block', color: '#183a1d', 
+                    textDecoration: 'none', border: '1px solid lightgray', 
+                    fontWeight: 'bolder', marginTop: '0.5%', fontSize: 'larger' }}
+                    to={`/listings/${listingId}/images`}                    
+                    >Show all photos </NavLink>
             </div>
             
             

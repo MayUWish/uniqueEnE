@@ -23,7 +23,7 @@ const Images = () => {
 
         { isLoaded && (<div style={{ margin: 'auto 3%' }}>
             <div className ='imagesToListing' >
-                <NavLink style={{ display: 'block', textDecoration: 'none', border: '1px solid lightgray', fontWeight: 'bolder' }} to={`/listings/${listingId}`}>Back to listing </NavLink>
+                    <NavLink style={{ display: 'block', textDecoration: 'none', border: '1px solid lightgray', fontWeight: 'bolder' }} to={`/listings/${listingId}`}>{`< Back to listing`} </NavLink>
             </div>
 
             <div className='AllImages'>

@@ -26,8 +26,8 @@ function EditListingForm({ listingId }) {
     const [kingBedNum, setKingBedNum] = useState(currentListing.kingBedNum);
     const [sofaBedNum, setSofaBedNum] = useState(currentListing.sofaBedNum);
 
-    const [enhancedClean, setEnhancedClean] = useState(currentListing.enhancedClean);
-    const [selfCheckin, setSelfCheckin] = useState(currentListing.selfCheckin);
+    const [enhancedClean, setEnhancedClean] = useState(!currentListing.enhancedClean ? 'false' : currentListing.enhancedClean);
+    const [selfCheckin, setSelfCheckin] = useState(!currentListing.selfCheckin ? 'false' : currentListing.selfCheckin);
 
     const [address, setAddress] = useState(currentListing.address);
     const [city, setCity] = useState(currentListing.city);

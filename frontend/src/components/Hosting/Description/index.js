@@ -55,7 +55,7 @@ const Description = () => {
        <>
             <div style={{ borderBottom: '1px solid lightgray', width: '50%'}}>
             <h2>Unique Stay hosted by {sessionUser.username}</h2>
-                <p>{currentListing?.guestNum} guests, {currentListing?.bedroomNum} bedroom, {Number(currentListing?.twinBedNum) + Number(currentListing?.queenBedNum) + Number(currentListing?.kingBedNum) + Number(currentListing?.sofaBedNum)} bed, {currentListing?.bathroomNum} bathroom, ${currentListing?.price}/night</p>
+                <p>{currentListing?.guestNum} guests, {currentListing?.bedroomNum} bedrooms, {Number(currentListing?.twinBedNum) + Number(currentListing?.queenBedNum) + Number(currentListing?.kingBedNum) + Number(currentListing?.sofaBedNum)} beds, {currentListing?.bathroomNum} bathrooms, ${currentListing?.price}/night</p>
         </div>
             <div style={{ borderBottom: '1px solid lightgray', width: '50%'}}>
                 <h3 key='Enhanced Clean'>{currentListing?.enhancedClean && 'Enhanced Clean'}</h3>
@@ -70,10 +70,10 @@ const Description = () => {
 
             <div style={{ borderBottom: '1px solid lightgray', width: '50%'}}>
             <h3>Where you'll Sleep</h3>
-            <p key='twinBedNum'>{currentListing?.twinBedNum} twin bed</p>
-            <p key='queenBedNum'>{currentListing?.queenBedNum} queen bed</p>
-            <p key='kingBedNum'>{currentListing?.kingBedNum} king bed</p>
-            <p key='sofaBedNum'>{ currentListing?.sofaBedNum } sofa bed</p >
+            <p key='twinBedNum'>{currentListing?.twinBedNum} twin beds</p>
+            <p key='queenBedNum'>{currentListing?.queenBedNum} queen beds</p>
+            <p key='kingBedNum'>{currentListing?.kingBedNum} king beds</p>
+            <p key='sofaBedNum'>{ currentListing?.sofaBedNum } sofa beds</p >
         </div>
 
             <div style={{ borderBottom: '1px solid lightgray', width: '50%'}}>

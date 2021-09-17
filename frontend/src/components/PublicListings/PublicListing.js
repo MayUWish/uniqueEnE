@@ -16,9 +16,10 @@ const Listing = ({ listing}) => {
             <img className='img' src={listing.Images ? (listing.Images[0] ? listing.Images[0].url : toAddImg) : toAddImg} alt='listingImage' ></img>
             
             <div className='intro'>
-                <p>{listing?.title}</p>
-                <p>{listing?.address}, {listing?.city}</p>
-                <p>{listing?.guestNum} guests, {listing?.bedroomNum} beds, {listing?.bathroomNum} baths</p>
+                <h3>{listing?.title}</h3>
+                <p style={{marginLeft:'2%'}}>{listing?.address}, {listing?.city}</p>
+                <p style={{ marginLeft: '2%' }}>{listing?.guestNum} guests, {listing?.bedroomNum} beds, {listing?.bathroomNum} baths</p>
+                <h3 style={{ marginRight: '5%', textAlign:'end' }}>{listing?.price}/night</h3>
                 
             </div>
         
