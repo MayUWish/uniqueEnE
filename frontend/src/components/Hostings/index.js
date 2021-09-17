@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import * as listingActions from "../../store/listings";
 import Listing from './Listing'
+import ReservationsOfHostView from '../ReservationsOfHostView'
 import './Listing.css'
 
 const HostingsCollection = () => {
@@ -29,6 +30,7 @@ const HostingsCollection = () => {
             </div>
             <div style={{ width: '50%', marginLeft: '1%' }}>
                 <h3>Bookings:</h3>
+                <ReservationsOfHostView listings={listings }/>
 
 
             </div>

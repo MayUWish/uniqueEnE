@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Listing, Image, ListingAmenity, Amenity  } = require('../../db/models');
+const { User, Listing, Image, ListingAmenity, Amenity,Booking  } = require('../../db/models');
 
 
 
@@ -20,7 +20,9 @@ router.get(
                 where: { userId },
                 include: [{model:ListingAmenity,
                     attributes: ['id', 'listingId', 'amenityId', 'createdAt', 'updatedAt']},                  
-                    Image
+                    Image,
+                    {model:Booking,
+                    include:[User]}
                     // Error below: amenity is not associated with ListingAmenity because join table ListingAmenity does not build association yet. If you would like to use the association, you would need to build it > see booking model as an example
                     // {
                     // model: ListingAmenity,
@@ -29,7 +31,7 @@ router.get(
                 order: [["createdAt", "DESC"]],
             });           
             // no ListingAmenities id, but image has id
-            console.log('!!!ListingAmenities', listings[0].ListingAmenities[0])
+            // console.log('!!!ListingAmenities', listings[0].ListingAmenities[0])
             // console.log('!!!Images', listings[0].Images[0])
             return res.json({
                 listings,
