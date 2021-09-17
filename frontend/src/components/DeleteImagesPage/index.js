@@ -39,16 +39,37 @@ const DeleteImages = () => {
 
         <div style={{ margin: 'auto 3%' }}  >
             <div className='imagesToListing'  >
-                <NavLink style={{ display: 'block', textDecoration: 'none', border: '1px solid lightgray', fontWeight: 'bolder' }} to={`/hosting/${listingId}`}>{`< Back to listing`} </NavLink>
+                <NavLink 
+                style={{ display: 'block', textDecoration: 'none', 
+                border: '1px solid lightgray', fontWeight: 'bolder' }} 
+                to={`/hosting/${listingId}`}
+                    key={`backToListing${listingId}`}
+                >
+                    {`< Back to listing`} 
+                </NavLink>
             </div>
 
-            <div className='AllImages' >
+            <div className='AllImages'>
                 {currentListing?.Images.map(({ url, id }, index) => (
-                    <>
-                    <img key={`img_${id}`} src={url} alt='listingImage'></img>
+                <div key={`wrapper${id}`} 
+                style={{display:'flex',alignItems:'center'}}>
+                    <img 
+                        key={`hostingImg${id}`} src={url} 
+                        alt='listingImage'
+                        style={{width: "80%"}}
+                    ></img>  
 
-                    <button className='button' style={{ display: 'inline', color:'#f0a04b'} } key={`button_${id}`} onClick={deleteImageButton} value={id}>Delete the image above</button>
-                    </>
+                    <button className='button' 
+                    style={{ display: 'inline', 
+                    color: '#f0a04b', width: "20%",height:'20%'} }
+                    key={`hostingDeleteImgButton${id}`} 
+                    onClick={deleteImageButton} 
+                    value={id}>
+                    Delete
+                    </button>
+                
+
+                 </div>
                 ))}
             </div>
             
