@@ -4,7 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import * as listingActions from "../../store/listings";
 import Listing from './Listing'
-import ReservationsOfHostView from '../ReservationsOfHostView'
+import ReservationsCurrentOfHostView from '../ReservationsCurrentOfHostView';
+
+import ReservationsPastOfHostView from '../ReservationsPastOfHostView';
 import './Listing.css'
 
 const HostingsCollection = () => {
@@ -29,8 +31,11 @@ const HostingsCollection = () => {
                 ))}
             </div>
             <div style={{ width: '50%', marginLeft: '1%' }}>
-                <h3>Bookings:</h3>
-                <ReservationsOfHostView listings={listings }/>
+                <h3>{`Current&Incoming bookings`}:</h3>
+                <ReservationsCurrentOfHostView listings={listings }/>
+
+                <h3>{`Past bookings`}:</h3>
+                <ReservationsPastOfHostView listings={listings} />
 
 
             </div>
