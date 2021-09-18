@@ -29,7 +29,6 @@ const Booking = ({ booking}) => {
     //         };
     // })}
     
-    
     return (
         <div className='eachListing'>            
             <img className='img' src={booking.Listing.Images ? (booking.Listing.Images[0] ? booking.Listing.Images[0].url : toAddImg) : toAddImg} alt='listingImage' ></img>

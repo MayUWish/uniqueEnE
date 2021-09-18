@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as bookingActions from "../../store/bookings";
-import { useDispatch} from "react-redux";
+import { useSelector,useDispatch} from "react-redux";
 import './DeleteBookingForm.css'
+import * as BookingRedux from "../../store/bookings";
 
-
-function DeleteListingForm({ bookingId }) {
+function DeleteBookingForm({ bookingId }) {
     const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user);
  
  
     const [errors, setErrors] = useState([]);
+
+    // !!unmounted to clean up, otherwise strorafe leak warning
+    useEffect(() => {
+
+
+        return () => dispatch(BookingRedux.viewBookingThunk(sessionUser.id))
+
+    }, [dispatch, sessionUser]);
+
+   
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,7 +42,7 @@ function DeleteListingForm({ bookingId }) {
                   
     };
 
-
+    // if (!bookingId) return null;
     return (
         <>  
             {/* <button onClick={() => history.push(`/hosting/${Object.keys(listings)[Object.keys(listings).length - 1]}`)}>X</button> */}
@@ -55,4 +66,4 @@ function DeleteListingForm({ bookingId }) {
     );
 }
 
-export default DeleteListingForm;
+export default DeleteBookingForm;
