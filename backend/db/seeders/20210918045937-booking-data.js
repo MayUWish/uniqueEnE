@@ -16,48 +16,48 @@ module.exports = {
         listingId: 1,
         userId: 2,
         numGuests: 2,
-        startDate: new Date('2021-7-27'),
-        endDate: new Date('2021-7-30')
+        startDate: new Date(2021,6,20,0,0,0,0),
+        endDate: new Date(2021, 6, 30, 0, 0, 0, 0)
     },
 
       {
         listingId: 1,
         userId: 3,
         numGuests: 4,
-        startDate: new Date('2021-8-22'),
-        endDate: new Date('2021-8-29')
+        startDate: new Date(2021, 7, 22, 0, 0, 0, 0),
+        endDate: new Date(2021, 7, 25, 0, 0, 0, 0)
       },
 
       {
         listingId: 1,
         userId: 4,
         numGuests: 4,
-        startDate: new Date('2021-10-20'),
-        endDate: new Date('2021-10-22')
+        startDate: new Date(2021, 10, 5, 0, 0, 0, 0),
+        endDate: new Date(2021, 10, 18, 0, 0, 0, 0)
       },
 
       {
         listingId: 2,
         userId: 5,
         numGuests: 2,
-        startDate: new Date('2021-11-20'),
-        endDate: new Date('2021-11-22')
+        startDate: new Date(2021, 11, 7, 0, 0, 0, 0),
+        endDate: new Date(2021, 11, 25, 0, 0, 0, 0)
       },
 
       {
         listingId: 3,
         userId: 6,
         numGuests: 1,
-        startDate: new Date('2021-12-02'),
-        endDate: new Date('2021-12-22')
+        startDate: new Date(2021, 8, 18, 0, 0, 0, 0),
+        endDate: new Date(2021, 8, 20, 0, 0, 0, 0)
       },
 
       {
         listingId: 4,
         userId: 7,
         numGuests: 2,
-        startDate: new Date('2021-01-02'),
-        endDate: new Date('2021-01-22')
+        startDate: new Date(2021, 1, 12, 0, 0, 0, 0),
+        endDate: new Date(2021, 2, 17, 0, 0, 0, 0)
       },
 
 
@@ -65,16 +65,16 @@ module.exports = {
         listingId: 5,
         userId: 8,
         numGuests: 1,
-        startDate: new Date('2021-12-02'),
-        endDate: new Date('2021-12-12')
+        startDate: new Date(2021, 8, 20, 0, 0, 0, 0),
+        endDate: new Date(2021, 8, 25, 0, 0, 0, 0)
       },
 
       {
         listingId: 6,
         userId: 1,
         numGuests: 1,
-        startDate: new Date('2022-01-02'),
-        endDate: new Date('2022-01-05')
+        startDate: new Date(2021, 1, 22, 0, 0, 0, 0),
+        endDate: new Date(2021, 1, 28, 0, 0, 0, 0)
       },
 
 
@@ -82,40 +82,40 @@ module.exports = {
         listingId: 7,
         userId: 1,
         numGuests: 3,
-        startDate: new Date('2021-12-22'),
-        endDate: new Date('2021-12-24')
+        startDate: new Date(2021, 8, 18, 0, 0, 0, 0),
+        endDate: new Date(2021, 8, 20, 0, 0, 0, 0)
       },
 
       {
         listingId: 8,
         userId: 1,
         numGuests: 2,
-        startDate: new Date('2021-01-22'),
-        endDate: new Date('2021-01-24')
+        startDate: new Date(2021, 8, 20, 0, 0, 0, 0),
+        endDate: new Date(2021, 8, 27, 0, 0, 0, 0)
       },
 
       {
         listingId: 9,
         userId: 1,
         numGuests: 4,
-        startDate: new Date('2021-09-17'),
-        endDate: new Date('2021-09-20')
+        startDate: new Date(2021, 9, 25, 0, 0, 0, 0),
+        endDate: new Date(2021, 9, 29, 0, 0, 0, 0)
       },
 
       {
         listingId: 10,
         userId: 1,
         numGuests: 2,
-        startDate: new Date('2021-02-17'),
-        endDate: new Date('2021-02-27')
+        startDate: new Date(2021, 4, 20, 0, 0, 0, 0),
+        endDate: new Date(2021, 5, 10, 0, 0, 0, 0)
       },
 
       {
         listingId: 10,
         userId: 1,
         numGuests: 3,
-        startDate: new Date('2021-09-25'),
-        endDate: new Date('2021-09-28')
+        startDate: new Date(2021, 9, 9, 0, 0, 0, 0),
+        endDate: new Date(2021, 9, 18, 0, 0, 0, 0)
       },
   
   

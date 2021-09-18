@@ -28,9 +28,13 @@ const BookingsCollection = () => {
     }, [dispatch, sessionUser]);
 
     useEffect(() => {
+        // let interval
         if (sessionUser) {
+            // interval = 
             dispatch(BookingRedux.viewBookingThunk(sessionUser.id)).then(() => setIsLoaded(true));
         }
+
+        // return ()=>clearInterval(interval)
 
     }, [dispatch, sessionUser]);
 

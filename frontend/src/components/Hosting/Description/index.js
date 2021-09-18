@@ -58,9 +58,9 @@ const Description = () => {
                 <p>{currentListing?.guestNum} guests, {currentListing?.bedroomNum} bedrooms, {Number(currentListing?.twinBedNum) + Number(currentListing?.queenBedNum) + Number(currentListing?.kingBedNum) + Number(currentListing?.sofaBedNum)} beds, {currentListing?.bathroomNum} bathrooms, ${currentListing?.price}/night</p>
         </div>
             <div style={{ borderBottom: '1px solid lightgray'}}>
-                {currentListing?.enhancedClean &&<h3 key='Enhanced Clean'><i class="fas fa-home" />{currentListing?.enhancedClean && ' Enhanced Clean'}</h3>}
+                {currentListing?.enhancedClean &&<h3 key='Enhanced Clean'><i className="fas fa-home" />{currentListing?.enhancedClean && ' Enhanced Clean'}</h3>}
 
-                {currentListing?.selfCheckin &&<h3 key='Self Checkin'><i class="fas fa-suitcase" />{currentListing?.selfCheckin && ' Self Checkin'}</h3>}
+                {currentListing?.selfCheckin &&<h3 key='Self Checkin'><i className="fas fa-suitcase" />{currentListing?.selfCheckin && ' Self Checkin'}</h3>}
 
         </div >
             
@@ -70,7 +70,7 @@ const Description = () => {
         </div >
 
             <div style={{ borderBottom: '1px solid lightgray'}}>
-                <h3><i class="fas fa-bed" /> {` Where you'll Sleep`}</h3>
+                <h3><i className="fas fa-bed" /> {` Where you'll Sleep`}</h3>
                 {currentListing?.twinBedNum > 0 && <p key='twinBedNum' style={{ marginLeft: '1%' }}>-{currentListing?.twinBedNum} twin beds</p>}
                 {currentListing?.queenBedNum > 0 && <p key='queenBedNum' style={{ marginLeft: '1%' }}>-{currentListing?.queenBedNum} queen beds</p>}
                 {currentListing?.kingBedNum > 0 && <p key='kingBedNum' style={{ marginLeft: '1%' }}>-{currentListing?.kingBedNum} king beds</p>}
@@ -78,7 +78,7 @@ const Description = () => {
         </div>
 
             <div style={{ borderBottom: '1px solid lightgray'}}>
-                <h3><i class="fas fa-bath" /> {` What this place offers`}</h3>
+                <h3><i className="fas fa-bath" /> {` What this place offers`}</h3>
             {currentAmenityNames.map((amenity,index)=>(
                 <p style={{ marginLeft: '1%' }} key={index}>-{amenity}</p>
             ))}

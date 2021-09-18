@@ -58,7 +58,8 @@ function EditBookingForm({ booking}) {
 
     //for date without hour,minutes,seconds, ms
     const numberOfDays = (startDate, endDate) => {
-        return +(endDate - startDate) / (24 * 60 * 60 * 1000);
+        return Math.round(+(endDate - startDate) / (24 * 60 * 60 * 1000), 0);
+        // +(endDate - startDate) / (24 * 60 * 60 * 1000);
     }
 
     // const reset = () => {
