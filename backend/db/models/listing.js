@@ -58,6 +58,10 @@ module.exports = (sequelize, DataTypes) => {
     }
     Listing.belongsToMany(models.Amenity, columnMapping);
 
+
+    // listing vs reviews
+    Listing.hasMany(models.Review, { foreignKey: 'listingId', onDelete: 'CASCADE', hooks: true });
+
   };
   return Listing;
 };

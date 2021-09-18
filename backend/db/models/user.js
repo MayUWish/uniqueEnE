@@ -106,6 +106,10 @@ module.exports = (sequelize, DataTypes) => {
     }
     User.belongsToMany(models.Listing, bookingMapping);
 
+
+    // user vs reviews
+    User.hasMany(models.Review, { foreignKey: 'userId' });
+
   };
   return User;
 };
