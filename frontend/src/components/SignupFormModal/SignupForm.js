@@ -35,7 +35,7 @@ function SignupForm() {
 
     const demonUser = (e) => {
         e.preventDefault();
-        return dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' })).catch(
+        return dispatch(sessionActions.login({ credential: 'demo@user.io', password: 'password' })).catch(
             async (res) => {         
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);

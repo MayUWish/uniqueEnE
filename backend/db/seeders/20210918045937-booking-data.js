@@ -16,48 +16,48 @@ module.exports = {
         listingId: 1,
         userId: 2,
         numGuests: 2,
-        startDate: new Date('2021-7-27').setHours(0,0,0,0),
-        endDate: new Date('2021-7-30').setHours(0, 0, 0, 0)
+        startDate: new Date('2021-7-27'),
+        endDate: new Date('2021-7-30')
     },
 
       {
         listingId: 1,
         userId: 3,
         numGuests: 4,
-        startDate: new Date('2021-8-22').setHours(0, 0, 0, 0),
-        endDate: new Date('2021-8-29').setHours(0, 0, 0, 0)
+        startDate: new Date('2021-8-22'),
+        endDate: new Date('2021-8-29')
       },
 
       {
         listingId: 1,
         userId: 4,
         numGuests: 4,
-        startDate: new Date('2021-10-20').setHours(0, 0, 0, 0),
-        endDate: new Date('2021-10-22').setHours(0, 0, 0, 0)
+        startDate: new Date('2021-10-20'),
+        endDate: new Date('2021-10-22')
       },
 
       {
         listingId: 2,
         userId: 5,
         numGuests: 2,
-        startDate: new Date('2021-11-20').setHours(0, 0, 0, 0),
-        endDate: new Date('2021-11-22').setHours(0, 0, 0, 0)
+        startDate: new Date('2021-11-20'),
+        endDate: new Date('2021-11-22')
       },
 
       {
         listingId: 3,
         userId: 6,
         numGuests: 1,
-        startDate: new Date('2021-12-02').setHours(0, 0, 0, 0),
-        endDate: new Date('2021-12-22').setHours(0, 0, 0, 0)
+        startDate: new Date('2021-12-02'),
+        endDate: new Date('2021-12-22')
       },
 
       {
         listingId: 4,
         userId: 7,
         numGuests: 2,
-        startDate: new Date('2021-01-02').setHours(0, 0, 0, 0),
-        endDate: new Date('2021-01-22').setHours(0, 0, 0, 0)
+        startDate: new Date('2021-01-02'),
+        endDate: new Date('2021-01-22')
       },
 
 
@@ -65,16 +65,16 @@ module.exports = {
         listingId: 5,
         userId: 8,
         numGuests: 1,
-        startDate: new Date('2021-12-02').setHours(0, 0, 0, 0),
-        endDate: new Date('2021-12-12').setHours(0, 0, 0, 0)
+        startDate: new Date('2021-12-02'),
+        endDate: new Date('2021-12-12')
       },
 
       {
         listingId: 6,
         userId: 1,
         numGuests: 1,
-        startDate: new Date('2022-01-02').setHours(0, 0, 0, 0),
-        endDate: new Date('2022-01-05').setHours(0, 0, 0, 0)
+        startDate: new Date('2022-01-02'),
+        endDate: new Date('2022-01-05')
       },
 
 
@@ -82,40 +82,40 @@ module.exports = {
         listingId: 7,
         userId: 1,
         numGuests: 3,
-        startDate: new Date('2021-12-22').setHours(0, 0, 0, 0),
-        endDate: new Date('2021-12-24').setHours(0, 0, 0, 0)
+        startDate: new Date('2021-12-22'),
+        endDate: new Date('2021-12-24')
       },
 
       {
         listingId: 8,
         userId: 1,
         numGuests: 2,
-        startDate: new Date('2021-01-22').setHours(0, 0, 0, 0),
-        endDate: new Date('2021-01-24').setHours(0, 0, 0, 0)
+        startDate: new Date('2021-01-22'),
+        endDate: new Date('2021-01-24')
       },
 
       {
         listingId: 9,
         userId: 1,
         numGuests: 4,
-        startDate: new Date('2021-09-17').setHours(0, 0, 0, 0),
-        endDate: new Date('2021-09-20').setHours(0, 0, 0, 0)
+        startDate: new Date('2021-09-17'),
+        endDate: new Date('2021-09-20')
       },
 
       {
         listingId: 10,
         userId: 1,
         numGuests: 2,
-        startDate: new Date('2021-02-17').setHours(0, 0, 0, 0),
-        endDate: new Date('2021-02-27').setHours(0, 0, 0, 0)
+        startDate: new Date('2021-02-17'),
+        endDate: new Date('2021-02-27')
       },
 
       {
         listingId: 10,
         userId: 1,
         numGuests: 3,
-        startDate: new Date('2021-09-25').setHours(0, 0, 0, 0),
-        endDate: new Date('2021-09-28').setHours(0, 0, 0, 0)
+        startDate: new Date('2021-09-25'),
+        endDate: new Date('2021-09-28')
       },
   
   

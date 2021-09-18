@@ -16,7 +16,7 @@ const Listing = ({ listing}) => {
             <img className='img' src={listing.Images ? (listing.Images[0] ? listing.Images[0].url : toAddImg) : toAddImg} alt='listingImage' ></img>
             
             <div className='intro'>
-                <h3>{(listing?.title.length > 30) ? listing.title.slice(0, 30)+`...` : listing.title}</h3>
+                <h3>{(listing?.title.length > 50) ? listing.title.slice(0, 50)+`...` : listing.title}</h3>
                 <p style={{ marginLeft: '2%' }}> {listing?.city}, {listing?.state}, {listing?.country}</p>
                 <p style={{ marginLeft:'2%'}}>{listing?.guestNum} guests, {listing?.bedroomNum} beds, {listing?.bathroomNum} baths</p>
                 <h3 style={{ marginRight: '5%', textAlign:'end' }}>{listing?.price}/night</h3>
