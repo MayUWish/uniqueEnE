@@ -27,7 +27,7 @@ function Navigation({ isLoaded }) {
     return (
         <div className ='nav'>
             <NavLink className ='home' exact to="/">
-                <h2>{`Unique Explore&Enjoy  `}</h2>
+                <h2>{`UniqueEnE`}</h2>
             </NavLink>
 
            
