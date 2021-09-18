@@ -83,6 +83,7 @@ Table Listings {
   userId int
   startDate datetime
   endDate datetime
+  numGuests int
   createdAt timestamp
   updatedAt timestamp
 }
@@ -102,5 +103,7 @@ Ref: Listings.id < Reviews.listingId
 
 Ref: Users.id < Bookings.userId
 Ref: Listings.id < Bookings.listingId
+
+
 
 
