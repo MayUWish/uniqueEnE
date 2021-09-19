@@ -51,38 +51,41 @@ function EditReviewForm({ id, reviewcontent,ratingN }) {
 
         <div style={{
             border: '1px solid #d3d3d3', borderRadius: '10px',
-            width: '50%',
-            margin: '2% 0'
+            // width: '60%',
+            margin: '1%'
         }}>
             <form
                 className='reviewForm'
-                onSubmit={handleSubmit} >
-
+                onSubmit={handleSubmit} 
+                style={{alignItems:'center'}}>
+  
                 <ul className='error'>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
                     ))}
                 </ul>
 
-                <label>
+                <label
+                    style={{ textAlign: 'center' }}>
                     Rating
                     <input
                         className='reviewInput'
                         type="number"
                         value={rating}
                         onChange={(e) => setRating(e.target.value)}
-                        style={{ width: '100%' }}
+                        style={{ width: '80%' }}
                     // required
                     />
                 </label>
 
-                <label>
+                <label
+                style={{textAlign:'center'}}>
                     Review
                     <textarea
                         // className='reviewInput'
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
-                        style={{ rows: '100', width: '150%' }}
+
                     // required
                     />
                 </label>
