@@ -3,7 +3,7 @@ import { csrfFetch } from './csrf';
 
 const VIEW_PUBLIC_LISTING = 'listing/viewPublicListing';
 const CREATE_REVIEW = 'listing/createReview';
-
+const DELETE_REVIEW = 'listing/deleteReview';
 
 
 ///////////////////////////Action:
@@ -23,6 +23,14 @@ const createReviewAction = (review) => {
     return {
         type: CREATE_REVIEW,
         payload: review,
+    };
+};
+
+// delete reviews as traveller 
+const deleteReviewAction = (reviewId) => {
+    return {
+        type: DELETE_REVIEW,
+        payload: reviewId,
     };
 };
 
@@ -66,6 +74,17 @@ export const createReviewThunk = (review) => async (dispatch) => {
     }
 };
 
+// delete review as travellers  
+export const deleteReviewThunk = (reviewId) => async (dispatch) => {
+
+    const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+        method: "DELETE",
+    });
+    const data = await response.json();
+    dispatch(deleteReviewAction(data.reviewId));
+    return response;
+};
+
 ///////////////////////////// reducer:
 const initialState = {};
 
@@ -77,6 +96,7 @@ const initialState = {};
 
 const publicListingReducer = (state = initialState, action) => {
     let newState;
+    let newReviews;
     
 
     switch (action.type) {
@@ -94,6 +114,16 @@ const publicListingReducer = (state = initialState, action) => {
             // each listing has a key of images, value is an array of images object
             newState = {...state};
             newState.Reviews ? newState.Reviews = [...newState.Reviews, action.payload] : newState.Reviews = [action.payload]
+            return newState;
+
+        case DELETE_REVIEW:
+
+            newState = {
+                ...state,
+            }
+            newReviews = newState.Reviews.filter(({ id }) => +id !== +action.payload)
+            
+            newState.Reviews = newReviews;
             return newState;
 
         default:

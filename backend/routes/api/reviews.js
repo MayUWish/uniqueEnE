@@ -157,18 +157,18 @@ router.delete(
 );
 
 
-router.edit(
+router.put(
     '//:id(\\d+)',
     validateReview,
     requireAuth,
     asyncHandler(async (req, res, next) => {
         const reviewId = req.params.id;
         let { userId, listingId, rating, review } = req.body;
-        const review = await Reviews.findByPk(reviewId);
+        const reviewRecord = await Reviews.findByPk(reviewId);
         
 
 
-        if (+req.user.id !== +userId || +req.user.id !== +review .userId) {
+        if (+req.user.id !== +userId || +req.user.id !== +reviewRecord .userId) {
             //logged-in userId is different from review userId, which means review for others
             const err = Error('Bad request.');
             err.errors = [`You cannot edit a review for other users.`];
@@ -178,7 +178,7 @@ router.edit(
 
         }
 
-        else if (+listingId !== +review.listingId) {
+        else if (+listingId !== +reviewRecord.listingId) {
             //logged-in userId is different from review userId, which means review for others
             const err = Error('Bad request.');
             err.errors = [`You cannot change which listing the review belongs to.`];
@@ -199,10 +199,10 @@ router.edit(
 
         else {
 
-            await review.update({ ...req.body });
+            await reviewRecord.update({ ...req.body });
 
             return res.json({
-                review
+                review:reviewRecord
             });
 
         }

@@ -1,7 +1,8 @@
-import { useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as PublicListingRedux from "../../../store/publicListing";
+import DeleteReviewFormModal from '../DeleteReviewFormModal';
 
 
 const Reviews = () => {
@@ -9,15 +10,15 @@ const Reviews = () => {
     const dispatch = useDispatch();
     const currentListing = useSelector(state => state.publicListing);
     const [isLoaded, setIsLoaded] = useState(false);
-    
-    let totalRating=0;
+
+    let totalRating = 0;
     let numberOfRating = currentListing?.Reviews?.length;
-    currentListing?.Reviews?.forEach(({rating})=>totalRating+=Number(rating));
+    currentListing?.Reviews?.forEach(({ rating }) => totalRating += Number(rating));
     let averageRating = 0;
     if (numberOfRating) {
         averageRating = (totalRating / numberOfRating).toFixed(1);
     }
-    
+
     //when refresh/reload to get state, setIsLoaded very Important!!! otherwise,it will be undefined
     useEffect(() => {
         dispatch(PublicListingRedux.viewPublicListingThunk(listingId)).then(() => setIsLoaded(true));
@@ -26,41 +27,44 @@ const Reviews = () => {
     if (!currentListing) return null;
 
     return (
-     
+
         <>
             {isLoaded && <>
-            
-                <h4>{numberOfRating||0} Reviews(<i className="fas fa-star" />{averageRating||'None'})</h4>
 
-                <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap:'5px'}}>
-                {currentListing?.Reviews?.map(({ review, User, id }, index) => (
-                <div key={`review_${id}`} 
-                    style={{ width:'45%',
-                    padding:'2%' ,
-                    textAlign:'justify',
-                    maxHeight: '120px',
-                    overflow:'auto'
-                    }}>
-                        <span key={`reviewUser_${id}`} 
-                        
-                        style={{fontWeight:'bold'}} > 
-                        { User?.username}: </span> 
-                        <span key={`reviewContent_${id}`}
-                        >{review}</span>
+                <h4>{numberOfRating || 0} Reviews(<i className="fas fa-star" />{averageRating || 'None'})</h4>
 
-                    
+                <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '5px' }}>
+                    {currentListing?.Reviews?.map(({ review, User, id }, index) => (
+                        <div key={`review_${id}`}
+                            style={{
+                                width: '45%',
+                                padding: '2%',
+                                textAlign: 'justify',
+                                maxHeight: '120px',
+                                overflow: 'auto'
+                            }}>
+                            <span key={`reviewUser_${id}`}
+
+                                style={{ fontWeight: 'bold' }} >
+                                {User?.username}: </span>
+                            <span key={`reviewContent_${id}`}
+                            >{review}</span>
+
+                            <DeleteReviewFormModal id={id} user={User}/>
+
+
+                        </div>
+                    ))}
+
                 </div>
-                ))}
 
-            </div>
-
-                </>
+            </>
 
             }
-   
 
-       
-       </>
+
+
+        </>
     )
 
 };
