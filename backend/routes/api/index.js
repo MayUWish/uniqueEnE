@@ -10,6 +10,8 @@ const amenitiesRouter = require('./amenities.js');
 
 const bookingsRouter = require('./bookings.js');
 
+const reviewsRouter = require('./reviews.js');
+
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
@@ -24,6 +26,9 @@ router.use('/images', imagesRouter);
 router.use('/amenities', amenitiesRouter);
 
 router.use('/bookings', bookingsRouter);
+
+
+router.use('/reviews', reviewsRouter);
 
 
 
