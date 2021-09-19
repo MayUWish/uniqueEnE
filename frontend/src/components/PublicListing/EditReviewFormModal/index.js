@@ -23,7 +23,7 @@ function EditReviewFormModal({ id, user,review,rating }) {
 
     if (!sessionUser || +sessionUser.id !== +user.id) { return null };
     return (
-        <div >
+        <div style={{display:'inline'}}>
             <button className='button' onClick={() => setShowModal(true)}>Edit</button>
 
             {showModal && (

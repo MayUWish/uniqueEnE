@@ -50,6 +50,7 @@ const Reviews = () => {
                                 {User?.username}: </span>
                             <span key={`reviewContent_${id}`}
                             >{review}</span>
+                            
                             <EditReviewFormModal id={id} review={review} rating={rating} user={User}  />
                             <DeleteReviewFormModal id={id} user={User}/>
                         
