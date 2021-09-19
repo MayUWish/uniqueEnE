@@ -60,7 +60,9 @@ function ReviewForm() {
     };
 
     return (
-        <div style={{border:'1px solid #d3d3d3',borderRadius:'10px',width:'35%',marginTop:'2%'}}>
+        <div style={{border:'1px solid #d3d3d3',borderRadius:'10px',
+        width:'35%',
+        marginTop:'2%'}}>
             <h3 style={{ textAlign: 'start', marginLeft: '2%' }} >Your Review:</h3>
 
             <form 
@@ -80,6 +82,7 @@ function ReviewForm() {
                         type="number"
                         value={rating}
                         onChange={(e) => setRating(e.target.value)}
+                        style={{ width: '25%' }}
                     // required
                     />
                 </label>
@@ -90,7 +93,7 @@ function ReviewForm() {
                         className='reviewInput'
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
-                        style={{width:'100%'}}
+                        style={{width:'55%'}}
                     // required
                     />
                 </label>

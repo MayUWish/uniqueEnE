@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Listing, Image,ListingAmenity,Booking } = require('../../db/models');
+const { User, Listing, Image,ListingAmenity,Booking, Review } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -232,7 +232,7 @@ router.get(
         // console.log('!!!!!!!!!111111111!!!!!!',listingId)
         const listing = await Listing.findOne({
             where: {id:listingId},
-            include: [ListingAmenity,Image, User]
+            include: [ListingAmenity,Image, User,Review]
             });
         // console.log('!!!!!!!!!111111111!!!!!!', listing)
         
@@ -250,7 +250,7 @@ router.get(
     
         
             const listings = await Listing.findAll({
-                include: [ListingAmenity, Image
+                include: [ListingAmenity, Image, Review
                     // Error below: amenity is not associated with ListingAmenity
                     // {
                     // model: ListingAmenity,
