@@ -102,7 +102,9 @@ router.post(
 
         else {
 
-            const review = await Review.create({ ...req.body });
+            let review = await Review.create({ ...req.body });
+            review = await Review.findByPk(review.id, {include:User})
+            
             return res.json({
                 review
             });

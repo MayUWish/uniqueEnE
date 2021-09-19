@@ -10,6 +10,11 @@ const Reviews = () => {
     const currentListing = useSelector(state => state.publicListing);
     const [isLoaded, setIsLoaded] = useState(false);
     
+    let totalRating=0;
+    let numberOfRating = currentListing?.Reviews?.length;
+    currentListing?.Reviews?.forEach(({rating})=>totalRating+=Number(rating));
+    const averageRating = (totalRating / numberOfRating).toFixed(1);
+    
     //when refresh/reload to get state, setIsLoaded very Important!!! otherwise,it will be undefined
     useEffect(() => {
         dispatch(PublicListingRedux.viewPublicListingThunk(listingId)).then(() => setIsLoaded(true));
@@ -22,13 +27,27 @@ const Reviews = () => {
         <>
             {isLoaded && <>
             
-            <h3>{currentListing?.Reviews?.length} Reviews:</h3>
-          
+                <h4>{numberOfRating||0} Reviews(<i class="fas fa-star" />{averageRating||'None'})</h4>
+
+                <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap:'5px'}}>
                 {currentListing?.Reviews?.map(({ review, User, id }, index) => (
-                <div key={`review_${id}`}>
-                    {User?.username}: {review}
+                <div key={`review_${id}`} 
+                    style={{ width:'45%',
+                    padding:'2%' ,
+                    textAlign:'justify',
+                    maxHeight: '120px',
+                    overflow:'auto'
+                    }}>
+                        <span key={`reviewUser_${id}`} 
+                        
+                        style={{fontWeight:'bold'}} > 
+                        { User?.username}: </span> 
+                        <span key={`reviewContent_${id}`}
+                        >{review}</span>
                 </div>
-            ))}
+                ))}
+
+            </div>
 
                 </>
 

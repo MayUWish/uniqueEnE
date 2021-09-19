@@ -2,16 +2,14 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width:100%;
-
 }
 .reviewInput{
   
   /* outline: none; */
   border: 1px solid lightgray;
   border-radius: 10px;
-  margin: 0.8em 0; 
-  padding: 1.5em 7em;
+  /* margin: 0.8em 0;  */
+  padding: 1em;
   background: none;
 
 }
@@ -29,13 +27,7 @@
 
 label,input, textarea{
     display: block; 
-    margin:2%;  
-    font-weight: bold;
-    /* font-size: large; */
-}
-
-label{
-    font-size: larger;
+    margin:1.5%;  
 
 }
 

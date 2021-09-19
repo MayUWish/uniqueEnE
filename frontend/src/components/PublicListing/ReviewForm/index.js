@@ -61,10 +61,8 @@ function ReviewForm() {
 
     return (
         <div style={{border:'1px solid #d3d3d3',borderRadius:'10px',
-        width:'35%',
-        marginTop:'2%'}}>
-            <h3 style={{ textAlign: 'start', marginLeft: '2%' }} >Your Review:</h3>
-
+        width:'50%',
+        margin:'2% 0' }}>
             <form 
             className='reviewForm' 
             onSubmit={handleSubmit} onClick={loggedOutUser}>
@@ -82,7 +80,7 @@ function ReviewForm() {
                         type="number"
                         value={rating}
                         onChange={(e) => setRating(e.target.value)}
-                        style={{ width: '25%' }}
+                        style={{ width: '100%' }}
                     // required
                     />
                 </label>
@@ -90,18 +88,15 @@ function ReviewForm() {
                 <label>
                     Review
                     <textarea
-                        className='reviewInput'
+                        // className='reviewInput'
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
-                        style={{width:'55%'}}
+                        style={{ rows: '100', width: '150%'}}
                     // required
                     />
                 </label>
 
-                <button className='reviewFormButton button' type="submit" disabled={!sessionUser} >POST</button>
-
-
-
+                <button className='reviewFormButton button' type="submit" disabled={!sessionUser} >POST Review</button>
 
 
             </form>
