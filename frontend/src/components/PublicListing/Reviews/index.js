@@ -30,7 +30,7 @@ const Reviews = () => {
         <>
             {isLoaded && <>
             
-                <h4>{numberOfRating||0} Reviews(<i class="fas fa-star" />{averageRating||'None'})</h4>
+                <h4>{numberOfRating||0} Reviews(<i className="fas fa-star" />{averageRating||'None'})</h4>
 
                 <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap:'5px'}}>
                 {currentListing?.Reviews?.map(({ review, User, id }, index) => (

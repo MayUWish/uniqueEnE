@@ -27,7 +27,7 @@ const Listing = ({ listing}) => {
                 <h3>{(listing?.title.length > 50) ? listing.title.slice(0, 50)+`...` : listing.title}</h3>
                 <p style={{ marginLeft: '2%' }}> {listing?.city}, {listing?.state}, {listing?.country}</p>
                 <p style={{ marginLeft:'2%'}}>{listing?.guestNum} guests, {listing?.bedroomNum} beds, {listing?.bathroomNum} baths</p>
-                <h3>{numberOfRating || 0} Reviews(<i class="fas fa-star" />{averageRating || 'None'}) </h3>
+                <h3>{numberOfRating || 0} Reviews(<i className="fas fa-star" />{averageRating || 'None'}) </h3>
                 <h3 style={{ marginRight: '5%', textAlign:'end' }}>{listing?.price}/night</h3>
                 
             </div>

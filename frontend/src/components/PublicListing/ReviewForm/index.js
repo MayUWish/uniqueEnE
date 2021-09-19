@@ -51,7 +51,7 @@ function ReviewForm() {
         return dispatch(PublicListingRedux.createReviewThunk(newReview)).then(() => {
             reset();     
         }).catch(async (res) => {
-            console.log('notOK',res)
+            //console.log('notOK',res)
             const data = await res.json();
             // console.log('notOK', data)
             if (data && data.errors) setErrors(data.errors);
