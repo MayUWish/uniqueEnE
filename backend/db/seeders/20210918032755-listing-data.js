@@ -12,7 +12,7 @@ module.exports = {
       {
         userId: 1,
         address: '777 health street',
-        city: 'Idyllwild–Pine Cove',
+        city: 'Idyllwild-Pine Cove',
         state: 'California',
         country: 'US',
         latitude: '90',
@@ -86,7 +86,7 @@ module.exports = {
       {
         userId: 1,
         address: '222 dream street',
-        city: 'Idyllwild- Pine Cove',
+        city: 'Idyllwild-Pine Cove',
         state: 'California',
         country: 'US',
         latitude: '90',
@@ -137,7 +137,7 @@ module.exports = {
       {
         userId: 2,
         address: '555 lake street',
-        city: 'Half moon bay',
+        city: 'Half Moon Bay',
         state: 'California',
         country: 'US',
         latitude: '90',
