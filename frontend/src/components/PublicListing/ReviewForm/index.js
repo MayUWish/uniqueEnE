@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
-import * as BookingRedux from "../../../store/bookings";
+
 import * as PublicListingRedux from "../../../store/publicListing";
+import './ReviewForm.css';
+
 
 
 
@@ -21,7 +23,7 @@ function ReviewForm() {
     // logout user will get error message once it click on the review form 
     const loggedOutUser = () => {
         if (!sessionUser) {
-            window.alert('Please login/signup to book.')
+            window.alert('Please login/signup to review.')
 
         }
     }
@@ -58,10 +60,12 @@ function ReviewForm() {
     };
 
     return (
-        <>
-            <h3 style={{ textAlign: 'start', marginLeft: '2%' }} >Your Review</h3>
+        <div style={{border:'1px solid #d3d3d3',borderRadius:'10px',width:'35%',marginTop:'2%'}}>
+            <h3 style={{ textAlign: 'start', marginLeft: '2%' }} >Your Review:</h3>
 
-            <form className='bookingForm' onSubmit={handleSubmit} onClick={loggedOutUser}>
+            <form 
+            className='reviewForm' 
+            onSubmit={handleSubmit} onClick={loggedOutUser}>
 
                 <ul className='error'>
                     {errors.map((error, idx) => (
@@ -72,7 +76,7 @@ function ReviewForm() {
                 <label>
                     Rating
                     <input
-                        className='bookingInput'
+                        className='reviewInput'
                         type="number"
                         value={rating}
                         onChange={(e) => setRating(e.target.value)}
@@ -82,16 +86,16 @@ function ReviewForm() {
 
                 <label>
                     Review
-                    <input
-                        className='bookingInput'
-                        type="text"
+                    <textarea
+                        className='reviewInput'
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
+                        style={{width:'100%'}}
                     // required
                     />
                 </label>
 
-                <button className='bookingFormButton button' type="submit" disabled={!sessionUser} >POST</button>
+                <button className='reviewFormButton button' type="submit" disabled={!sessionUser} >POST</button>
 
 
 
@@ -100,7 +104,7 @@ function ReviewForm() {
             </form>
 
 
-        </>
+        </div>
     );
 }
 
