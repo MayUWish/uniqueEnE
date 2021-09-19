@@ -232,7 +232,10 @@ router.get(
         // console.log('!!!!!!!!!111111111!!!!!!',listingId)
         const listing = await Listing.findOne({
             where: {id:listingId},
-            include: [ListingAmenity,Image, User,Review]
+            include: [ListingAmenity,Image, User,
+                {model:Review,
+                include:User,
+            }]
             });
         // console.log('!!!!!!!!!111111111!!!!!!', listing)
         

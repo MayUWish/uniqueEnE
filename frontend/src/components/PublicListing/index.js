@@ -7,6 +7,7 @@ import './listing.css'
 import Description from './Description';
 import Booking from './Booking'
 import ReviewForm from './ReviewForm';
+import Reviews from './Reviews';
 
 const PublicListing = () => {
     const {listingId} = useParams();
@@ -70,7 +71,7 @@ const PublicListing = () => {
                 </div>
 
             </div>
-
+            <Reviews />
             <ReviewForm />
                 
         </div>)}
