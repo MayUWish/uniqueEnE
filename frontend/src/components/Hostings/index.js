@@ -31,10 +31,10 @@ const HostingsCollection = () => {
                 ))}
             </div>
             <div style={{ width: '50%', marginLeft: '1%' }}>
-                <h3>{`Current&Incoming bookings`}:</h3>
+                <h3 style={{ color: 'darkslategray'}}>{`Current&Incoming bookings`}:</h3>
                 <ReservationsCurrentOfHostView listings={listings }/>
 
-                <h3>{`Past bookings`}:</h3>
+                <h3 style={{ color: 'darkslategray', borderTop:'2px solid lightgray',width:'80%',paddingTop:'2%' }}>{`Past bookings`}:</h3>
                 <ReservationsPastOfHostView listings={listings} />
 
 

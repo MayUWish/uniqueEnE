@@ -24,7 +24,7 @@ const Reservations = ({ listings }) => {
 
     return (
         
-        <div  style={{ width: '50%',  marginLeft: '1%', display:'flex',flexDirection:'column' }}>
+        <div style={{ width: '80%', marginLeft: '1%', display:'flex',flexDirection:'column' }}>
             {listings?.map(listing => (
                 (listing.Bookings &&listing.Bookings.length > 0) && <div key={`pastReservationListing_${listing.id}`} style={{border:'1px solid #d3d3d3',
                 margin:'2%', borderRadius:'10px'}}>

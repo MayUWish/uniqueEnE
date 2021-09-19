@@ -93,7 +93,7 @@ const PublicListing = () => {
                                 width: '45%',
                                 padding: '2%',
                                 textAlign: 'justify',
-                                maxHeight: '120px',
+                                maxHeight: '150px',
                                 overflow: 'auto'
                             }}>
                             <span key={`reviewUser_${id}`}
