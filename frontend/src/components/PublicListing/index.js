@@ -6,6 +6,7 @@ import * as PublicListingRedux from "../../store/publicListing";
 import './listing.css'
 import Description from './Description';
 import Booking from './Booking'
+import ReviewForm from './ReviewForm';
 
 const PublicListing = () => {
     const {listingId} = useParams();
@@ -69,6 +70,8 @@ const PublicListing = () => {
                 </div>
 
             </div>
+
+            <ReviewForm />
                 
         </div>)}
         </>

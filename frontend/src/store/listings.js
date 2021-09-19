@@ -3,7 +3,7 @@ import { csrfFetch } from './csrf';
 const CREATE_LISTING = 'listing/createListing';
 const CREATE_IMAGE = 'listing/createImage';
 const CREATE_AMENITY = 'listing/createAmenity';
-const CREATE_REVIEW = 'listing/createReview';
+
 
 const VIEW_LISTING = 'listing/viewListing';
 
@@ -39,13 +39,6 @@ const createAmenityAction = (amenity) => {
     };
 };
 
-// add reviews to listing
-const createReviewAction = (review) => {
-    return {
-        type: CREATE_REVIEW,
-        payload: review,
-    };
-};
 
 
 // view listing/spot that current loggin user posted
@@ -127,26 +120,7 @@ export const createAmenityThunk = (amenity) => async (dispatch) => {
     return response;
 };
 
-// add rewviews to listing
-export const createReviewThunk = (review) => async (dispatch) => {
 
-    const response = await csrfFetch("/api/reviews", {
-        method: "POST",
-        body: JSON.stringify({ ...review }),
-    });
-
-    if(response.ok){
-    const data = await response.json();
-    dispatch(createAmenityAction(data.review));
-    return response;
-    } else{
-        const err = Error('Server Error.');
-        err.errors = [`Server Error. Please try again later.`];
-        err.status = 500;
-        err.title = 'Server Error.';
-        throw err;
-    }
-};
 
 
 // view listing/spot that current loggin user posted
@@ -321,16 +295,7 @@ const listingReducer = (state = initialState, action) => {
             };
             return newState;
 
-        case CREATE_REVIEW:
-            // listing id as key, and value is listing object;
-            // each listing has a key of images, value is an array of images object
-            newListingState = { ...state[action.payload.listingId] }
-            newListingState.Reviews ? newListingState.Reviews = [...newListingState.Reviews, action.payload] : newListingState.Reviews = [action.payload]
-            newState = {
-                ...state,
-                [action.payload.listingId]: newListingState,
-            }
-            return newState;
+
 
         default:
             return state;

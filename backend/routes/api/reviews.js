@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { Op } = require("sequelize");
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Listing, Image, ListingAmenity, Booking } = require('../../db/models');
+const { User, Listing, Image, ListingAmenity, Booking,Review } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -29,7 +29,7 @@ router.post(
         const today = (new Date()).setHours(0,0,0,0);
         const user = await User.findByPk(userId);
         const listing = await Listing.findByPk(listingId);
-        const bookings = await Booking.findAll({
+        let bookings = await Booking.findAll({
             where:{
                 listingId,
                 userId,

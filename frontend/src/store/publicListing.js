@@ -2,6 +2,7 @@ import { csrfFetch } from './csrf';
 
 
 const VIEW_PUBLIC_LISTING = 'listing/viewPublicListing';
+const CREATE_REVIEW = 'listing/createReview';
 
 
 
@@ -17,6 +18,13 @@ const viewListingAction = (listing) => {
     };
 };
 
+// add reviews to listing
+const createReviewAction = (review) => {
+    return {
+        type: CREATE_REVIEW,
+        payload: review,
+    };
+};
 
 
 
@@ -37,7 +45,26 @@ export const viewPublicListingThunk = (listingId) => async (dispatch) => {
     return response;
 };
 
+// add reviews to listing
+export const createReviewThunk = (review) => async (dispatch) => {
 
+    const response = await csrfFetch("/api/reviews", {
+        method: "POST",
+        body: JSON.stringify({ ...review }),
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(createReviewAction(data.review));
+        return response;
+    } else {
+        const err = Error('Server Error.');
+        err.errors = [`Server Error. Please try again later.`];
+        err.status = 500;
+        err.title = 'Server Error.';
+        return err;
+    }
+};
 
 ///////////////////////////// reducer:
 const initialState = {};
@@ -50,6 +77,7 @@ const initialState = {};
 
 const publicListingReducer = (state = initialState, action) => {
     let newState;
+    
 
     switch (action.type) {
         case VIEW_PUBLIC_LISTING:
@@ -59,6 +87,13 @@ const publicListingReducer = (state = initialState, action) => {
             // })
             newState = action.payload
             
+            return newState;
+
+        case CREATE_REVIEW:
+            // listing id as key, and value is listing object;
+            // each listing has a key of images, value is an array of images object
+            newState = {...state};
+            newState.Reviews ? newState.Reviews = [...newState.Reviews, action.payload] : newState.Reviews = [action.payload]
             return newState;
 
         default:
