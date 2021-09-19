@@ -1,74 +1,76 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import * as PublicListingRedux from "../../../store/publicListing";
-import DeleteReviewFormModal from '../DeleteReviewFormModal';
-import EditReviewFormModal from '../EditReviewFormModal';
+// import React from "react";
+// import { useDispatch, useSelector } from 'react-redux';
+// import { useEffect, useState } from 'react';
+// import { useParams } from 'react-router-dom';
+// import * as PublicListingRedux from "../../../store/publicListing";
+// import DeleteReviewFormModal from '../DeleteReviewFormModal';
+// import EditReviewFormModal from '../EditReviewFormModal';
 
 
-const Reviews = () => {
-    const { listingId } = useParams();
-    const dispatch = useDispatch();
-    const currentListing = useSelector(state => state.publicListing);
-    const [isLoaded, setIsLoaded] = useState(false);
+// const Reviews = () => {
+//     const { listingId } = useParams();
+//     const dispatch = useDispatch();
+//     const currentListing = useSelector(state => state.publicListing);
+//     const [isLoaded, setIsLoaded] = useState(false);
 
-    let totalRating = 0;
-    let numberOfRating = currentListing?.Reviews?.length;
-    currentListing?.Reviews?.forEach(({ rating }) => totalRating += Number(rating));
-    let averageRating = 0;
-    if (numberOfRating) {
-        averageRating = (totalRating / numberOfRating).toFixed(1);
-    }
+//     let totalRating = 0;
+//     let numberOfRating = currentListing?.Reviews?.length;
+//     currentListing?.Reviews?.forEach(({ rating }) => totalRating += Number(rating));
+//     let averageRating = 0;
+//     if (numberOfRating) {
+//         averageRating = (totalRating / numberOfRating).toFixed(1);
+//     }
 
-    //when refresh/reload to get state, setIsLoaded very Important!!! otherwise,it will be undefined
-    useEffect(() => {
-        dispatch(PublicListingRedux.viewPublicListingThunk(listingId)).then(() => setIsLoaded(true));
+   // when refresh/reload to get state, setIsLoaded very Important!!! otherwise,it will be undefined
+//     useEffect(() => {
+//         dispatch(PublicListingRedux.viewPublicListingThunk(listingId)).then(() => setIsLoaded(true));
 
-    }, [dispatch, listingId]);
-    if (!currentListing) return null;
+//     }, [dispatch, listingId]);
 
-    return (
+//     if (!currentListing) return null;
 
-        <>
-            {isLoaded && <>
+//     return (
 
-                <h4>{numberOfRating || 0} Reviews(<i className="fas fa-star" />{averageRating || 'None'})</h4>
+//         <>
+//             {isLoaded && <>
 
-                <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '5px' }}>
-                    {currentListing?.Reviews?.map(({ review, User, id,rating }, index) => (
-                        <div key={`review_${id}`}
-                            style={{
-                                width: '45%',
-                                padding: '2%',
-                                textAlign: 'justify',
-                                maxHeight: '120px',
-                                overflow: 'auto'
-                            }}>
-                            <span key={`reviewUser_${id}`}
+//                 <h4>{numberOfRating || 0} Reviews(<i className="fas fa-star" />{averageRating || 'None'})</h4>
 
-                                style={{ fontWeight: 'bold' }} >
-                                {User?.username}: </span>
-                            <span key={`reviewContent_${id}`}
-                            >{review}</span>
+//                 <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '5px' }}>
+//                     {currentListing?.Reviews?.map(({ review, User, id,rating }, index) => (
+//                         <div key={`review_${id}`}
+//                             style={{
+//                                 width: '45%',
+//                                 padding: '2%',
+//                                 textAlign: 'justify',
+//                                 maxHeight: '120px',
+//                                 overflow: 'auto'
+//                             }}>
+//                             <span key={`reviewUser_${id}`}
+
+//                                 style={{ fontWeight: 'bold' }} >
+//                                 {User?.username}: </span>
+//                             <span key={`reviewContent_${id}`}
+//                             >{review}</span>
                             
-                            <EditReviewFormModal id={id} review={review} rating={rating} user={User}  />
-                            <DeleteReviewFormModal id={id} user={User}/>
+//                             <EditReviewFormModal id={id} review={review} rating={rating} user={User}  />
+//                             <DeleteReviewFormModal id={id} user={User}/>
                         
 
-                        </div>
-                    ))}
+//                         </div>
+//                     ))}
 
-                </div>
+//                 </div>
 
-            </>
+//             </>
 
-            }
+//             }
 
 
 
-        </>
-    )
+//         </>
+//     )
 
-};
+// };
 
-export default Reviews;
+// export default Reviews;

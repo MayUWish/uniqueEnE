@@ -7,7 +7,9 @@ import './listing.css'
 import Description from './Description';
 import Booking from './Booking'
 import ReviewForm from './ReviewForm';
-import Reviews from './Reviews';
+// import Reviews from './Reviews';
+import EditReviewFormModal from './EditReviewFormModal';
+import DeleteReviewFormModal from './DeleteReviewFormModal';
 
 const PublicListing = () => {
     const {listingId} = useParams();
@@ -78,7 +80,41 @@ const PublicListing = () => {
                 </div>
 
             </div>
-            <Reviews />
+            {/* <Reviews /> */}
+            
+
+
+                <h4>{numberOfRating || 0} Reviews(<i className="fas fa-star" />{averageRating || 'None'})</h4>
+
+                <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '5px' }}>
+                    {currentListing?.Reviews?.map(({ review, User, id, rating }, index) => (
+                        <div key={`review_${id}`}
+                            style={{
+                                width: '45%',
+                                padding: '2%',
+                                textAlign: 'justify',
+                                maxHeight: '120px',
+                                overflow: 'auto'
+                            }}>
+                            <span key={`reviewUser_${id}`}
+
+                                style={{ fontWeight: 'bold' }} >
+                                {User?.username}: </span>
+                            <span key={`reviewContent_${id}`}
+                            >{review}</span>
+
+                            <EditReviewFormModal id={id} review={review} rating={rating} user={User}  />
+                            <DeleteReviewFormModal id={id} user={User}/>
+
+
+                        </div>
+                    ))}
+
+                </div>
+
+
+
+
             <ReviewForm />
                 
         </div>)}
