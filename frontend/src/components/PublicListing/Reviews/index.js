@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as PublicListingRedux from "../../../store/publicListing";
 import DeleteReviewFormModal from '../DeleteReviewFormModal';
+import EditReviewFormModal from '../EditReviewFormModal';
 
 
 const Reviews = () => {
@@ -34,7 +35,7 @@ const Reviews = () => {
                 <h4>{numberOfRating || 0} Reviews(<i className="fas fa-star" />{averageRating || 'None'})</h4>
 
                 <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '5px' }}>
-                    {currentListing?.Reviews?.map(({ review, User, id }, index) => (
+                    {currentListing?.Reviews?.map(({ review, User, id,rating }, index) => (
                         <div key={`review_${id}`}
                             style={{
                                 width: '45%',
@@ -49,9 +50,9 @@ const Reviews = () => {
                                 {User?.username}: </span>
                             <span key={`reviewContent_${id}`}
                             >{review}</span>
-
+                            <EditReviewFormModal id={id} review={review} rating={rating} user={User}  />
                             <DeleteReviewFormModal id={id} user={User}/>
-
+                        
 
                         </div>
                     ))}

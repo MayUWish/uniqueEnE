@@ -158,17 +158,17 @@ router.delete(
 
 
 router.put(
-    '//:id(\\d+)',
+    '/:id(\\d+)',
     validateReview,
     requireAuth,
     asyncHandler(async (req, res, next) => {
         const reviewId = req.params.id;
         let { userId, listingId, rating, review } = req.body;
-        const reviewRecord = await Reviews.findByPk(reviewId);
+        const reviewRecord = await Review.findByPk(reviewId);
         
 
 
-        if (+req.user.id !== +userId || +req.user.id !== +reviewRecord .userId) {
+        if (+req.user.id !== +userId || +req.user.id !== +reviewRecord.userId) {
             //logged-in userId is different from review userId, which means review for others
             const err = Error('Bad request.');
             err.errors = [`You cannot edit a review for other users.`];
@@ -201,8 +201,10 @@ router.put(
 
             await reviewRecord.update({ ...req.body });
 
+            const reviewResult = await Review.findByPk(reviewRecord.id, {include:User})
+
             return res.json({
-                review:reviewRecord
+                review: reviewResult
             });
 
         }

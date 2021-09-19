@@ -30,7 +30,7 @@ function DeleteReviewForm({ id }) {
 
         return dispatch(listingActions.deleteReviewThunk(id))
             .then(() => {
-                setErrors(['Successfully deleted!']);
+                setErrors(['Successfully deleted!Please click outside the form to return to the listing.']);
                 // reset();
 
             })
