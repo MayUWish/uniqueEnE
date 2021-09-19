@@ -151,12 +151,16 @@ const publicListingReducer = (state = initialState, action) => {
         case EDIT_REVIEW:
 
             newState = { ...state };
-
-            newState.Reviews.forEach((review,index)=>{
-                if(+review.id===+action.payload.id){
-                    newState[index] = action.payload;
+            
+            let index;
+            for (let i = 0; i < newState.Reviews.length; i++){
+                if (+newState.Reviews[i].id === +action.payload.id) {
+                    index = i;
                 }
-            })
+            }
+        
+
+            newState.Reviews[index] = action.payload;
 
             return newState;
 
