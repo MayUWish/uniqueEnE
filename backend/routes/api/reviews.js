@@ -5,7 +5,7 @@ const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User, Listing, Image, ListingAmenity, Booking,Review } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { default: Reviews } = require('../../../frontend/src/components/PublicListing/Reviews');
+// const { default: Reviews } = require('../../../frontend/src/components/PublicListing/Reviews');
 
 const router = express.Router();
 
