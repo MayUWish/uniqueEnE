@@ -33,7 +33,15 @@ module.exports = {
         userId: 4,
         numGuests: 4,
         startDate: new Date(2021, 10, 5, 0, 0, 0, 0),
-        endDate: new Date(2021, 10, 18, 0, 0, 0, 0)
+        endDate: new Date(2021, 10, 20, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 1,
+        userId: 4,
+        numGuests: 4,
+        startDate: new Date(2021, 8, 5, 0, 0, 0, 0),
+        endDate: new Date(2021, 8, 20, 0, 0, 0, 0)
       },
 
       {
@@ -45,6 +53,14 @@ module.exports = {
       },
 
       {
+        listingId: 2,
+        userId: 8,
+        numGuests: 2,
+        startDate: new Date(2021, 1, 7, 0, 0, 0, 0),
+        endDate: new Date(2021, 1, 25, 0, 0, 0, 0)
+      },
+
+      {
         listingId: 3,
         userId: 6,
         numGuests: 1,
@@ -53,11 +69,27 @@ module.exports = {
       },
 
       {
+        listingId: 3,
+        userId: 9,
+        numGuests: 1,
+        startDate: new Date(2021, 6, 18, 0, 0, 0, 0),
+        endDate: new Date(2021, 6, 25, 0, 0, 0, 0)
+      },
+
+      {
         listingId: 4,
         userId: 7,
         numGuests: 2,
         startDate: new Date(2021, 1, 12, 0, 0, 0, 0),
         endDate: new Date(2021, 2, 17, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 4,
+        userId: 4,
+        numGuests: 2,
+        startDate: new Date(2021, 5, 12, 0, 0, 0, 0),
+        endDate: new Date(2021, 5, 25, 0, 0, 0, 0)
       },
 
 
@@ -77,6 +109,38 @@ module.exports = {
         endDate: new Date(2021, 1, 28, 0, 0, 0, 0)
       },
 
+      {
+        listingId: 6,
+        userId: 5,
+        numGuests: 1,
+        startDate: new Date(2021, 5, 22, 0, 0, 0, 0),
+        endDate: new Date(2021, 5, 29, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 6,
+        userId: 6,
+        numGuests: 1,
+        startDate: new Date(2021, 3, 12, 0, 0, 0, 0),
+        endDate: new Date(2021, 3, 22, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 6,
+        userId: 9,
+        numGuests: 1,
+        startDate: new Date(2021, 4, 7, 0, 0, 0, 0),
+        endDate: new Date(2021, 4, 17, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 6,
+        userId: 7,
+        numGuests: 1,
+        startDate: new Date(2021, 2, 8, 0, 0, 0, 0),
+        endDate: new Date(2021, 2, 12, 0, 0, 0, 0)
+      },
+
 
       {
         listingId: 7,
@@ -87,11 +151,27 @@ module.exports = {
       },
 
       {
+        listingId: 7,
+        userId: 8,
+        numGuests: 3,
+        startDate: new Date(2021, 5, 10, 0, 0, 0, 0),
+        endDate: new Date(2021, 5, 15, 0, 0, 0, 0)
+      },
+
+      {
         listingId: 8,
         userId: 1,
         numGuests: 2,
         startDate: new Date(2021, 8, 20, 0, 0, 0, 0),
         endDate: new Date(2021, 8, 27, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 8,
+        userId: 2,
+        numGuests: 2,
+        startDate: new Date(2021, 4, 20, 0, 0, 0, 0),
+        endDate: new Date(2021, 4, 27, 0, 0, 0, 0)
       },
 
       {
@@ -116,6 +196,14 @@ module.exports = {
         numGuests: 3,
         startDate: new Date(2021, 9, 9, 0, 0, 0, 0),
         endDate: new Date(2021, 9, 18, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 10,
+        userId: 5,
+        numGuests: 2,
+        startDate: new Date(2021, 2, 20, 0, 0, 0, 0),
+        endDate: new Date(2021, 2, 10, 0, 0, 0, 0)
       },
   
   
