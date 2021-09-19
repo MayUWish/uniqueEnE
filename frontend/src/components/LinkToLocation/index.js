@@ -1,16 +1,20 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from 'react-router-dom';
+import { useDispatch} from "react-redux";
+import { useHistory} from 'react-router-dom';
 
-import joshuaTreeImg from '../../images/joshuaTree.jpeg'
+import joshuaTreeImg from '../../images/joshuaTree.jpeg';
+import { searchByLocationActionThunk} from "../../store/searchByLocation";
+
 
 
 function LinkToLocation() {
-    const { listingId } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const joshuaTreeSearch =() =>{
-        
+        dispatch(searchByLocationActionThunk('Joshua Tree'));
+        history.push('/search');
+
+
     }
     return (
         <div>

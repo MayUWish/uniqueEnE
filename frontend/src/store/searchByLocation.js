@@ -29,7 +29,7 @@ const searchByLocationAction = (listings) => {
 // search listings/spots by location
 export const searchByLocationActionThunk = (city) => async (dispatch) => {
 
-    const response = await csrfFetch(`/api/search`, {
+    const response = await csrfFetch(`/api/search/city`, {
         method: "POST",
         body: JSON.stringify({ city }),
     });
