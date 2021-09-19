@@ -18,7 +18,11 @@ const PublicListing = () => {
     let totalRating = 0;
     let numberOfRating = currentListing?.Reviews?.length;
     currentListing?.Reviews?.forEach(({ rating }) => totalRating += Number(rating));
-    const averageRating = (totalRating / numberOfRating).toFixed(1);
+    let averageRating = 0;
+    if (numberOfRating) {
+        averageRating = (totalRating / numberOfRating).toFixed(1);
+    }
+   
 
     //when refresh/reload to get state, setIsLoaded very Important!!! otherwise,it will be undefined
     useEffect(() => {
