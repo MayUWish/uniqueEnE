@@ -28,6 +28,7 @@ import PublicListing from "./components/PublicListing";
 import ImagesOfPublicListing from "./components/PublicListing/ImagesPublic";
 import PublicListings from "./components/PublicListings";
 import BookingsCollection from "./components/Bookings";
+import LinkToLocation from "./components/LinkToLocation";
 
 
 function App() {
@@ -53,7 +54,10 @@ function App() {
               <NavLink style={{ textDecoration: 'none' }} exact to="/listings">
                 <h3 style={{ color:'#183a1d' }}>{`"Oh the places you'll go" - Explore and Enjoy Your Unique Stays`}</h3>
               </NavLink> 
+              <LinkToLocation />
               <img className='homePageImg' src={homePagePicture} alt='homePagePicture' ></img>
+
+              
             </div>            
           </Route>
 

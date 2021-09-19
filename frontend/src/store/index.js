@@ -5,6 +5,7 @@ import listingReducer from './listings';
 import publicListingReducer from './publicListing';
 import publicListingsAllReducer from './publicListingsAll';
 import bookingsReducer from './bookings'
+import searchByLocation from "./searchByLocation";
 
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   publicListing:publicListingReducer,
   publicListingsAll: publicListingsAllReducer,
   bookings: bookingsReducer,
+  searchByLocation:searchByLocation,
 });
 
 let enhancer;
