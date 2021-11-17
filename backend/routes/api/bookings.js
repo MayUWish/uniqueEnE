@@ -101,7 +101,7 @@ router.post(
         } else if (endDate - startDate <= 0 ){
             // check endDate is more than startDate
             const err = Error('Bad request.');
-            err.errors = [`Check-in date should be be early than check-out date.`];
+            err.errors = [`Check-in date should be early than check-out date.`];
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
@@ -298,14 +298,23 @@ router.put(
                 [Op.not]: [bookingId],
             }
     
-            }
+            },
+            order: [["startDate"]],
             });
 
         // a = new Date(2021,10,9),b = new Date(2021,10,9); but a === b is false; thus using a-b ===0 to check if same day;
-        let isDateConflicted = existingBookings.some(booking => (booking.startDate - startDate <= 0 && booking.endDate - startDate > 0) || (booking.startDate - endDate < 0 && booking.endDate - endDate >= 0))
+        // Do not use > booking.startDate - startDate <= 0 && booking.endDate - startDate > 0) || (booking.startDate - endDate < 0 && booking.endDate - endDate >= 0)
+        let isDateConflicted = existingBookings.some(booking => !((booking.startDate - endDate >= 0) || (booking.endDate - startDate <= 0)))
 
         //array of array [startDate,endDate]
-        const existingBookingDates = existingBookings.map(booking => [booking.startDate, booking.endDate]);
+        // const existingBookingDates = existingBookings.map(booking => [booking.startDate, booking.endDate]);
+
+        const today = (new Date()).setHours(0, 0, 0, 0)
+        const existingBookingDates = (existingBookings.map(booking => {
+            if (!((booking.startDate - endDate >= 0) || (booking.endDate - startDate <= 0))) {
+                return [booking.startDate, booking.endDate]
+            }
+        })).filter(confilctedEl => confilctedEl);
 
         if (+req.user.id !== +userId) {
             //logged-in userId is different from booking userId, which means book for others
@@ -335,7 +344,7 @@ router.put(
 
         }
 
-        else if (toEditBooking.startDate - (new Date()).setHours(0, 0, 0, 0) <= 0) {
+        else if (toEditBooking.startDate - today <= 0) {
             // cannot edit a reservation that has already started
 
             const err = Error('Bad request.');
@@ -345,36 +354,34 @@ router.put(
             next(err);
 
         }
-        
-        else if (isDateConflicted) {
-            // to check if booking date has conflict with existing bookings
-            const message = existingBookingDates.map(date => `${date[0].toLocaleDateString()} - ${date[1].toLocaleDateString()}`)
-            const err = Error('Bad request.');
-            err.errors = [`Conflicts with the following date range of existing bookings.`, ...message];
-            err.status = 400;
-            err.title = 'Bad request.';
-            next(err);
-
-        } 
-
-       
-        
+               
         else if (endDate - startDate <= 0) {
             // check endDate more than startDate, and both must be greated than today;
 
             const err = Error('Bad request.');
-            err.errors = [`Check in date should be be early than check out date.`];
+            err.errors = [`Check-in date should be early than check-out date.`];
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
 
-        } else if (startDate - (new Date()).setHours(0, 0, 0, 0) < 0 || endDate - (new Date()).setHours(0, 0, 0, 0) < 0) {
+        } else if (startDate - today < 0 || endDate - today <= 0) {
             const err = Error('Bad request.');
             err.errors = [`Booking dates should be today or in the future.`];
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
 
+
+        }
+
+        else if (isDateConflicted) {
+            // to check if booking date has conflict with existing bookings
+            const message = existingBookingDates.map(date => `${date[0].toLocaleDateString()} - ${date[1].toLocaleDateString()}`)
+            const err = Error('Bad request.');
+            err.errors = [`Conflict with the following existing bookings.`, ...message];
+            err.status = 400;
+            err.title = 'Bad request.';
+            next(err);
 
         }
 
