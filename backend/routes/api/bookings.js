@@ -49,7 +49,10 @@ router.post(
         const listing = await Listing.findByPk(listingId);
 
         // to check if booking date has conflict with existing bookings
-        const existingBookings = await Booking.findAll({where:{listingId}});
+        const existingBookings = await Booking.findAll({
+            where:{listingId},
+            order: [["startDate"]],       
+        });
         
         // a = new Date(2021,10,9),b = new Date(2021,10,9); a === b is false, thus using a-b ===0 to check if same day;   
         let isDateConflicted = existingBookings.some(booking => !((booking.startDate - endDate >= 0) || (booking.endDate - startDate <= 0)))
@@ -98,7 +101,7 @@ router.post(
         } else if (endDate - startDate <= 0 ){
             // check endDate is more than startDate
             const err = Error('Bad request.');
-            err.errors = [`Check in date should be be early than check out date.`];
+            err.errors = [`Check-in date should be be early than check-out date.`];
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
@@ -115,7 +118,7 @@ router.post(
             // to check if booking date has conflict with existing bookings
             const message = existingBookingDates.map(date => `${date[0].toLocaleDateString()} - ${date[1].toLocaleDateString()}`)
             const err = Error('Bad request.');
-            err.errors = [`Conflicts with the following date range of existing bookings.`, ...message];
+            err.errors = [`Conflict with the following existing bookings.`, ...message];
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
@@ -134,9 +137,8 @@ router.post(
             return res.json({
                 booking,
             });
-        }
 
-        
+        }       
     }),
 );
 
