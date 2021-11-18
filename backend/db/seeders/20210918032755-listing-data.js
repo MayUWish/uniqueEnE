@@ -10,7 +10,7 @@ module.exports = {
     */
     return queryInterface.bulkInsert('Listings', [
       {
-        userId: 1,
+        userId: 9,
         address: '777 health street',
         city: 'Idyllwild–Pine Cove',
         state: 'California',
@@ -34,7 +34,7 @@ module.exports = {
      },
 
       {
-        userId: 1,
+        userId: 9,
         address: '999 happy street',
         city: 'Twentynine Palms',
         state: 'California',
@@ -108,7 +108,7 @@ module.exports = {
       },
       
       {
-        userId: 1,
+        userId: 9,
         address: '111 preety street',
         city: 'Sebastopol',
         state: 'California',
