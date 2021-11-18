@@ -7,8 +7,6 @@ import {
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
-import homePagePicture from './images/homePage.jpg';
-
 import CreateListingFormModal from "./components/CreateListingFromModal";
 import EditListingFormModal from "./components/EditListingFromModal";
 import DeleteListingFromModal from "./components/DeleteListingFromModal";
@@ -30,6 +28,14 @@ import PublicListings from "./components/PublicListings";
 import BookingsCollection from "./components/Bookings";
 import Footer from "./components/Footer";
 
+import Carousel from "react-responsive-carousel/lib/js/components/Carousel/index";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import homePic1 from './images/homePic1.jpeg';
+import homePic2 from './images/homePic2.jpeg';
+import homePic3 from './images/homePic3.jpeg';
+import homePic4 from './images/homePic4.png';
+import homePic5 from './images/homePic5.jpeg';
+import homePic6 from './images/homePic6.jpeg';
 
 function App() {
   const dispatch = useDispatch();
@@ -44,17 +50,35 @@ function App() {
     <div >
       <Navigation isLoaded={isLoaded} />
       
-      
-
-      
       {isLoaded && (
         <Switch>
           <Route exact path="/">
             <div>
-              <NavLink style={{ textDecoration: 'none' }} exact to="/listings">
+              {/* <NavLink style={{ textDecoration: 'none' }} exact to="/listings">
                 <h3 style={{ color:'#183a1d' }}>{`"Oh the places you'll go" - Explore and Enjoy Your Unique Stays`}</h3>
-              </NavLink> 
-              <img className='homePageImg' src={homePagePicture} alt='homePagePicture' ></img>
+              </NavLink>  */}
+              <Carousel infiniteLoop={true} autoPlay={true} interval={2000} showArrows={false} showIndicators={true} showStatus={true} showThumbs={false}>
+                <div>
+                  <img className="homeImage" alt="homeImage1" src={homePic1} />
+                </div>
+                <div>
+                  <img className="homeImage" alt="homeImage2" src={homePic2} />
+                </div>
+                <div>
+                  <img className="homeImage" alt="homeImage3" src={homePic3} />
+                </div>
+                <div>
+                  <img className="homeImage" alt="homeImage4" src={homePic4} />
+                </div>
+                <div>
+                  <img className="homeImage" alt="homeImage5" src={homePic5} />
+                </div>
+                <div>
+                  <img className="homeImage" alt="homeImage6" src={homePic6} />
+                </div>
+                
+              </Carousel>
+
             </div>            
           </Route>
 
