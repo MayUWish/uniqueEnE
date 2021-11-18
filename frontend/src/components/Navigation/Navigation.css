@@ -28,7 +28,7 @@
     padding: 1em;
 }
 
-.loginSignup,.profileWrapper{
+.loginSignup, .profileWrapper{
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -55,6 +55,11 @@
 
 .profileDropDown{
     font-size: 120%;
-    font-weight: bolder;
+    font-weight: bold;
+    margin:0 1px;
 
+}
+
+.profileWrapper{
+    margin:0 2px;
 }

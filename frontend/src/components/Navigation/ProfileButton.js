@@ -46,12 +46,12 @@ function ProfileButton({ user }) {
 
     return (
         <div className="profileWrapper">
-            <div >
+            {/* <div >
                 <button className='profileButton' onClick={openMenu}>
                     <i className="fas fa-address-card" />
                 </button>
             </div>
-            {showMenu && (
+            {showMenu && ( */}
                 <div >
                     {/* <li>Wecome {user.username}</li> */}
                     {/* <li>{user.email}</li> */}
@@ -63,7 +63,7 @@ function ProfileButton({ user }) {
                     <button className='profileDropDown'onClick={logout}>Log Out</button>
                     {/* </li> */}
                 </div>
-            )}
+           {/* )} */}
         </div>
     );
 }

@@ -1,5 +1,6 @@
 import React from "react";
-import footerPicture from '../../images/footer.jpeg';
+import footerPicture1 from '../../images/footer1.jpeg';
+import footerPicture2 from '../../images/footer2.jpeg';
 import "./Footer.css";
 import {NavLink} from "react-router-dom";
 
@@ -9,8 +10,8 @@ const Footer = () => {
       <hr />
  
       <div className="footerWapper">
-        <div style={{ width: '30%', marginLeft: '2%'  }}>
-          <img src={footerPicture} alt='footerImage' className="footerImg"/>
+        <div style={{ width: '20%'}}>
+          <img src={footerPicture1} alt='footerImage2' className="footerImg"/>
         </div>
     
     
@@ -20,8 +21,8 @@ const Footer = () => {
               <h4>{`"Oh the places you'll go" - Explore and Enjoy Your Unique Stays`}</h4>
             </NavLink>
           </div>
-          <div style={{ marginLeft: '3%' }}>Contact</div>
-          <div style={{marginLeft:'3%'}}>Meitong Qu |
+          <div style={{ marginLeft: '3%',fontSize:'large' }}>Contact </div>
+          <div style={{marginLeft:'3%'}}>Meitong Qu 
           <a href="https://www.linkedin.com/in/meitongqu/" rel="noreferrer" target="_blank">
               <i className="fab fa-linkedin contactIcon1"></i>
           </a>
@@ -33,7 +34,14 @@ const Footer = () => {
           </a>
           </div>
         </div>
+
+        <div style={{ width: '20%' }}>
+          <img src={footerPicture2} alt='footerImage2' className="footerImg" />
+        </div>
+
       </div>
+
+      
  
     </footer>
 	);
