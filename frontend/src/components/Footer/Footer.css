@@ -1,0 +1,25 @@
+.footerWapper{
+    display: flex;
+
+}
+
+.footerImg{
+    width:75%;
+}
+
+.footerContact{
+    color: #183a1d;
+    font-weight: bolder;
+
+}
+
+.contactIcon1{
+  font-size: 1.5rem;
+  padding: 0 5px;
+  font-weight: normal;
+}
+
+.contactIcon2{
+  font-size: 1.5rem;
+  padding: 0 5px;
+}

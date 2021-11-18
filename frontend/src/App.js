@@ -28,6 +28,7 @@ import PublicListing from "./components/PublicListing";
 import ImagesOfPublicListing from "./components/PublicListing/ImagesPublic";
 import PublicListings from "./components/PublicListings";
 import BookingsCollection from "./components/Bookings";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -119,6 +120,8 @@ function App() {
 
         </Switch>
       )}
+
+      <Footer />
 
       
     </div>

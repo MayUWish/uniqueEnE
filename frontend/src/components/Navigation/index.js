@@ -32,7 +32,7 @@ function Navigation({ isLoaded }) {
 
            
 
-            <div>
+            {/* <div>
                 <a className='contact' href='https://www.linkedin.com/in/meitongqu/' target='blank'>
                     <i className="fab fa-linkedin fa-2x" />
                 </a>
@@ -41,7 +41,7 @@ function Navigation({ isLoaded }) {
                     <i className="fab fa-github fa-2x" />
                 </a>
 
-            </div>
+            </div> */}
 
             <div style={{display:'flex'}}>         
             <NavLink className='exploreAllListings' exact to="/listings">
