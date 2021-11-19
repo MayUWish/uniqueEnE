@@ -54,9 +54,6 @@ function App() {
         <Switch>
           <Route exact path="/">
             <div>
-              {/* <NavLink style={{ textDecoration: 'none' }} exact to="/listings">
-                <h3 style={{ color:'#183a1d' }}>{`"Oh the places you'll go" - Explore and Enjoy Your Unique Stays`}</h3>
-              </NavLink>  */}
               <Carousel infiniteLoop={true} autoPlay={true} interval={2000} showArrows={false} showIndicators={true} showStatus={true} showThumbs={false}>
                 <div>
                   <img className="homeImage" alt="homeImage1" src={homePic1} />
