@@ -3,11 +3,13 @@
     margin:2%;
     border-radius: 10px;
     overflow: auto;
+    height:280px;
    
 }
 
 .img{
     width:50%;
+    min-width: 50%;
     object-fit: cover;
     border-radius: 10px;
 }

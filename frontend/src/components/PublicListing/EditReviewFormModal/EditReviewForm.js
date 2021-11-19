@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 
 
 
-function EditReviewForm({ id, reviewcontent,ratingN }) {
+function EditReviewForm({ id, reviewcontent, ratingN, setShowModal }) {
     const { listingId } = useParams();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
@@ -35,6 +35,7 @@ function EditReviewForm({ id, reviewcontent,ratingN }) {
             .then(() => {
                 setErrors(['Successfully updated! Please click outside the form to return to the listing.']);
                 // reset();
+                setShowModal(false);
 
             })
             .catch(async (res) => {

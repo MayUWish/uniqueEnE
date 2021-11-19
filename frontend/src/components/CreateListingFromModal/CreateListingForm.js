@@ -6,7 +6,7 @@ import './CreateListingForm.css'
 
 // import { useHistory } from "react-router-dom";
 
-function CreateListingForm() {
+function CreateListingForm({ setShowModal}) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     // const mostRecentlyCreated = useSelector(state => state.hosting.listingsIds[state.hosting.listingsIds.length-1]);
@@ -89,7 +89,7 @@ function CreateListingForm() {
             .then(()=>{
                 setErrors(['Successfully created! Please click outside the form to return to all your listings.']);
                 reset();
-                // history.push(`/hosting`)
+                setShowModal(false)
             })
             .catch(async (res) => {
                 // console.log('notOK',res)

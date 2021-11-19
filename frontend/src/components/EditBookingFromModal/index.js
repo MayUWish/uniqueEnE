@@ -30,7 +30,7 @@ function EditBookingFormModal({ booking }) {
             
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <EditBookingForm booking={booking}/>
+                    <EditBookingForm booking={booking} setShowModal={setShowModal}/>
                 </Modal>
             )}
 

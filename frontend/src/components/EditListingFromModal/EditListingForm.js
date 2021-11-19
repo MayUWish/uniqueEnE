@@ -6,7 +6,7 @@ import './EditListingForm.css'
 
 // import { useHistory } from "react-router-dom";
 
-function EditListingForm({ listingId }) {
+function EditListingForm({ listingId, setShowModal }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const listings = useSelector(state => state.hosting);
@@ -92,7 +92,7 @@ function EditListingForm({ listingId }) {
             .then(()=>{
                 setErrors(['Successfully updated! Please click outside the form to return to your listing.']);
                 // reset();
-                // history.push(`/hosting/${Object.keys(listings)[0]}`)
+                setShowModal(false)
             })
             .catch(async (res) => {
                 // console.log('notOK',res)

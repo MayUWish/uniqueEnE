@@ -34,7 +34,7 @@ function EditListingFormModal() {
             
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <EditListingForm listingId={listingId}/>
+                    <EditListingForm listingId={listingId} setShowModal={setShowModal}/>
                 </Modal>
             )}
 
