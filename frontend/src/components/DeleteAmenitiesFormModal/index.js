@@ -38,7 +38,7 @@ function DeleteAmenitiesFormModal({listingId}) {
 
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <DeleteAmenitiesForm listingId={listingId}/>
+                    <DeleteAmenitiesForm listingId={listingId} setShowModal={setShowModal}/>
                 </Modal>
             )}
 

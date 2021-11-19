@@ -4,11 +4,6 @@ a:visited{
 }
 
 
-.homePageImg{
-    display: block;
-    width: 100%;
-    height: 100%;
-}
 
 .button{
     margin:0 10px;
@@ -19,4 +14,8 @@ a:visited{
     border: 1px solid lightgray;
     border-radius: 5px;
     box-shadow: 2px 2px lightgray;
+}
+
+.homeImage{
+  height:700px;
 }

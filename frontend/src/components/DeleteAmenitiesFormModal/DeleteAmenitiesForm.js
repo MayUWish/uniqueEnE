@@ -6,7 +6,7 @@ import './DeleteAmenitiesForm.css';
 import { useParams } from "react-router-dom";
 
 
-function DeleteAmenitiesForm({ listingId }) {
+function DeleteAmenitiesForm({ listingId, setShowModal }) {
     // inorder to use at specific listing page as well
     let url = useParams();
     if (!listingId) {
@@ -70,6 +70,7 @@ function DeleteAmenitiesForm({ listingId }) {
             .then(() => {
                 setErrors(['Successfully deleted!']);
                 // reset();
+                setShowModal(false)
                 
             })
             .catch(async (res) => {

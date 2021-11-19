@@ -20,7 +20,7 @@ function CreateListingFormModal() {
             
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <CreateListingForm/>
+                    <CreateListingForm setShowModal={setShowModal}/>
                 </Modal>
             )}
 

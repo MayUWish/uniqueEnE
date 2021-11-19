@@ -28,7 +28,7 @@ function EditReviewFormModal({ id, user,review,rating }) {
 
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <EditReviewForm id={id} reviewcontent={reviewcontent} ratingN={ratingN}/>
+                    <EditReviewForm id={id} reviewcontent={reviewcontent} ratingN={ratingN} setShowModal={setShowModal}/>
                 </Modal>
             )}
 

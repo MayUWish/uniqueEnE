@@ -30,26 +30,13 @@ function Navigation({ isLoaded }) {
                 <h2>{`UniqueEnE`}</h2>
             </NavLink>
 
-           
-
-            <div>
-                <a className='contact' href='https://www.linkedin.com/in/meitongqu/' target='blank'>
-                    <i className="fab fa-linkedin fa-2x" />
-                </a>
-
-                <a className='contact' href='https://github.com/MayUWish' target='blank'>
-                    <i className="fab fa-github fa-2x" />
-                </a>
-
-            </div>
-
             <div style={{display:'flex'}}>         
             <NavLink className='exploreAllListings' exact to="/listings">
-                <h3 style={{ color: '#183a1d' }}>{`<- Click to Explore  ->`}</h3>
+                <h3 style={{ color: '#183a1d' }}>{`<  Click To Explore All Unique Stays  >`}</h3>
             </NavLink>
-
-            {isLoaded && sessionLinks}   
             </div>
+            {isLoaded && sessionLinks}   
+            
         </div>
     );
 }

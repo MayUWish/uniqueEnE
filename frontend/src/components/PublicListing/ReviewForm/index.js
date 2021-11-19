@@ -60,9 +60,11 @@ function ReviewForm() {
     };
 
     return (
-        <div style={{border:'1px solid #d3d3d3',borderRadius:'10px',
-        width:'50%',
-        margin:'2% 0' }}>
+        <div style={{
+            border: '1px solid #d3d3d3', borderRadius: '5px',
+            width: '50%',
+            margin: '2% 0'
+        }}>
             <form 
             className='reviewForm' 
             onSubmit={handleSubmit} onClick={loggedOutUser}>
@@ -74,10 +76,11 @@ function ReviewForm() {
                 </ul>
 
                 <label>
-                    Rating
+                    <div style={{ textAlign: 'center' }}> Rating: </div>
                     <input
                         className='reviewInput'
                         type="number"
+                        min="1"
                         value={rating}
                         onChange={(e) => setRating(e.target.value)}
                         style={{ width: '100%' }}
@@ -86,12 +89,12 @@ function ReviewForm() {
                 </label>
 
                 <label>
-                    Review
+                    <div style={{textAlign:'center'}}> Review: </div>
                     <textarea
-                        // className='reviewInput'
+                        className='reviewInput2'
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
-                        style={{ rows: '100', width: '150%'}}
+                        placeholder='Leave a review of your stay ...'
                     // required
                     />
                 </label>

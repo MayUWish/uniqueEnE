@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 
 
 
-function EditBookingForm({ booking}) {
+function EditBookingForm({ booking, setShowModal}) {
    
     const dispatch = useDispatch();
     const history = useHistory();
@@ -89,6 +89,7 @@ function EditBookingForm({ booking}) {
             // window.alert('Successfully booked.')
             // reset();
             history.push('/bookings')
+            setShowModal(false)
         }).catch(async (res) => {
             // console.log('notOK',res)
             const data = await res.json();

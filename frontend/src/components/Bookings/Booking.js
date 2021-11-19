@@ -41,7 +41,7 @@ const Booking = ({ booking}) => {
                
                 <h3>{booking.Listing?.title}</h3>  
                 <p style={{marginLeft:'1%',fontSize:'small'}}>{booking.Listing?.address}, {booking.Listing?.city}</p>
-                <p style={{ marginLeft: '1%', fontSize: 'small' }}>{Number(booking.Listing?.twinBedNum) + Number(booking.Listing?.queenBedNum) + Number(booking.Listing?.kingBedNum) + Number(booking.Listing?.sofaBedNum)} beds , {booking.Listing?.bathroomNum} baths</p>
+                <p style={{ marginLeft: '1%', fontSize: 'small' }}>{Number(booking.Listing?.twinBedNum) + Number(booking.Listing?.queenBedNum) + Number(booking.Listing?.kingBedNum) + Number(booking.Listing?.sofaBedNum)} beds, {booking.Listing?.bathroomNum} baths</p>
 
                 <h5>{booking.numGuests} guests' reservation:  </h5>
                 <h5 style={{ marginLeft: '1%' }}>from {booking.startDate.slice(0, 10)} to {booking.endDate.slice(0, 10)}</h5>

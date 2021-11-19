@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 
 
 
-function EditReviewForm({ id, reviewcontent,ratingN }) {
+function EditReviewForm({ id, reviewcontent, ratingN, setShowModal }) {
     const { listingId } = useParams();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
@@ -35,6 +35,7 @@ function EditReviewForm({ id, reviewcontent,ratingN }) {
             .then(() => {
                 setErrors(['Successfully updated! Please click outside the form to return to the listing.']);
                 // reset();
+                setShowModal(false);
 
             })
             .catch(async (res) => {
@@ -71,6 +72,7 @@ function EditReviewForm({ id, reviewcontent,ratingN }) {
                     <input
                         className='reviewInput'
                         type="number"
+                        min='1'
                         value={rating}
                         onChange={(e) => setRating(e.target.value)}
                         style={{ width: '80%' }}
@@ -79,12 +81,13 @@ function EditReviewForm({ id, reviewcontent,ratingN }) {
                 </label>
 
                 <label
-                style={{textAlign:'center'}}>
+                    style={{ textAlign: 'center'}}>
                     Review
                     <textarea
-                        // className='reviewInput'
+                        style={{resize:'none'}}
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
+                        
 
                     // required
                     />
