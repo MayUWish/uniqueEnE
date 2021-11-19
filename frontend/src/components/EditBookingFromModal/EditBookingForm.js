@@ -158,9 +158,11 @@ function EditBookingForm({ booking, setShowModal}) {
                 {(startDate && endDate && toDate(endDate) > toDate(startDate)) && (
                    <div style={{ textAlign: 'start', fontWeight: 'bold', marginLeft: '5%' }}>
                         Price Breakdown:
-                        <p style={{ marginLeft: '9%' }}>${booking?.Listing.price} x {numberOfDays(toDate(startDate), toDate(endDate))} nights</p>
+                        <p style={{ marginLeft: '9%', fontWeight: 'normal'}}>${booking?.Listing.price}/night * </p>
 
-                        <p style={{ marginLeft: '9%' }}>Total: ${(+booking?.Listing.price * (+numberOfDays(toDate(startDate), toDate(endDate)))).toLocaleString()}</p>
+                        <p style={{ marginLeft: '10%', fontWeight: 'normal'}}>{numberOfDays(toDate(startDate), toDate(endDate))} nights</p>
+
+                        <p style={{ marginLeft: '2%' }}>Total: ${(+booking?.Listing.price * (+numberOfDays(toDate(startDate), toDate(endDate)))).toLocaleString()}</p>
                     </div>
                 )}
 

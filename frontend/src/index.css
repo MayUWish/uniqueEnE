@@ -19,3 +19,7 @@ a:visited{
 .homeImage{
   height:700px;
 }
+
+a, button{
+  cursor: pointer;
+}

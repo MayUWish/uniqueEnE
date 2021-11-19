@@ -63,3 +63,43 @@
 .profileWrapper{
     margin:0 2px;
 }
+
+.searchDropDown{
+    z-index: 10;  
+    position: absolute;  
+    /* right: 0;   */
+    top: 11%;
+    display:flex;
+    flex-direction: column;
+
+    border-radius: 10px;
+    border: 1px solid gray;
+    background-color:white;
+    min-width: 300px;
+}
+
+.searchButton, .searchButtonSmall{
+    background-color: white;
+    color:gray;
+
+    width: 160%;
+    height: 40px;
+    
+    border-radius: 10px;
+    border: 1px solid gray;
+
+    text-align: start;
+    font-weight: bolder;
+
+}
+
+.searchButtonSmall{
+    width: 100%;
+    height: 35px;
+    border: none;
+    color:#183a1d;
+}
+
+.fa-globe{
+    margin-left: 2px;
+}

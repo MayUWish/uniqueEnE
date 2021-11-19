@@ -18,30 +18,22 @@ Logged-in users can create, edit and delete reviews on specific listing page.
 # Technologies 
 UniqueEnE is built with Express and PostgreSQL on the backend, and JavaScript, React and Redux on the frontend. Styling is implemented with vanilla CSS. 
 
-##### Custom backend logic and validation to prevent booking conflict, ensure user authentication and spot's capacity 
+##### Custom backend logic and validation to prevent booking conflict
 ```jsx
 router.post(
     '/',
     validateBooking,
     requireAuth,
     asyncHandler(async (req, res,next) => {
-        let { startDate, endDate, userId, listingId, numGuests } = req.body;
-        // req data as "2021-09-15", turn it into date, to save at database(No hour/minute/second/ms) and to compare date for validation;
-        startDate = toDate(startDate);
-        endDate = toDate(endDate);
-        
-        const user = await User.findByPk(userId);
-        const listing = await Listing.findByPk(listingId);
+        // ......
 
         // to check if booking date has conflict with existing bookings
         const existingBookings = await Booking.findAll({
             where:{listingId},
             order: [["startDate"]],       
-        });
-        
+        });        
         // a = new Date(2021,10,9),b = new Date(2021,10,9); a === b is false, thus using a-b ===0 to check if same day;   
         let isDateConflicted = existingBookings.some(booking => !((booking.startDate - endDate >= 0) || (booking.endDate - startDate <= 0)))
-
         //array of array [startDate,endDate], only return conflicted date
         // filter out undefined(if it does not meet if statement, it will return undefined(map) )
         const today = (new Date()).setHours(0, 0, 0, 0)
@@ -51,37 +43,7 @@ router.post(
             } 
         })).filter(confilctedEl => confilctedEl);
                       
-        if (+req.user.id !== +userId){
-            // logged-in userId is different from booking userId, which means book for others
-            const err = Error('Bad request.');
-            err.errors = [`You cannot book for other users.`];
-            err.status = 400;
-            err.title = 'Bad request.';
-            next(err);
-
-        } else if(!listing){
-            // no such listing
-            const err = Error('Bad request.');
-            err.errors = [`The listing does not exist.`];
-            err.status = 400;
-            err.title = 'Bad request.';
-            next(err);
-
-        } else if (!user ) {
-            // no such user
-            const err = Error('Bad request.');
-            err.errors = [`The user/account does not exist.`];
-            err.status = 400;
-            err.title = 'Bad request.';
-            next(err);
-
-        } else if(+user.id===+listing.userId){
-            // userId cannot be host's userId, meaning cannot book their own listing
-            const err = Error('Bad request.');
-            err.errors = [`Please do not book your own listing.`];
-            err.status = 400;
-            err.title = 'Bad request.';
-            next(err);
+        // If ......, for other validations to ensure user authentication and spot's capacity
 
         } else if (endDate - startDate <= 0 ){
             // check endDate is more than startDate
@@ -117,13 +79,38 @@ router.post(
             next(err);
 
         } else{
-            // pass validation, then save to database
-            const booking = await Booking.create({ startDate, endDate, userId, listingId, numGuests });
-            return res.json({
-                booking,
-            });
-
+            // ......, pass validation, then save to database
         }       
     }),
 );
+```
+
+##### Frontend algorithm to dynamically display price breakdown per user's input for reservation
+```jsx
+
+//Return dates with Zero hour, minutes, seconds, ms
+const toDate = (yearMonthDay) => {
+    const year = yearMonthDay.split('-')[0];
+    const month = yearMonthDay.split('-')[1];
+    const day = yearMonthDay.split('-')[2];
+    const date = new Date(year, month - 1, day);
+    return date;
+}
+    
+//Return number of days, given 2 dates with Zero hour, minutes, seconds, ms
+const numberOfDays = (startDate, endDate)=>{
+    return Math.round (+(endDate-startDate)/(24*60*60*1000),0);
+}
+    
+{(startDate && endDate && toDate(endDate)>toDate(startDate)) && (
+    <div style={{ textAlign: 'start',fontWeight:'bold' }}>
+        Price Breakdown:
+
+        <p style={{ marginLeft: '9%', fontWeight:'normal'}}>${currentListing?.price}/night *</p>
+                        
+        <p style={{ marginLeft: '10%', fontWeight: 'normal' }}>{numberOfDays(toDate(startDate), toDate(endDate))} nights</p>
+                  
+        <p style={{ marginLeft: '2%'}}>Total: ${(+currentListing?.price * (+numberOfDays(toDate(startDate), toDate(endDate)))).toLocaleString()}</p>
+    </div>
+    )}
 ```

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import ToListings from './ToListings';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -31,9 +32,10 @@ function Navigation({ isLoaded }) {
             </NavLink>
 
             <div style={{display:'flex'}}>         
-            <NavLink className='exploreAllListings' exact to="/listings">
+            {/* <NavLink className='exploreAllListings' exact to="/listings">
                 <h3 style={{ color: '#183a1d' }}>{`<  Click To Explore All Unique Stays  >`}</h3>
-            </NavLink>
+            </NavLink> */}
+            <ToListings />
             </div>
             {isLoaded && sessionLinks}   
             
