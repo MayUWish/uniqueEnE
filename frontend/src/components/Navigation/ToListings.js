@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { useHistory, NavLink } from "react-router-dom";
-import * as sessionActions from '../../store/session';
+import { useHistory} from "react-router-dom";
 import './Navigation.css';
 
 function ToListings() {
@@ -29,14 +28,14 @@ function ToListings() {
         }
     }, [showMenu]);
 
-    const logout = (e) => {
+    
+    const allListing = (e) => {
         e.preventDefault();
-        dispatch(sessionActions.logout());
+        history.push('/listings')
     };
 
 
-
-    const reservation = (e) => {
+    const location = (e) => {
         e.preventDefault();
         history.push('/bookings')
     };
@@ -44,18 +43,29 @@ function ToListings() {
     return (
         <div >
             <div >
-                <button onClick={openMenu}>
+                <button onClick={openMenu} className='searchButton'>
                     Where are you going? 
                 </button>
             </div>
             {showMenu && (
-                <div className="searchDropDown">
-                <NavLink className='exploreAllListings' exact to="/listings">
-                    All Unique Stays  
-                </NavLink>
-                <button onClick={reservation}>Idyllwild–Pine Cove</button>
-                <button onClick={logout}>Joshua Tree</button>
-                <button onClick={logout}>Surprise Me</button>
+                <div className="searchDropDown">                
+                    <button onClick={allListing} className='searchButtonSmall'>
+                        <i class="fas fa-globe"> All Unique Stays</i>
+                    </button>
+
+                    <button onClick={location } className='searchButtonSmall'>
+                        <i class="fas fa-globe"> Joshua Tree</i>
+                    </button>
+                    <button onClick={location } className='searchButtonSmall'>
+                        <i class="fas fa-globe"> Idyllwild–Pine Cove</i>
+                    </button>
+                    <button onClick={location } className='searchButtonSmall'>
+                        <i class="fas fa-globe"> Santa Cruz</i>
+                    </button>
+
+                    <button onClick={location } className='searchButtonSmall'>
+                        <i class="fas fa-globe"> Surprise Me</i>
+                    </button>
      
             </div>
             )} 
