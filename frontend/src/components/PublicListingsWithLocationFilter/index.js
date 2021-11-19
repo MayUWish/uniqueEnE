@@ -10,12 +10,18 @@ import '../PublicListings/Listing.css'
 const ListingsCollectionFiltered = () => {
     let { location } = useParams();
     // space at url is %20
-    location = location.split('%20').join('')
-
+    location = location.split('%20').join(' ')
+    
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
       
-    const listings = useSelector(state => state.publicListingsAll.listingsIds?.map(id => state.publicListingsAll[id]))?.filter(listing => listing.city === location);
+    const listings = useSelector(state => state.publicListingsAll.listingsIds?.map(id => state.publicListingsAll[id]))?.filter(listing => {
+      if (location === 'Surprise Me'){
+        return !['Joshua Tree', 'Idyllwild-Pine Cove', 'Santa Cruz'].includes(listing.city)
+      } else {
+        return listing.city === location
+      }
+    });
  
     //first loading
 
