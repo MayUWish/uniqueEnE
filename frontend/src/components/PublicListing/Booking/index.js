@@ -152,9 +152,12 @@ function BookingForm() {
                 {(startDate && endDate && toDate(endDate)>toDate(startDate)) && (
                     <div style={{ textAlign: 'start',fontWeight:'bold' }}>
                         Price Breakdown:
-                        <p style={{ marginLeft: '7%', }}>${currentListing?.price} x {numberOfDays(toDate(startDate), toDate(endDate))} nights</p>
+
+                        <p style={{ marginLeft: '9%', fontWeight:'normal'}}>${currentListing?.price}/night *</p>
+                        
+                        <p style={{ marginLeft: '10%', fontWeight: 'normal' }}>{numberOfDays(toDate(startDate), toDate(endDate))} nights</p>
                   
-                        <p style={{ marginLeft: '7%'}}>Total: ${(+currentListing?.price * (+numberOfDays(toDate(startDate), toDate(endDate)))).toLocaleString()}</p>
+                        <p style={{ marginLeft: '2%'}}>Total: ${(+currentListing?.price * (+numberOfDays(toDate(startDate), toDate(endDate)))).toLocaleString()}</p>
                     </div>
                 )}
               

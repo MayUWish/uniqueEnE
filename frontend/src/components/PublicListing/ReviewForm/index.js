@@ -60,7 +60,11 @@ function ReviewForm() {
     };
 
     return (
-        <div >
+        <div style={{
+            border: '1px solid #d3d3d3', borderRadius: '5px',
+            width: '50%',
+            margin: '2% 0'
+        }}>
             <form 
             className='reviewForm' 
             onSubmit={handleSubmit} onClick={loggedOutUser}>

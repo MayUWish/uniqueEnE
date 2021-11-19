@@ -63,9 +63,9 @@
     align-items: flex-start;
     border: 1px solid lightgray;
     box-shadow: 1px 1px lightgray;
-    min-width:25%;
+    min-width:30%;
     height:20%;
-    border-radius: 20px;
+    border-radius: 10px;
     margin:1%;
 }
 

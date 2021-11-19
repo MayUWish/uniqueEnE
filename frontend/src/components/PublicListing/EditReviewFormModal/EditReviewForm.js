@@ -71,6 +71,7 @@ function EditReviewForm({ id, reviewcontent,ratingN }) {
                     <input
                         className='reviewInput'
                         type="number"
+                        min='1'
                         value={rating}
                         onChange={(e) => setRating(e.target.value)}
                         style={{ width: '80%' }}
@@ -79,12 +80,13 @@ function EditReviewForm({ id, reviewcontent,ratingN }) {
                 </label>
 
                 <label
-                style={{textAlign:'center'}}>
+                    style={{ textAlign: 'center'}}>
                     Review
                     <textarea
-                        // className='reviewInput'
+                        style={{resize:'none'}}
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
+                        
 
                     // required
                     />
