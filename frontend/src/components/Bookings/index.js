@@ -46,14 +46,14 @@ const BookingsCollection = () => {
       <>
         { isLoaded && (<div style={{display:'flex'}}>
                 <div className='incomingBookingsWrapper' style={{ width: '50%', borderRight: '2px solid #d3d3d3',marginLeft: '1%' }}>
-                    <h3>{'Current & Incoming:'}</h3>
+                    <h3>{'Current & Incoming Reservations:'}</h3>
                 {(incomingBookings.length > 0) && incomingBookings.map(booking => (
                     <Booking key={booking.id} booking={booking} />
                 ))}
             </div>
 
                 <div className='pastBookingsWrapper' style={{ width: '50%', marginLeft:'1%'}}>
-                <h3>Past:</h3>
+                <h3>Past Reservations:</h3>
                 {(pastBookings.length > 0) && pastBookings.map(booking => (
                     <PastBooking key={booking.id} booking={booking} />
                 ))}

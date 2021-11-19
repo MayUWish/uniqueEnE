@@ -38,7 +38,7 @@ function AddImagesForm({ listingId }) {
 
         return dispatch(listingActions.createImageThunk(newImage))
             .then(() => {
-                setErrors(['Successfully created!','If at least 5 images are added to one listing, please click outside the form to return to all your listings.']);
+                setErrors(['Successfully created!','If at least 5 images are added to one listing, please click outside the form to return to your listing.']);
                 reset();
                 // history.push(`/hosting/${Object.keys(listings)[0]}`)
             })
