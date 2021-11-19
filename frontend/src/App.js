@@ -25,6 +25,7 @@ import DeleteImagesPage from "./components/DeleteImagesPage";
 import PublicListing from "./components/PublicListing";
 import ImagesOfPublicListing from "./components/PublicListing/ImagesPublic";
 import PublicListings from "./components/PublicListings";
+import PublicListingsWithLocationFilter from "./components/PublicListingsWithLocationFilter";
 import BookingsCollection from "./components/Bookings";
 import Footer from "./components/Footer";
 
@@ -113,7 +114,15 @@ function App() {
             <DeleteImagesPage />
           </Route>
 
-          
+          {/* public: all listings  */}
+          <Route exact path={`/listings`}>
+            <PublicListings />
+          </Route>
+
+          {/* public: all listings with location/city filtered  */}
+          <Route exact path={`/listings/search/:location`}>
+            <PublicListingsWithLocationFilter />
+          </Route>
 
           {/* public: sepcific listing  */}
           <Route exact path={`/listings/:listingId`}>
@@ -126,11 +135,6 @@ function App() {
           {/* public: sepcific listing's images view */}
           <Route exact path={`/listings/:listingId/images`}>
             <ImagesOfPublicListing />
-          </Route>
-
-          {/* public: all listings  */}
-          <Route exact path={`/listings`}>
-            <PublicListings />
           </Route>
 
           {/* logged-in: bookings as travellers */}

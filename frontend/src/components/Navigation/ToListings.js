@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
 import { useHistory} from "react-router-dom";
 import './Navigation.css';
 
 function ToListings() {
-    const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
     const history = useHistory();
 
@@ -37,7 +35,7 @@ function ToListings() {
 
     const location = (e) => {
         e.preventDefault();
-        history.push('/bookings')
+        history.push(`/listings/search/${e.currentTarget.value}`)
     };
 
     return (
@@ -50,21 +48,21 @@ function ToListings() {
             {showMenu && (
                 <div className="searchDropDown">                
                     <button onClick={allListing} className='searchButtonSmall'>
-                        <i class="fas fa-globe"> All Unique Stays</i>
+                        <i className="fas fa-globe"> All Unique Stays</i>
                     </button>
 
-                    <button onClick={location } className='searchButtonSmall'>
-                        <i class="fas fa-globe"> Joshua Tree</i>
+                    <button onClick={location} className='searchButtonSmall' value='Joshua Tree'>
+                        <i className="fas fa-globe"> Joshua Tree</i>
                     </button>
-                    <button onClick={location } className='searchButtonSmall'>
-                        <i class="fas fa-globe"> Idyllwild–Pine Cove</i>
+                    <button onClick={location} className='searchButtonSmall' value='Idyllwild-Pine Cove'>
+                        <i className="fas fa-globe"> Idyllwild-Pine Cove</i>
                     </button>
-                    <button onClick={location } className='searchButtonSmall'>
-                        <i class="fas fa-globe"> Santa Cruz</i>
+                    <button onClick={location} className='searchButtonSmall' value= 'Santa Cruz'>
+                        <i className="fas fa-globe"> Santa Cruz</i>
                     </button>
 
-                    <button onClick={location } className='searchButtonSmall'>
-                        <i class="fas fa-globe"> Surprise Me</i>
+                    <button onClick={location} className='searchButtonSmall' value= 'Surprise Me'>
+                        <i className="fas fa-globe"> Surprise Me</i>
                     </button>
      
             </div>
