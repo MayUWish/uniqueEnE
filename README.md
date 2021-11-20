@@ -2,18 +2,31 @@ UniqueEnE, a fullstack clone of AirBnB, is an application that allows users to e
 
 Live Link: [UniqueEnE](https://uniqueene.herokuapp.com/)
 
-# Features
-User Authentication
-Users are able to signup and login through a modal on any page with a navigation bar. The users credentials is then authenticated and would be displayed with the error messages of any invalid inputs. A demo user was implemented to bypass signing up.
+# UniqueEnE at a Glance
 
-# Listings
-Logged-in users are able to create and update listings, and delete listings that do not have any incoming or current reservations , as well as to add and delete images and amenities of each listing. 
+## User Authentication
+Users are able to signup and login through a modal form on any page with a navigation bar. The users credentials is then authenticated and would be displayed with the error messages of any invalid inputs. A demo user was implemented to bypass signing up.
 
-#  Bookings
-Logged-in users can view via 'Your Reservations' at navigation bar, and make reservations on specific listing page, and update and cancel their reservations that have not started yet, 
+![Authentication](/react-app/src/images/readMe/authentication.gif)
 
-#  Reviews
-Logged-in users can create, edit and delete reviews on specific listing page.
+## Listings
+Logged-out and Logged-in users are able to explore all the listings and view the specific listing page.
+
+![Explore Listings](/react-app/src/images/readMe/viewListings.gif) 
+
+As a host, logged-in users are able to create and edit listings, and delete listings that do not have any incoming or current reservations, as well as to add and delete images and amenities of each listing. 
+
+![Manage Listings](/react-app/src/images/readMe/manageListings.gif) 
+
+## Bookings
+As a traveller, logged-in users can view, update and cancel their reservations that have not started yet, via 'Your Reservations' at navigation bar, and make reservations on specific listing page.
+
+![Bookings](/react-app/src/images/readMe/bookings.gif) 
+
+## Reviews
+Logged-in users can create, edit and delete reviews on specific listing page, only if the user has a reservation of the listing that has started, to prevent fake reviews.
+
+![Reviews](/react-app/src/images/readMe/reviews.gif) 
 
 # Technologies 
 UniqueEnE is built with Express and PostgreSQL on the backend, and JavaScript, React and Redux on the frontend. Styling is implemented with vanilla CSS. 
@@ -43,7 +56,7 @@ router.post(
                       
         ...... for other validations to ensure user authentication and spot's capacity
 
-        } else if (endDate - startDate <= 0 ){
+        else if (endDate - startDate <= 0 ){
             // check endDate is more than startDate
             const err = Error('Bad request.');
             err.errors = [`Check-in date should be be early than check-out date.`];
@@ -103,3 +116,7 @@ const numberOfDays = (startDate, endDate)=>{
     </div>
     )}
 ```
+
+# Future Implementations
+- Google Map API
+- Search by location, number of guests, check-in and check-out dates
