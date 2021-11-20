@@ -55,7 +55,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <div>
-              <Carousel infiniteLoop={true} autoPlay={true} interval={2000} showArrows={false} showIndicators={true} showStatus={true} showThumbs={false}>
+              <Carousel infiniteLoop={true} autoPlay={true} interval={2800} showArrows={false} showIndicators={true} showStatus={true} showThumbs={false}>
                 <div>
                   <img className="homeImage" alt="homeImage1" src={homePic1} />
                 </div>

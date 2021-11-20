@@ -145,6 +145,94 @@ Deano was a great host, always available and with a lot of love for details. We 
         rating: 4
 
       },
+
+      {
+        listingId: 11,
+        userId: 7,
+        review: `Great place to stay! The pictures do not do the house justice, it is far more beautiful in person. The hosts are also great and available as needed!`,
+        rating: 4
+
+      },
+
+      {
+        listingId: 11,
+        userId: 8,
+        review: `The treehouse is absolutely breathtaking and beautiful! I fell in love with our little home for the weekend from the minute we set foot inside. It definitely has that cozy and relaxing atmosphere if you're looking to get away from the stress of everyday life. The space was perfect for two people and it had all the necessary amenities for our short stay. The self check-in process was also super convenient, especially if you're unsure on the exact time you'll be arriving. I am already dreaming about coming back!`,
+        rating: 5
+
+      },
+
+      {
+        listingId: 12,
+        userId: 5,
+        review: `What a great, one of a kind experience. This is definitely a place to relax and unwind. The breakfasts served each morning were delicious, and the host/staff were very accommodating and friendly. I'll definitely come back during the summer to experience the organic garden in full bloom.`,
+        rating: 4
+
+      },
+
+      {
+        listingId: 12,
+        userId: 6,
+        review: `Flapjack Ranch was a great experience. Staying in a treehouse was awesome and the hospitality was exceptional. Wake up in the morning with hot beverages you hoist up to your deck in the trees using a pulley. And then go down to the main house for a delicious gourmet breakfast.`,
+        rating: 5
+
+      },
+
+      {
+        listingId: 13,
+        userId: 3,
+        review: `Everything about this place was perfect. We loved the mini hike, the coziness of the treehouse, and the privacy/peacefulness of the area. We’d rebook in a heartbeat!`,
+        rating: 4
+
+      },
+
+      {
+        listingId: 13,
+        userId: 2,
+        review: `This treehouse is beautiful and surrounded by redwood pine trees and in a perfectly serene setting. The house was properly equipped with all that we could need . We had an amazing time here. The hosts Mary Jane and Martin were wonderful, friendly and quick respond to all queries. Unfortunately the power went off on the 1st day , but it added to our unique experience in a great way. We would love to come back and stay here again. Thanks once again to the hosts`,
+        rating: 5
+
+      },
+
+      {
+        listingId: 14,
+        userId: 5,
+        review: `we had a great time visiting with our two young kids. I love the piano and all of the fragile stuff was easily movable. it was definitely a twisty road to get there, but (Hidden by Airbnb) maps got us there easily. we visited the very close by wild Iris playground which was fantastic and took a hike in the Henry Cowell redwood State Park. beds were comfortable and the views were beautiful! the kitchen had all the cooking things we needed.`,
+        rating: 4
+
+      },
+
+      {
+        listingId: 14,
+        userId: 6,
+        review: `This is such a beautiful house! Wonderfully decorated and very spacious! It’s in the woods so it’s a light curvy road adventure if you aren’t used to that. Really pretty surroundings and beautiful trees everywhere! The house is by itself (with attached separate unit) and it’s very quiet and nice. We visited the redwood park close by and we highly recommend it! Great hosts and great house!!`,
+        rating: 4
+
+      },
+
+      {
+        listingId: 15,
+        userId: 5,
+        review: `Beautiful location!! We spent a day just watching the beautiful day unfold on the dessert. Around 4pm the quails come, making adorable little noises and they roost up in a tree for the night.`,
+        rating: 5
+
+      },
+
+      {
+        listingId: 15,
+        userId: 6,
+        review: `The AirBnB was well located - close to Joshua Tree National Park and restaurants. The home was as advertised, communication was clear and check in/check out were easy. We loved the hammocks, fire pit and large windows. We also appreciated recommendations on grocery stores, restaurants, and things to do in the area. Overall, a great place to stay!`,
+        rating: 5
+
+      },
+
+      {
+        listingId: 16,
+        userId: 7,
+        review: `Would recommend the place was very clean and. We had an amazing time`,
+        rating: 5
+
+      },
   
   ], {});
   },

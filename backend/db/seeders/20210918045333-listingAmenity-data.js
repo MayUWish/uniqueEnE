@@ -354,6 +354,218 @@ module.exports = {
         listingId: 10,
         amenityId: 11
       },
+
+      {
+        listingId: 11,
+        amenityId: 1
+      },
+      {
+        listingId: 11,
+        amenityId: 2
+      },
+      {
+        listingId: 11,
+        amenityId: 3
+      },
+      {
+        listingId: 11,
+        amenityId: 4
+      },
+      {
+        listingId: 11,
+        amenityId: 5
+      },
+      {
+        listingId: 11,
+        amenityId: 6
+      },
+
+      {
+        listingId: 11,
+        amenityId: 9
+      },
+      {
+        listingId: 11,
+        amenityId: 10
+      },
+      {
+        listingId: 11,
+        amenityId: 11
+      },
+
+      {
+        listingId: 12,
+        amenityId: 1
+      },
+      {
+        listingId: 12,
+        amenityId: 2
+      },
+      {
+        listingId: 12,
+        amenityId: 3
+      },
+      {
+        listingId: 12,
+        amenityId: 4
+      },
+      {
+        listingId: 12,
+        amenityId: 5
+      },
+      {
+        listingId: 12,
+        amenityId: 6
+      },
+
+      {
+        listingId: 12,
+        amenityId: 9
+      },
+      {
+        listingId: 12,
+        amenityId: 10
+      },
+      {
+        listingId: 12,
+        amenityId: 11
+      },
+
+      {
+        listingId: 13,
+        amenityId: 1
+      },
+      {
+        listingId: 13,
+        amenityId: 2
+      },
+      {
+        listingId: 13,
+        amenityId: 3
+      },
+      {
+        listingId: 13,
+        amenityId: 4
+      },
+      {
+        listingId: 13,
+        amenityId: 5
+      },
+      {
+        listingId: 13,
+        amenityId: 6
+      },
+
+      {
+        listingId: 13,
+        amenityId: 9
+      },
+      {
+        listingId: 13,
+        amenityId: 10
+      },
+      {
+        listingId: 13,
+        amenityId: 11
+      },
+
+      {
+        listingId: 14,
+        amenityId: 1
+      },
+      {
+        listingId: 14,
+        amenityId: 2
+      },
+      {
+        listingId: 14,
+        amenityId: 3
+      },
+      {
+        listingId: 14,
+        amenityId: 4
+      },
+      {
+        listingId: 14,
+        amenityId: 5
+      },
+      {
+        listingId: 14,
+        amenityId: 6
+      },
+
+      {
+        listingId: 14,
+        amenityId: 9
+      },
+      {
+        listingId: 14,
+        amenityId: 10
+      },
+      {
+        listingId: 14,
+        amenityId: 11
+      },
+
+      {
+        listingId: 15,
+        amenityId: 1
+      },
+      {
+        listingId: 15,
+        amenityId: 2
+      },
+      {
+        listingId: 15,
+        amenityId: 3
+      },
+      {
+        listingId: 15,
+        amenityId: 4
+      },
+      {
+        listingId: 15,
+        amenityId: 5
+      },
+      {
+        listingId: 15,
+        amenityId: 6
+      },
+
+      {
+        listingId: 15,
+        amenityId: 9
+      },
+      {
+        listingId: 15,
+        amenityId: 10
+      },
+      {
+        listingId: 15,
+        amenityId: 11
+      },
+
+
+      {
+        listingId: 16,
+        amenityId: 1
+      },
+      {
+        listingId: 16,
+        amenityId: 2
+      },
+      {
+        listingId: 16,
+        amenityId: 3
+      },
+      {
+        listingId: 16,
+        amenityId: 4
+      },
+      {
+        listingId: 16,
+        amenityId: 5
+      },
       
   
   ], {});

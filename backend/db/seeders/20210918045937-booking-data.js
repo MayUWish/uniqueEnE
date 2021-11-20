@@ -252,10 +252,99 @@ module.exports = {
         listingId: 10,
         userId: 5,
         numGuests: 2,
-        startDate: new Date(2021, 2, 20, 0, 0, 0, 0),
-        endDate: new Date(2021, 2, 10, 0, 0, 0, 0)
+        startDate: new Date(2021, 2, 10, 0, 0, 0, 0),
+        endDate: new Date(2021, 2, 20, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 11,
+        userId: 7,
+        numGuests: 2,
+        startDate: new Date(2021, 2, 10, 0, 0, 0, 0),
+        endDate: new Date(2021, 2, 20, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 11,
+        userId: 8,
+        numGuests: 2,
+        startDate: new Date(2021, 5, 10, 0, 0, 0, 0),
+        endDate: new Date(2021, 5, 15, 0, 0, 0, 0)
       },
   
+      {
+        listingId: 12,
+        userId: 5,
+        numGuests: 2,
+        startDate: new Date(2021, 2, 10, 0, 0, 0, 0),
+        endDate: new Date(2021, 2, 20, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 12,
+        userId: 6,
+        numGuests: 2,
+        startDate: new Date(2021, 5, 10, 0, 0, 0, 0),
+        endDate: new Date(2021, 5, 15, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 13,
+        userId: 2,
+        numGuests: 2,
+        startDate: new Date(2021, 2, 10, 0, 0, 0, 0),
+        endDate: new Date(2021, 2, 20, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 13,
+        userId: 3,
+        numGuests: 2,
+        startDate: new Date(2021, 5, 10, 0, 0, 0, 0),
+        endDate: new Date(2021, 5, 15, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 14,
+        userId: 5,
+        numGuests: 2,
+        startDate: new Date(2021, 6, 10, 0, 0, 0, 0),
+        endDate: new Date(2021, 6, 20, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 14,
+        userId: 6,
+        numGuests: 2,
+        startDate: new Date(2021, 7, 10, 0, 0, 0, 0),
+        endDate: new Date(2021, 7, 15, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 15,
+        userId: 5,
+        numGuests: 2,
+        startDate: new Date(2021, 8, 10, 0, 0, 0, 0),
+        endDate: new Date(2021, 8, 20, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 15,
+        userId: 6,
+        numGuests: 1,
+        startDate: new Date(2021, 9, 10, 0, 0, 0, 0),
+        endDate: new Date(2021, 9, 15, 0, 0, 0, 0)
+      },
+
+      {
+        listingId: 16,
+        userId: 7,
+        numGuests: 2,
+        startDate: new Date(2021, 8, 10, 0, 0, 0, 0),
+        endDate: new Date(2021, 8, 20, 0, 0, 0, 0)
+      },
+
+
   
   ], {});
   },
