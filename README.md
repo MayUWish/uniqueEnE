@@ -2,18 +2,31 @@ UniqueEnE, a fullstack clone of AirBnB, is an application that allows users to e
 
 Live Link: [UniqueEnE](https://uniqueene.herokuapp.com/)
 
-# Features
-User Authentication
-Users are able to signup and login through a modal on any page with a navigation bar. The users credentials is then authenticated and would be displayed with the error messages of any invalid inputs. A demo user was implemented to bypass signing up.
+# UniqueEnE at a Glance
 
-# Listings
-Logged-in users are able to create and update listings, and delete listings that do not have any incoming or current reservations , as well as to add and delete images and amenities of each listing. 
+## User Authentication
+Users are able to signup and login through a modal form on any page with a navigation bar. The users credentials is then authenticated and would be displayed with the error messages of any invalid inputs. A demo user was implemented to bypass signing up.
 
-#  Bookings
-Logged-in users can view via 'Your Reservations' at navigation bar, and make reservations on specific listing page, and update and cancel their reservations that have not started yet, 
+![Authentication](/react-app/src/images/readMe/authentication.gif)
 
-#  Reviews
-Logged-in users can create, edit and delete reviews on specific listing page.
+## Listings
+Logged-out and Logged-in users are able to explore all the listings and view the specific listing page.
+
+![Explore Listings](/react-app/src/images/readMe/viewListings.gif) 
+
+As a host, logged-in users are able to create and edit listings, and delete listings that do not have any incoming or current reservations, as well as to add and delete images and amenities of each listing. 
+
+![Manage Listings](/react-app/src/images/readMe/manageListings.gif) 
+
+## Bookings
+As a traveller, logged-in users can view, update and cancel their reservations that have not started yet, via 'Your Reservations' at navigation bar, and make reservations on specific listing page.
+
+![Bookings](/react-app/src/images/readMe/bookings.gif) 
+
+## Reviews
+Logged-in users can create, edit and delete reviews on specific listing page, only if the user has a reservation of the listing that has started, to prevent fake reviews.
+
+![Reviews](/react-app/src/images/readMe/reviews.gif) 
 
 # Technologies 
 UniqueEnE is built with Express and PostgreSQL on the backend, and JavaScript, React and Redux on the frontend. Styling is implemented with vanilla CSS. 
@@ -25,14 +38,12 @@ router.post(
     validateBooking,
     requireAuth,
     asyncHandler(async (req, res,next) => {
-        // ......
-
+        ......
         // to check if booking date has conflict with existing bookings
         const existingBookings = await Booking.findAll({
             where:{listingId},
             order: [["startDate"]],       
-        });        
-        // a = new Date(2021,10,9),b = new Date(2021,10,9); a === b is false, thus using a-b ===0 to check if same day;   
+        });         
         let isDateConflicted = existingBookings.some(booking => !((booking.startDate - endDate >= 0) || (booking.endDate - startDate <= 0)))
         //array of array [startDate,endDate], only return conflicted date
         // filter out undefined(if it does not meet if statement, it will return undefined(map) )
@@ -43,9 +54,9 @@ router.post(
             } 
         })).filter(confilctedEl => confilctedEl);
                       
-        // If ......, for other validations to ensure user authentication and spot's capacity
+        ...... for other validations to ensure user authentication and spot's capacity
 
-        } else if (endDate - startDate <= 0 ){
+        else if (endDate - startDate <= 0 ){
             // check endDate is more than startDate
             const err = Error('Bad request.');
             err.errors = [`Check-in date should be be early than check-out date.`];
@@ -70,17 +81,8 @@ router.post(
             err.title = 'Bad request.';
             next(err);
 
-        } else if (!Number.isInteger(+numGuests) || numGuests < 1 || numGuests > listing.guestNum){
-            //  validate number of guests
-            const err = Error('Bad request.');
-            err.errors = [`Number of guests must be an integer, from 1 to its max capacity, ${listing.guestNum}.`];
-            err.status = 400;
-            err.title = 'Bad request.';
-            next(err);
-
-        } else{
-            // ......, pass validation, then save to database
-        }       
+        } 
+        ......
     }),
 );
 ```
@@ -88,7 +90,7 @@ router.post(
 ##### Frontend algorithm to dynamically display price breakdown per user's input for reservation
 ```jsx
 
-//Return dates with Zero hour, minutes, seconds, ms
+//Return dates with Zero hour, minute, second, ms
 const toDate = (yearMonthDay) => {
     const year = yearMonthDay.split('-')[0];
     const month = yearMonthDay.split('-')[1];
@@ -97,12 +99,12 @@ const toDate = (yearMonthDay) => {
     return date;
 }
     
-//Return number of days, given 2 dates with Zero hour, minutes, seconds, ms
+//Return number of days, given 2 dates with Zero hour, minute, second, ms
 const numberOfDays = (startDate, endDate)=>{
     return Math.round (+(endDate-startDate)/(24*60*60*1000),0);
 }
     
-{(startDate && endDate && toDate(endDate)>toDate(startDate)) && (
+{(startDate && endDate && toDate(endDate) > toDate(startDate)) && (
     <div style={{ textAlign: 'start',fontWeight:'bold' }}>
         Price Breakdown:
 
@@ -114,3 +116,7 @@ const numberOfDays = (startDate, endDate)=>{
     </div>
     )}
 ```
+
+# Future Implementations
+- Google Map API
+- Search by location, number of guests, check-in and check-out dates

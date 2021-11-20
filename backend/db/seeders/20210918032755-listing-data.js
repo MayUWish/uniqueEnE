@@ -10,7 +10,7 @@ module.exports = {
     */
     return queryInterface.bulkInsert('Listings', [
       {
-        userId: 9,
+        userId: 1,
         address: '777 health street',
         city: 'Idyllwild-Pine Cove',
         state: 'California',
@@ -34,7 +34,7 @@ module.exports = {
      },
 
       {
-        userId: 9,
+        userId: 1,
         address: '999 happy street',
         city: 'Twentynine Palms',
         state: 'California',
@@ -108,7 +108,7 @@ module.exports = {
       },
       
       {
-        userId: 9,
+        userId: 1,
         address: '111 preety street',
         city: 'Sebastopol',
         state: 'California',
@@ -169,7 +169,7 @@ module.exports = {
         country: 'US',
         latitude: '90',
         longitude: '180',
-        title: 'The Mushroom Dome Retreat & LAND of Paradise Suite',
+        title: 'Mushroom Dome Retreat & LAND of Paradise Suite',
         description: `As we are no longer allowed by Santa Cruz county to rent the Mushroom Dome Cabin, we are now listing the LAND of Paradise Suite, a room in our unique home. (LAND: Love And Nature Divine) Make a reservation for the Suite and you will have unlimited access to the Mushroom Dome Retreat.
 
         We have 10 acres next to land without fences so you will get to enjoy nature: just hang out on the deck, take a hike in the woods, watch the hummingbirds on our deck, go to the beach or gaze at the stars - as long as the moon isn't full. ; - ) During the summer, if there isn't any nightly fog, we can see the Milky Way here.
@@ -277,6 +277,191 @@ Nestled minutes from the entrance of Joshua Tree National Park sits this beautif
         queenBedNum: 1,
         kingBedNum: 0,
         sofaBedNum: 1,
+        enhancedClean: true,
+        selfCheckin: true,
+      },
+
+      {
+        userId: 9,
+        address: '222 Joy Street',
+        city: 'Santa Cruz',
+        state: 'California',
+        country: 'US',
+        latitude: '90',
+        longitude: '180',
+        title: 'Luxury Treehouse in the Redwoods',
+        description: `
+      Luxury treehouse with full kitchen, bathroom and living room with gas fireplace, WiFi and TV. The treehouse is built within a grove of redwood trees on our property. The host's main house is across the driveway from the treehouse but there is no shared space. There is a private deck outside the front door perfect for enjoying your morning coffee or the evening sunset.
+The space
+This unique space features antique stained glass windows and custom woodwork throughout.
+Guest access
+The treehouse and adjoining deck.
+Other things to note
+The treehouse is perched in a redwood grove across the driveway from the main house. This is our family property so children may be playing in the lot and garden below. There is a relatively quiet street next to the treehouse with light traffic. Expect some road noise. During the week there will be an increase in traffic during school drop off and pick up times as there is a small elementary school up the road. You can expect to hear the sounds of rain and wind due to the nature of a wooden structure within trees, and it will move and creak in the wind. The treehouse is very private; nothing looks into it, however, there are no blinds or curtains on any windows so it can be bright under a full moon in the bedroom because of the skylights. We provide eye masks and ear plugs for your comfort if needed.`,
+        price: 200,
+        guestNum: 2,
+        bedroomNum: 1,
+        bathroomNum: 1,
+        twinBedNum: 0,
+        queenBedNum: 1,
+        kingBedNum: 0,
+        sofaBedNum: 0,
+        enhancedClean: true,
+        selfCheckin: true,
+      },
+
+      {
+        userId: 9,
+        address: '555 Perfect Road',
+        city: 'Santa Cruz',
+        state: 'California',
+        country: 'US',
+        latitude: '90',
+        longitude: '180',
+        title: 'Romantic Treehouse in the Redwoods',
+        description: `
+        We have high hygiene standards at our very small 4 room BnB. In response to COVID-19, we are following best practices of increased cleaning and disinfecting from the CDC, Santa Cruz Health Department and the California Hotel and Lodging Association. We use approved CDC cleaners and steam sanitization of soft goods like pillows and comforters. Public spaces are disinfected frequently during the day. Guestrooms and entries are widely separated and breakfast service is at separated areas.
+
+In the treehouse, a spacious living room, mini fridge, separate bedroom and fireplace await you. Large, wraparound decks are perfect for sitting and lounging under the gigantic redwoods. We spoil you with a premium king bed and fine linens. Bathrobes and slippers are provided. Even in the cool evenings, our open air outdoor shower has plenty of hot water. (Sorry, no cooking facilities in the treehouse or on premises.)
+
+The treehouse was designed by an architect, with an eye for privacy and luxury. Using the latest suspension systems (as seen on Treehouse Masters), the treehouse is more of a tree mansion, 14 feet off the ground in a giant redwood Fairy Ring. It is lit with romantic nighttime lighting. No chilldren or pets please.
+
+FlipJack Ranch is a farm to table bed and breakfast, so the included breakfasts are based on seasonal ingredients foraged on the ranch or locally. And the breakfasts are incredible! Always fresh fruit, a delicious egg dish from our free range hens, perhaps something foraged, well crafted meats, fresh baked scones or an apple galette, homemade jams, etc. We take pride in our cuisine and delight in sharing ranch specialties with our guests.`,
+        price: 450,
+        guestNum: 2,
+        bedroomNum: 1,
+        bathroomNum: 1,
+        twinBedNum: 0,
+        queenBedNum: 0,
+        kingBedNum: 1,
+        sofaBedNum: 0,
+        enhancedClean: true,
+        selfCheckin: true,
+      },
+
+      {
+        userId: 8,
+        address: '888 Perfect Road',
+        city: 'Santa Cruz',
+        state: 'California',
+        country: 'US',
+        latitude: '90',
+        longitude: '180',
+        title: 'Redwood Treehouse Santa Cruz Mtns.',
+        description: `
+        A magical Redwood Treehouse located it the beautiful Santa Cruz Mountains. There is a live tree growing right through the main living area and another in the bathroom! It is simply incredible. It was built by my friend, Randy, a stained glass artist. Everyone who sees it are delighted by it.
+
+Please read entire description before making a reservation request.
+
+It has a delicious high-bed, a kitchen with a small stove and refrigerator, and typical cooking tools. There is a full bathroom with shower and toilet of course.
+
+There is now a hot-tub at about 103 degrees ready for your soak before bed or a morning treat.
+
+The Treehouse is a short walk of a few hundred yards (about four minutes) through the beautiful woods from the parking area.
+
+There is a gas stove for heating. There is a TV and DVD player with many movies to choose from.
+
+For travelers this is the best of both worlds. A wonderful treehouse nestled in the redwood forest, a short distance to HWY 1(Pacific Coast HWY) the main vein to Monterey, Carmel-by-the-Sea, Big Sur, Capitola and Santa Cruz and the HWY 101 Corridor.
+
+People come from all over the world to experience the Pacific Coast specifically the Monterey Bay area. It is an area rich in history. Here you will find world class art, music, cuisine, golf, surfing, sightseeing, hiking, biking, sunbathing, whale watching, birding, fishing, Monterey Bay Aquarium, Santa Cruz Beach Boardwalk and so much more. You can spend the day engaged in a variety of activities, physical and/or cultural. However you spend your day you can return home to a mountain treehouse and quiet.
+
+The weather here is excellent. It is located in a micro climate called a ‘banana belt’. Though the beach is only 25 minutes away we are often in the sun when our neighbors in the valley and on the coast are in the fog. Winters are mild we average 25” of rainfall a year. Summers can be warm but delightful. The fog rolling in at night is nature’s air conditioner and everything cools down. The weather is nearly perfect. Fog burns off early enough to make the beaches comfortable all day.
+
+The Santa Cruz Mountains are home to Sequoia Sempervirens commonly known as a Redwood Tree. They are native only to a specific part of Pacific Coast region.
+
+Come and visit our amazing part of the world and experience something special about the California Coast.
+
+All linens are provided. The kitchen has the basic items for cooking, i.e., spices, oil, vinegar, sugar, and tea.
+
+Two-night minimum on weekends. THREE-DAY MINIMUM on HOLIDAY WEEKENDS.
+
+A 60.00 cleaning fee will be charged per each stay.
+
+We are a green establishment. Environmentally friendly cleaning products are used. We ask our guests to consider using fewer towels during their stay and not requesting a sheet change unless your stay is longer than a week.
+
+I have a moderate cancellation policy. You must cancel a full seven days before your reservation. Please make sure that you read it thoroughly. You will be charged 50% of your stay if you cancel after the grace period.`,
+        price: 160,
+        guestNum: 2,
+        bedroomNum: 1,
+        bathroomNum: 1,
+        twinBedNum: 0,
+        queenBedNum: 0,
+        kingBedNum: 1,
+        sofaBedNum: 0,
+        enhancedClean: true,
+        selfCheckin: true,
+      },
+
+
+      {
+        userId: 9,
+        address: '888 Pretty Road',
+        city: 'Santa Cruz',
+        state: 'California',
+        country: 'US',
+        latitude: '90',
+        longitude: '180',
+        title: 'Delightful 2-bedroom Dome in the Woods',
+        description: `
+        Reconnect with nature at this unforgettable escape. Beautiful geodesic dome surrounded by majestic trees and beautiful nature, far from the noise and pollution, within walking distance of Henry Cowell state park trails and a short 20 minute drive from lovely Pacific Ocean beaches. A short 25 minute drive from downtown Santa Cruz and the Santa Cruz Boardwalk and wharf.
+Please note that the property is two adjacent but separate units and only the dome is available.
+       `,
+        price: 180,
+        guestNum: 4,
+        bedroomNum: 2,
+        bathroomNum: 1,
+        twinBedNum: 0,
+        queenBedNum: 2,
+        kingBedNum: 0,
+        sofaBedNum: 0,
+        enhancedClean: true,
+        selfCheckin: true,
+      },
+
+      {
+        userId: 9,
+        address: '555 Pretty Road',
+        city: 'Joshua Tree',
+        state: 'California',
+        country: 'US',
+        latitude: '90',
+        longitude: '180',
+        title: 'Saguaro Dome House in Joshua Tree, cowboy pool',
+        description: `
+        Welcome to your creative desert paradise! Enjoy this 2 bedroom/2 bath Buckminster Fuller-inspired dome house on 2.5 acres with incredible views. Located on the border of Yucca Valley and Joshua Tree, you're only 6 minutes to Joshua Tree National Park but feel like you're in a different world. Cool off with a dip in the brand new stock tank pool, kick back in a hammock, gather 'round the fire pit, or stargaze with the telescope for the unplugged getaway of your dreams.
+       `,
+        price: 200,
+        guestNum: 4,
+        bedroomNum: 2,
+        bathroomNum: 2,
+        twinBedNum: 0,
+        queenBedNum: 2,
+        kingBedNum: 0,
+        sofaBedNum: 0,
+        enhancedClean: true,
+        selfCheckin: true,
+      },
+
+      {
+        userId: 9,
+        address: '777 Pretty Road',
+        city: 'Joshua Tree',
+        state: 'California',
+        country: 'US',
+        latitude: '90',
+        longitude: '180',
+        title: 'La Vista',
+        description: `
+        A perfect weekend getaway. Reconnect with nature at La Vista. 3 acres located in the heart of Joshua Tree; close to downtown but secluded enough to make you feel like your right in the national park itself. 7 min drive to the park entrance & 1 min drive to downtown JT where you can shop and grab something to eat. Enjoy great views, a fire pit, outdoor setting, horse shoe pit, & parking on site. Shared outdoor bathroom includes portable toilet, cowboy shower & sink all available 75 ft from site.
+       `,
+        price: 105,
+        guestNum: 2,
+        bedroomNum: 1,
+        bathroomNum: 1,
+        twinBedNum: 0,
+        queenBedNum: 1,
+        kingBedNum: 0,
+        sofaBedNum: 0,
         enhancedClean: true,
         selfCheckin: true,
       },
