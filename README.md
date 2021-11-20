@@ -7,26 +7,26 @@ Live Link: [UniqueEnE](https://uniqueene.herokuapp.com/)
 ## User Authentication
 Users are able to signup and login through a modal form on any page with a navigation bar. The users credentials is then authenticated and would be displayed with the error messages of any invalid inputs. A demo user was implemented to bypass signing up.
 
-![Authentication](/react-app/src/images/readMe/authentication.gif)
+![Authentication](/frontend/src/images/readMe/authentication.gif)
 
 ## Listings
 Logged-out and Logged-in users are able to explore all the listings and view the specific listing page.
 
-![Explore Listings](/react-app/src/images/readMe/viewListings.gif) 
+![Explore Listings](/frontend/src/images/readMe/viewListings.gif) 
 
 As a host, logged-in users are able to create and edit listings, and delete listings that do not have any incoming or current reservations, as well as to add and delete images and amenities of each listing. 
 
-![Manage Listings](/react-app/src/images/readMe/manageListings.gif) 
+![Manage Listings](/frontend/src/images/readMe/manageListings.gif) 
 
 ## Bookings
 As a traveller, logged-in users can view, update and cancel their reservations that have not started yet, via 'Your Reservations' at navigation bar, and make reservations on specific listing page.
 
-![Bookings](/react-app/src/images/readMe/bookings.gif) 
+![Bookings](/frontend/src/images/readMe/bookings.gif) 
 
 ## Reviews
 Logged-in users can create, edit and delete reviews on specific listing page, only if the user has a reservation of the listing that has started, to prevent fake reviews.
 
-![Reviews](/react-app/src/images/readMe/reviews.gif) 
+![Reviews](/frontend/src/images/readMe/reviews.gif) 
 
 # Technologies 
 UniqueEnE is built with Express and PostgreSQL on the backend, and JavaScript, React and Redux on the frontend. Styling is implemented with vanilla CSS. 
