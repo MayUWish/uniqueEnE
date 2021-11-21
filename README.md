@@ -14,12 +14,12 @@ Logged-out and Logged-in users are able to explore all the listings and view the
 
 ![Explore Listings](/frontend/src/images/readMe/viewListings.gif) 
 
-As a host, logged-in users are able to create and edit listings, and delete listings that do not have any incoming or current reservations, as well as to add and delete images and amenities of each listing. 
+As a host, logged-in users are able to manage their listings via 'Manage Listings' on navigation bar. The host can create and edit listings, and delete listings that do not have any incoming or current reservations, as well as to add and delete images and amenities of each listing. If a listing that has any incoming or current reservations, an error message will be displayed to notify the host when he/she is trying to delete the listing.
 
 ![Manage Listings](/frontend/src/images/readMe/manageListings.gif) 
 
 ## Bookings
-As a traveller, logged-in users can view, update and cancel their reservations that have not started yet, via 'Your Reservations' at navigation bar, and make reservations on specific listing page.
+As a traveller, logged-in users can view, update and cancel their reservations that have not started yet, via 'Your Reservations' on navigation bar, and make reservations on specific listing page, with error messages indicating any conflict booking dates.
 
 ![Bookings](/frontend/src/images/readMe/bookings.gif) 
 
@@ -54,7 +54,7 @@ router.post(
             } 
         })).filter(confilctedEl => confilctedEl);
                       
-        ...... for other validations to ensure user authentication and spot's capacity
+        ...... for other validations to ensure user authentication and capacity of the listing
 
         else if (endDate - startDate <= 0 ){
             // check endDate is more than startDate
