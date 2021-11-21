@@ -203,7 +203,7 @@ router.delete(
         }
         else if (hasBookingsAsOfToday) {
             const err = Error('Bad request.');
-            err.errors = [`You can't delete the listing with current and/or incoming reservations.`, `Please contact your guests to cancel the incoming reservations.` `And wait for the current reservation to be completed.`];
+            err.errors = [`You can't delete the listing with current and/or incoming reservations.`, `Please contact your guests to cancel the incoming reservations.`, `And wait for the current reservation to be completed.`];
             err.status = 400;
             err.title = 'Bad request.';
             next(err);
