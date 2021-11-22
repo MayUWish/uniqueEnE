@@ -10,6 +10,7 @@
 }
 
 .footerContact{
+    
     color: #183a1d;
     font-weight: bolder;
     
@@ -19,9 +20,13 @@
   font-size: 1.5rem;
   padding: 0 5px;
   font-weight: normal;
+  color: #183a1d;
+  
 }
 
 .contactIcon2{
   font-size: 1.5rem;
   padding: 0 5px;
+  color: #183a1d;
+  
 }

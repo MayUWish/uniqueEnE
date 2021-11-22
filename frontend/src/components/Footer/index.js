@@ -17,7 +17,7 @@ const Footer = () => {
     
         <div className="footerContact">
           <div >
-            <NavLink style={{ textDecoration: 'none' }} exact to="/listings">
+            <NavLink style={{ textDecoration: 'none', color:'#183a1d' }} exact to="/listings">
               <h4>{`"Oh the places you'll go" - Explore and Enjoy Your Unique Stays`}</h4>
             </NavLink>
           </div>

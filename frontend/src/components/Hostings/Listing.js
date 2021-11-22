@@ -8,7 +8,7 @@ const Listing = ({ listing}) => {
     
     
     return (
-        <div className='eachListing'>
+        <div className='eachListing' style={{ cursor: 'default'}}>
          
             <img className='img' src={listing.Images ? (listing.Images[0] ? listing.Images[0].url : toAddImg) : toAddImg} alt='listingImage' ></img>
             
